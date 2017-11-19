@@ -4,4 +4,10 @@ install:
   - npm install codecov --save-dev
 
 scripts:
-  - npm run coverage && codecov
+  - npm run coverage
+
+before_install:
+  - pip install --user codecov
+
+after_success:
+  - codecov
