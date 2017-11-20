@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, careers, admins, universities, users-careers, universities-careers cascade;
+DROP TABLE IF EXISTS users, careers, admins, universities, users_careers, universities_careers cascade;
 
 CREATE TABLE users(
   user_id               SERIAL    PRIMARY KEY,
@@ -10,14 +10,14 @@ CREATE TABLE users(
   grade_bagrut          INTEGER   NOT NULL,
   grade_psychometric    INTEGER   NOT NULL,
   grade_tawjihi         INTEGER
-)
+);
 
 CREATE TABLE admins(
   admin_id      SERIAL  PRIMARY KEY,
   first_name    TEXT    NOT NULL,
   last_name     TEXT    NOT NULL,
   email         TEXT    NOT NULL UNIQUE
-)
+);
 
 CREATE TABLE careers(
   career_id           SERIAL    PRIMARY KEY,
@@ -34,7 +34,7 @@ CREATE TABLE careers(
   salary_start        INTEGER   NOT NULL,
   salary_ten_year     INTEGER   NOT NULL,
   icon_url            TEXT      NOT NULL
-)
+);
 
 CREATE TABLE universities(
   uni_id          SERIAL    PRIMARY KEY,
@@ -44,16 +44,16 @@ CREATE TABLE universities(
   location        TEXT      NOT NULL,
   location_ar     TEXT      NOT NULL,
   location_he     TEXT      NOT NULL
-)
+);
 
 CREATE TABLE users_careers(
   user_id     INTEGER   REFERENCES  users (user_id),
   career_id   INTEGER   REFERENCES  careers (career_id)
-)
+);
 
 CREATE TABLE universities_careers(
   uni_id      INTEGER   REFERENCES  universities (uni_id),
   career_id   INTEGER   REFERENCES  careers (career_id)
-)
+);
 
 COMMIT;
