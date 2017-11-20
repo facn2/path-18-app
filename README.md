@@ -42,7 +42,7 @@ npm test
 
 **Users**
 
-| user_id | first_name | last_name  | email | grade_bagrut | grade_psychometric | grade_3 |
+| user_id | first_name | last_name  | email | grade_bagrut | grade_psychometric | grade_tawjihi |
 | ------- |:----------:|:----------:|:-----:|:------------:|:------------------:|:-------:|
 | 1       |            |            |       |              |                    |         |
 | 2       |            |            |       |              |                    |         |
@@ -82,7 +82,7 @@ npm test
 
 **Universities-careers**
 
-| uni_id  | career_id | grade_bagrut | grade_psychometric | grade_3 | study_years |
+| uni_id  | career_id | grade_bagrut | grade_psychometric | grade_tawjihi | study_years |
 | ------- |:---------:|:------------:|:------------------:|:-------:|:-----------:|
 | 1       | 1         |              |                    |         |             |
 | 1       | 2         |              |                    |         |             |
