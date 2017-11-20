@@ -8,7 +8,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "precommit-test": "CI=true npm test",
-    "db-build": "ENV=testing node database/db_build.js"
+    "db-build": "node database/db_build.js",
+    "pretest": "ENV=testing npm run db-build"
   },
   "pre-commit": ["precommit-test"],
   "dependencies": {
