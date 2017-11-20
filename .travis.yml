@@ -1,13 +1,2 @@
 language: node_js
 node_js: 8.4.0
-install:
-  - npm install codecov --save-dev
-
-scripts:
-  - npm run coverage
-
-before_install:
-  - pip install --user codecov
-
-after_success:
-  - codecov
