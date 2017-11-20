@@ -1,0 +1,21 @@
+{
+  "name": "path-18-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit-test": "CI=true npm test"
+  },
+  "pre-commit": ["precommit-test"],
+  "dependencies": {
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-scripts": "1.0.17"
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  }
+}
