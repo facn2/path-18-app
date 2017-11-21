@@ -3,7 +3,7 @@ BEGIN;
 DROP TABLE IF EXISTS users, careers, admins, universities, users_careers, universities_careers cascade;
 
 CREATE TABLE users(
-  user_id               SERIAL    PRIMARY KEY,
+  id                    SERIAL    PRIMARY KEY,
   first_name            TEXT      NOT NULL,
   last_name             TEXT      NOT NULL,
   email                 TEXT      NOT NULL UNIQUE,
@@ -13,14 +13,14 @@ CREATE TABLE users(
 );
 
 CREATE TABLE admins(
-  admin_id      SERIAL  PRIMARY KEY,
+  id            SERIAL  PRIMARY KEY,
   first_name    TEXT    NOT NULL,
   last_name     TEXT    NOT NULL,
   email         TEXT    NOT NULL UNIQUE
 );
 
 CREATE TABLE careers(
-  career_id           SERIAL    PRIMARY KEY,
+  id                  SERIAL    PRIMARY KEY,
   title               TEXT      NOT NULL,
   title_ar            TEXT      NOT NULL,
   title_he            TEXT      NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE careers(
 );
 
 CREATE TABLE universities(
-  uni_id          SERIAL    PRIMARY KEY,
+  id              SERIAL    PRIMARY KEY,
   name            TEXT      NOT NULL,
   name_ar         TEXT      NOT NULL,
   name_he         TEXT      NOT NULL,
@@ -47,13 +47,13 @@ CREATE TABLE universities(
 );
 
 CREATE TABLE users_careers(
-  user_id     INTEGER   REFERENCES  users (user_id),
-  career_id   INTEGER   REFERENCES  careers (career_id)
+  user_id     INTEGER   REFERENCES  users (id),
+  career_id   INTEGER   REFERENCES  careers (id)
 );
 
 CREATE TABLE universities_careers(
-  uni_id      INTEGER   REFERENCES  universities (uni_id),
-  career_id   INTEGER   REFERENCES  careers (career_id)
+  uni_id      INTEGER   REFERENCES  universities (id),
+  career_id   INTEGER   REFERENCES  careers (id)
 );
 
 COMMIT;
