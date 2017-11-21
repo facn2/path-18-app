@@ -7,10 +7,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit-test": "CI=true npm test"
+    "precommit-test": "CI=true npm test",
+    "db-build": "node database/db_build.js",
+    "pretest": "ENV=testing npm run db-build"
   },
   "pre-commit": ["precommit-test"],
   "dependencies": {
+    "env2": "^2.2.0",
+    "pg": "^7.4.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-scripts": "1.0.17"
