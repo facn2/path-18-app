@@ -11,13 +11,18 @@
     "db-build": "node database/db_build.js",
     "pretest": "ENV=testing npm run db-build"
   },
-  "pre-commit": ["precommit-test"],
+  "proxy": "http://localhost:4000",
+  "pre-commit": [
+    "precommit-test"
+  ],
   "dependencies": {
     "env2": "^2.2.0",
     "pg": "^7.4.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-scripts": "1.0.17"
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "styled-components": "^2.2.3"
   },
   "devDependencies": {
     "pre-commit": "^1.2.2"
