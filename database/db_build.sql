@@ -53,7 +53,10 @@ CREATE TABLE users_careers(
 
 CREATE TABLE universities_careers(
   uni_id      INTEGER   REFERENCES  universities (id),
-  career_id   INTEGER   REFERENCES  careers (id)
+  career_id   INTEGER   REFERENCES  careers (id),
+  grade_bagrut INTEGER,
+  grade_psychometric INTEGER,
+  grade_tawjihi INTEGER
 );
 
 COMMIT;
