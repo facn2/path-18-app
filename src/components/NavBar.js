@@ -4,39 +4,46 @@ import { Link } from 'react-router-dom';
 
 const NavBarContainer = styled.div`
   width: 100%;
-  max-width: 690px;
+  height: 3.25rem;
   padding: 0;
   margin: 0;
-  background: grey;
+  background: palevioletred;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 `;
 
 const NavBarItem = styled.div`
   color: #fff;
   display: flex;
-  justify-content: center;
-  align-content: center;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const Icon = styled.i`
+  font-size: 2rem;
 `;
 
 const NavBar = () => {
   return (
     <NavBarContainer>
-      <Link to="/LikedCareers">
+      <StyledLink to="/LikedCareers">
         <NavBarItem>
-          <i className="material-icons">playlist_add_check</i>
+          <Icon className="material-icons">playlist_add_check</Icon>
         </NavBarItem>
-      </Link>
-      <Link to="/Careers">
+      </StyledLink>
+      <StyledLink to="/Careers">
         <NavBarItem>
-          <i className="material-icons">view_carousel</i>
+          <Icon className="material-icons">view_carousel</Icon>
         </NavBarItem>
-      </Link>
-      <Link to="/Settings">
+      </StyledLink>
+      <StyledLink to="/Settings">
         <NavBarItem>
-          <i className="material-icons">settings</i>
+          <Icon className="material-icons">settings</Icon>
         </NavBarItem>
-      </Link>
+      </StyledLink>
     </NavBarContainer>
   );
 };
