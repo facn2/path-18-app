@@ -4,30 +4,38 @@ import { Link } from 'react-router-dom';
 
 const NavBarContainer = styled.div`
   width: 100%;
+  max-width: 690px;
   padding: 0;
   margin: 0;
-  background: blue;
+  background: grey;
   display: flex;
   justify-content: space-around;
 `;
 
 const NavBarItem = styled.div`
-  padding: 0 0.1rem;
-  width: 2.5rem;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 `;
 
 const NavBar = () => {
   return (
     <NavBarContainer>
       <Link to="/LikedCareers">
-        <NavBarItem>Liked</NavBarItem>
+        <NavBarItem>
+          <i className="material-icons">playlist_add_check</i>
+        </NavBarItem>
       </Link>
       <Link to="/Careers">
-        <NavBarItem>Careers</NavBarItem>
+        <NavBarItem>
+          <i className="material-icons">view_carousel</i>
+        </NavBarItem>
       </Link>
       <Link to="/Settings">
-        <NavBarItem>Settings</NavBarItem>
+        <NavBarItem>
+          <i className="material-icons">settings</i>
+        </NavBarItem>
       </Link>
     </NavBarContainer>
   );
