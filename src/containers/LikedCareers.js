@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import NavBar from '../components/NavBar';
 
 const LikedContainer = styled.div`
   color: green;
@@ -11,7 +10,6 @@ class LikedCareers extends Component {
   render() {
     return (
       <LikedContainer>
-        <NavBar />
         <MainTitle>This is LikedCareers</MainTitle>
       </LikedContainer>
     );
