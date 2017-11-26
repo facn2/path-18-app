@@ -16,6 +16,7 @@ const Main = () => {
         <Route path="/LikedCareers" exact component={LikedCareers} />
         <Route path="/Careers/Details/:title" exact component={CareerDetails} />
         <Route path="/Settings" exact component={Settings} />
+        <Route path="/AddCareer" exact component={AddCareer} />
       </Switch>
     </div>
   );
@@ -25,7 +26,7 @@ const Routes = () => (
   <BrowserRouter>
     <Switch>
       <Route path="*" component={Main} />
-      <Route path="/AddCareer" exact component={AddCareer} />
+      {/* <Route path="/AddCareer" exact component={AddCareer} /> */}
     </Switch>
   </BrowserRouter>
 );

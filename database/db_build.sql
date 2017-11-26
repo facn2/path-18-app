@@ -21,13 +21,10 @@ CREATE TABLE admins(
 
 CREATE TABLE careers(
   id                  SERIAL    PRIMARY KEY,
-  title               TEXT      NOT NULL,
   title_ar            TEXT      NOT NULL,
   title_he            TEXT      NOT NULL,
-  tagline             TEXT      NOT NULL,
   tagline_ar          TEXT      NOT NULL,
   tagline_he          TEXT      NOT NULL,
-  description         TEXT      NOT NULL,
   description_ar      TEXT      NOT NULL,
   description_he      TEXT      NOT NULL,
   image_url           TEXT      NOT NULL,
@@ -38,10 +35,8 @@ CREATE TABLE careers(
 
 CREATE TABLE universities(
   id              SERIAL    PRIMARY KEY,
-  name            TEXT      NOT NULL,
   name_ar         TEXT      NOT NULL,
   name_he         TEXT      NOT NULL,
-  location        TEXT      NOT NULL,
   location_ar     TEXT      NOT NULL,
   location_he     TEXT      NOT NULL
 );
