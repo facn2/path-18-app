@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Card from '../components/Card';
+import LikeAndDislikeButtons from '../components/LikeAndDislikeButtons';
 
 const CareersContainer = styled.div`
   color: blue;
@@ -11,6 +12,7 @@ class Careers extends Component {
     return (
       <CareersContainer>
         <Card />
+        <LikeAndDislikeButtons />
       </CareersContainer>
     );
   }
