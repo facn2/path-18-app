@@ -2,10 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonContainer = styled.div`
-  height: 0.75rem;
   display: flex;
   justify-content: space-around;
-  margin: 0 2rem;
+  margin: 7% 5% 7%;
 `;
 
 const Icon = styled.i`
@@ -14,13 +13,13 @@ const Icon = styled.i`
 `;
 
 const IconWrapper = styled.div`
-  background-color: azure;
+  background-color: white;
   border: 0.15rem solid dimgrey;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: azure;
+  box-shadow: -0.15rem 0.35rem 0.5rem dimgrey;
   width: 4rem;
   height: 4rem;
 `;

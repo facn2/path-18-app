@@ -4,7 +4,9 @@ import Card from '../components/Card';
 import LikeAndDislikeButtons from '../components/LikeAndDislikeButtons';
 
 const CareersContainer = styled.div`
-  color: blue;
+  background-color: seashell;
+  padding-top: 1%;
+  height: 90vh;
 `;
 
 class Careers extends Component {

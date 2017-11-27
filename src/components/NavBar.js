@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const NavBarContainer = styled.div`
   width: 100%;
-  height: 3.25rem;
+  height: 10vh;
   padding: 0;
   margin: 0;
-  background: palevioletred;
+  background: steelblue;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -23,6 +23,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Icon = styled.i`
+  color: seashell;
   font-size: 2rem;
 `;
 
