@@ -11,10 +11,11 @@ const NavBarContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: relative;
+  box-shadow: 0 0.1rem 2rem dimgrey;
 `;
 
 const NavBarItem = styled.div`
-  color: #fff;
   display: flex;
 `;
 
@@ -23,7 +24,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Icon = styled.i`
-  color: seashell;
+  color: white;
   font-size: 2rem;
 `;
 
