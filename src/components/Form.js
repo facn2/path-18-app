@@ -55,7 +55,7 @@ class Form extends Component {
     const CareerData = {
       title_ar: title_ar.value,
       title_he: title_he.value,
-      taline_ar: tagline_ar.value,
+      tagline_ar: tagline_ar.value,
       tagline_he: tagline_he.value,
       description_ar: description_ar.value,
       description_he: description_he.value,
@@ -67,7 +67,7 @@ class Form extends Component {
     console.log('The form inputs: ', CareerData);
     try {
       const res = await axios.post('/sendCareer', CareerData);
-      if (res.data === 'all good') {
+      if (res.data === 'done') {
         console.log(res.statusCode);
         window.location.href = '/';
       } else {
