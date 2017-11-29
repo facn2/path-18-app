@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Card from '../components/Card';
+import LikeAndDislikeButtons from '../components/LikeAndDislikeButtons';
 
 const CareersContainer = styled.div`
-  color: blue;
+  background-color: whitesmoke;
+  padding-top: 1%;
+  height: calc(100vh - 4rem);
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
 `;
-const MainTitle = styled.h1``;
 
 class Careers extends Component {
   render() {
     return (
       <CareersContainer>
-        <MainTitle> This is Career! </MainTitle>
+        <Card />
+        <LikeAndDislikeButtons />
       </CareersContainer>
     );
   }
