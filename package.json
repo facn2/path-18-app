@@ -12,9 +12,7 @@
     "pretest": "ENV=testing npm run db-build"
   },
   "proxy": "http://localhost:4000",
-  "pre-commit": [
-    "precommit-test"
-  ],
+  "pre-commit": ["precommit-test"],
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",

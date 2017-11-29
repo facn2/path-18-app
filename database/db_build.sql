@@ -28,8 +28,8 @@ CREATE TABLE careers(
   description_ar      TEXT      NOT NULL,
   description_he      TEXT      NOT NULL,
   image_url           TEXT      NOT NULL,
-  salary_start        INTEGER   NOT NULL,
-  salary_ten_year     INTEGER   NOT NULL,
+  salary_start        TEXT      NOT NULL,
+  salary_ten_year     TEXT      NOT NULL,
   icon_url            TEXT      NOT NULL
 );
 

@@ -1,5 +1,5 @@
 const dbConnection = require('../db_connection');
-const updateCareer = `INSERT INTO careers (
+const newCareer = `INSERT INTO careers (
   title_ar, title_he, tagline_ar, tagline_he,
   description_ar, description_he, image_url,
   salary_start, salary_ten_year, icon_url)
@@ -21,7 +21,7 @@ const addCareer = (data, cb) => {
     icon_url
   } = data;
 
-  const send = [
+  const dataItems = [
     title_ar,
     title_he,
     tagline_ar,
@@ -29,17 +29,16 @@ const addCareer = (data, cb) => {
     description_ar,
     description_he,
     image_url,
-    parseInt(salary_start),
-    parseInt(salary_ten_year),
+    salary_start,
+    salary_ten_year,
     icon_url
   ];
 
-  dbConnection.query(updateCareer, send, (err, res) => {
+  dbConnection.query(newCareer, dataItems, (err, res) => {
     if (err) {
-      console.log(err);
-      return err;
+      cb(err);
     }
-    return res.rows;
+    cb(null, res.rows);
   });
 };
 
