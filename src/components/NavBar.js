@@ -4,15 +4,14 @@ import { Link } from 'react-router-dom';
 
 const NavBarContainer = styled.div`
   width: 100%;
-  height: 10vh;
-  padding: 0;
-  margin: 0;
+  height: 4rem;
   background: steelblue;
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  box-shadow: 0 0.1rem 2rem dimgrey;
+  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
+    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16);
 `;
 
 const NavBarItem = styled.div`

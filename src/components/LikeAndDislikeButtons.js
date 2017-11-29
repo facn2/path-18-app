@@ -4,11 +4,10 @@ import styled from 'styled-components';
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  margin: 9% 5% 7%;
 `;
 
 const Icon = styled.i`
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
 `;
 
@@ -18,9 +17,7 @@ const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: -0.1rem 0.1rem 0.5rem dimgrey;
-  border: 0.15rem solid gainsboro;
-  border-width: thin;
+  border: 0.2rem solid gainsboro;
   width: 4rem;
   height: 4rem;
 `;

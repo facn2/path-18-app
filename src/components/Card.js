@@ -4,12 +4,12 @@ import styled from 'styled-components';
 const CardContainer = styled.div`
   background-color: white;
   height: 70%;
-  margin: 2rem 2rem 0;
+  margin: 0 2rem;
   overflow: auto;
-  border: 0.15rem solid gainsboro;
   border-width: thin;
-  border-radius: 3%;
-  box-shadow: -0.1rem 0.1rem 0.5rem darkgrey;
+  border-radius: 1rem;
+  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
+    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16);
 `;
 
 const CardImageWrapper = styled.div`
@@ -20,8 +20,6 @@ const CardImageWrapper = styled.div`
 
 const CareerTextWrapper = styled.div`
   color: black;
-  bottom: 0.75rem;
-  height: 8%;
   text-align: center;
   font-size: 1.25rem;
   margin: 0 7%;
@@ -32,7 +30,7 @@ const CareerTitle = styled.h1`
 `;
 
 const CareerTagline = styled.p`
-  text-align: right;
+  text-align: center;
   font-size: 1rem;
 `;
 
