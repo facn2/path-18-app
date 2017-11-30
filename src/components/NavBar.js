@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -26,26 +26,91 @@ const Icon = styled.i`
   font-size: 2rem;
 `;
 
-const NavBar = () => {
-  return (
-    <NavBarContainer>
-      <StyledLink to="/LikedCareers">
-        <NavBarItem>
-          <Icon className="material-icons">playlist_add_check</Icon>
-        </NavBarItem>
-      </StyledLink>
-      <StyledLink to="/Careers">
-        <NavBarItem>
-          <Icon className="material-icons">view_carousel</Icon>
-        </NavBarItem>
-      </StyledLink>
-      <StyledLink to="/Settings">
-        <NavBarItem>
-          <Icon className="material-icons">settings</Icon>
-        </NavBarItem>
-      </StyledLink>
-    </NavBarContainer>
-  );
-};
+const SettingsContainer = styled.div`
+  color: black;
+  display: ${props => (props.settings ? 'block' : 'none')};
+`;
+
+const SettingsList = styled.ul``;
+
+const SettlingsListItem = styled.li`
+  height: 4rem;
+  border-bottom: 0.1rem solid black;
+  border-width: thin;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  &:active {
+    background-color: gainsboro;
+  }
+`;
+
+const ListItemText = styled.p`
+  padding-right: 10%;
+  text-align: right;
+`;
+
+const ListItemIcon = styled.p`
+  padding-left: 10%;
+  font-size: 1.5rem;
+`;
+
+class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { selected: false };
+  }
+
+  toggleSettings = () => {
+    this.setState({ settings: !this.state.settings });
+  };
+
+  render() {
+    return (
+      <div>
+        <NavBarContainer>
+          <StyledLink to="/LikedCareers">
+            <NavBarItem>
+              <Icon className="material-icons">playlist_add_check</Icon>
+            </NavBarItem>
+          </StyledLink>
+          <StyledLink to="/Careers">
+            <NavBarItem>
+              <Icon className="material-icons">view_carousel</Icon>
+            </NavBarItem>
+          </StyledLink>
+          <NavBarItem onClick={this.toggleSettings}>
+            <Icon className="material-icons">settings</Icon>
+          </NavBarItem>
+        </NavBarContainer>
+        <SettingsContainer settings={this.state.settings}>
+          <SettingsList>
+            <SettlingsListItem>
+              <ListItemIcon className="material-icons">edit</ListItemIcon>
+              <ListItemText>Edit grades</ListItemText>
+            </SettlingsListItem>
+            <SettlingsListItem>
+              <ListItemIcon className="material-icons">edit</ListItemIcon>
+              <ListItemText>Edit personal data</ListItemText>
+            </SettlingsListItem>
+            <SettlingsListItem>
+              <ListItemIcon className="material-icons">
+                help_outline
+              </ListItemIcon>
+              <ListItemText>Help</ListItemText>
+            </SettlingsListItem>
+            <SettlingsListItem>
+              <ListItemIcon className="material-icons">
+                exit_to_app
+              </ListItemIcon>
+              <ListItemText>Logout</ListItemText>
+            </SettlingsListItem>
+          </SettingsList>
+        </SettingsContainer>
+      </div>
+    );
+  }
+}
 
 export default NavBar;
