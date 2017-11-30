@@ -5,13 +5,17 @@ import { Link } from 'react-router-dom';
 const NavBarContainer = styled.div`
   width: 100%;
   height: 4rem;
-  background: steelblue;
+  background: #26a69a;
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
-    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16);
+  box-shadow: ${props =>
+    props.settings
+      ? 'none'
+      : `0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
+    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16)`};
+  z-index: 2;
 `;
 
 const NavBarItem = styled.div`
@@ -31,7 +35,9 @@ const SettingsContainer = styled.div`
   color: black;
   background-color: white;
   width: 100%;
-  display: ${props => (props.settings ? 'block' : 'none')};
+  transform: ${props =>
+    props.settings ? 'translateY(0)' : 'translateY(-150%)'};
+  transition: all cubic-bezier(0.47, 0, 0.75, 0.72) 0.3s;
   position: absolute;
   top: 4rem;
   right: 0;
@@ -43,29 +49,35 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const SettingsList = styled.ul``;
+const SettingsList = styled.ul`
+  &:last-child {
+    border-bottom: none;
+  }
+`;
 
 const SettlingsListItem = styled.li`
   height: 4rem;
-  border-bottom: 0.1rem solid black;
+  border-bottom: 0.1rem solid gainsboro;
   border-width: thin;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  color: #455a64;
   &:active {
     background-color: gainsboro;
   }
 `;
 
 const ListItemText = styled.p`
-  padding-right: 10%;
   text-align: right;
+  padding-right: 5%;
 `;
 
 const ListItemIcon = styled.p`
-  padding-left: 10%;
+  padding-right: 10%;
   font-size: 1.5rem;
+  color: #00796b;
 `;
 
 class NavBar extends Component {
@@ -81,7 +93,7 @@ class NavBar extends Component {
   render() {
     return (
       <Wrapper>
-        <NavBarContainer>
+        <NavBarContainer settings={this.state.settings}>
           <StyledLink to="/LikedCareers">
             <NavBarItem>
               <Icon className="material-icons">playlist_add_check</Icon>
@@ -99,24 +111,24 @@ class NavBar extends Component {
         <SettingsContainer settings={this.state.settings}>
           <SettingsList>
             <SettlingsListItem>
-              <ListItemIcon className="material-icons">edit</ListItemIcon>
               <ListItemText>Edit grades</ListItemText>
-            </SettlingsListItem>
-            <SettlingsListItem>
               <ListItemIcon className="material-icons">edit</ListItemIcon>
-              <ListItemText>Edit personal data</ListItemText>
             </SettlingsListItem>
             <SettlingsListItem>
+              <ListItemText>Edit personal data</ListItemText>
+              <ListItemIcon className="material-icons">person</ListItemIcon>
+            </SettlingsListItem>
+            <SettlingsListItem>
+              <ListItemText>Help</ListItemText>
               <ListItemIcon className="material-icons">
                 help_outline
               </ListItemIcon>
-              <ListItemText>Help</ListItemText>
             </SettlingsListItem>
             <SettlingsListItem>
+              <ListItemText>Logout</ListItemText>
               <ListItemIcon className="material-icons">
                 exit_to_app
               </ListItemIcon>
-              <ListItemText>Logout</ListItemText>
             </SettlingsListItem>
           </SettingsList>
         </SettingsContainer>
