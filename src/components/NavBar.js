@@ -36,7 +36,7 @@ const SettingsContainer = styled.div`
   background-color: white;
   width: 100%;
   transform: ${props =>
-    props.settings ? 'translateY(0)' : 'translateY(-150%)'};
+    props.settings ? 'translateY(0)' : 'translateY(-100%)'};
   transition: all cubic-bezier(0.47, 0, 0.75, 0.72) 0.3s;
   position: absolute;
   top: 4rem;
