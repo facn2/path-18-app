@@ -1,13 +1,13 @@
 const dbConnection = require('../db_connection');
-const newCareer = `INSERT INTO careers (
-  title_ar, title_he, tagline_ar, tagline_he,
-  description_ar, description_he, image_url,
-  salary_start, salary_ten_year, icon_url)
-  VALUES
-  ($1,$2, $3, $4, $5, $6, $7, $8, $9, $10);`;
 
 const addCareer = (data, cb) => {
-  console.log('career from addCareer ', data);
+  const newCareerQuery = `INSERT INTO careers (
+    title_ar, title_he, tagline_ar, tagline_he,
+    description_ar, description_he, image_url,
+    salary_start, salary_ten_year, icon_url)
+    VALUES
+    ($1,$2, $3, $4, $5, $6, $7, $8, $9, $10);`;
+
   const {
     title_ar,
     title_he,
@@ -34,7 +34,7 @@ const addCareer = (data, cb) => {
     icon_url
   ];
 
-  dbConnection.query(newCareer, dataItems, (err, res) => {
+  dbConnection.query(newCareerQuery, dataItems, (err, res) => {
     if (err) {
       cb(err);
     }

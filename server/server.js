@@ -16,7 +16,9 @@ app.use(
 app.get('/api/careers', (request, response) => {
   getAllCareers((error, result) => {
     if (error) {
-      console.log(error);
+      response.send(
+        '<h1>Sorry, there was a problem with the data Please try again!</h1>'
+      );
     } else {
       response.send(result);
     }
@@ -24,13 +26,15 @@ app.get('/api/careers', (request, response) => {
 });
 
 app.get('/add-career', (request, response) => {
-  response.sendFile('form.html', { root: __dirname + '/../public/' });
+  response.sendFile('addCareer.html', { root: __dirname + '/../public/' });
 });
 
 app.post('/send-career', (request, response) => {
   addCareer(request.body, (err, res) => {
     if (err) {
-      console.log(err);
+      response.send(
+        '<h1>Sorry, there was a problem submitting the form. Please try again!</h1>'
+      );
     }
     response.redirect('/thanks');
   });
