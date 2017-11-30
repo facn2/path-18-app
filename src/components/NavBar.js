@@ -29,7 +29,18 @@ const Icon = styled.i`
 
 const SettingsContainer = styled.div`
   color: black;
+  background-color: white;
+  width: 100%;
   display: ${props => (props.settings ? 'block' : 'none')};
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
+    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16);
+`;
+
+const Wrapper = styled.div`
+  position: relative;
 `;
 
 const SettingsList = styled.ul``;
@@ -69,7 +80,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         <NavBarContainer>
           <StyledLink to="/LikedCareers">
             <NavBarItem>
@@ -109,7 +120,7 @@ class NavBar extends Component {
             </SettlingsListItem>
           </SettingsList>
         </SettingsContainer>
-      </div>
+      </Wrapper>
     );
   }
 }
