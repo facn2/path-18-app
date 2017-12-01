@@ -1,7 +1,5 @@
 const express = require('express');
-const querystring = require('querystring');
 const bodyParser = require('body-parser');
-const dbConnection = require('../database/db_connection');
 const getAllCareers = require('../database/queries/get_all_careers');
 const addCareer = require('../database/queries/add_career');
 
@@ -36,7 +34,7 @@ app.post('/add-career', (request, response) => {
         '<h1>Sorry, there was a problem submitting the form. Please try again!</h1>'
       );
     }
-    response.redirect('/thanks');
+    response.redirect('/add-career');
   });
 });
 

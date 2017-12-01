@@ -9,25 +9,25 @@
     <h2 class="form-title">Please add a career here</h2>
 
     <form class="form" action="/add-career" method="post">
-      <div class="form-arabic">
+      <section class="form-arabic">
         <label for="title-ar">Career title (Arabic):</label>
         <input type="text" name="title_ar" id="title-ar">
         <label for="tagline-ar">Career tagline (Arabic):</label>
         <input type="text" name="tagline_ar" id="tagline-ar">
         <label for="description-ar">Description (Arabic):</label>
         <input type="text" name="description_ar" id="description-ar">
-      </div>
+      </section>
 
-      <div class="form-hebrew">
+      <section class="form-hebrew">
         <label for="title-he">Career title (Hebrew):</label>
         <input type="text" name="title_he" id="title-he">
         <label for="tagline-ar">Career tagline (Hebrew):</label>
         <input type="text" name="tagline_he" id="tagline-he">
         <label for="description-ar">Description (Hebrew):</label>
         <input type="text" name="description_he" id="description-he">
-      </div>
+      </section>
 
-      <div class="general-inputs">
+      <section class="general-inputs">
         <label for="salary-start">Junior salary:</lable>
         <input type="text" name="salary_start" id="salary-start">
         <label for="salary-ten-year">Senior salary:</label>
@@ -36,58 +36,63 @@
         <input type="text" name="image_url" id="image-url">
         <label for="icon-url">Icon:</label>
         <input type="text" name="icon_url" id="icon-url">
-        <br>
-      </div>
+      </section>
 
       <div class="universities">
-        <h3 class="form-title">Universities</h3>
-        <input type="checkbox" id="haifa">
-        <label for="haifa">Haifa University</label>
-        <label for="bagrut-haifa">Required Bagrut/Tawjihi Grade:</label>
-        <input type="text" id="bagrut-haifa" name="grade_bagrut">
-        <label for="psyc-haifa">Required Psychometric Grade:</label>
-        <input type="text" id="psyc-haifa" name="grade_psychometric">
-        <br>
+        <section class="uni-field">
+          <h3 class="form-title">Universities</h3>
+          <input type="checkbox" id="haifa">
+          <label for="haifa">Haifa University</label>
+          <label for="bagrut-haifa">Required Bagrut/Tawjihi Grade:</label>
+          <input type="text" id="bagrut-haifa" name="grade_bagrut">
+          <label for="psyc-haifa">Required Psychometric Grade:</label>
+          <input type="text" id="psyc-haifa" name="grade_psychometric">
+        </section>
 
-        <input type="checkbox" id="technion">
-        <label for="technion">Technion</label>
-        <label for="bagrut-technion">Required Bagrut/Tawjihi Grade:</label>
-        <input type="text" id="bagrut-technion" name="grade_bagrut">
-        <label for="psyc-technion">Required Psychometric Grade:</label>
-        <input type="text" id="psyc-technion" name="grade_psychometric">
-        <br>
+        <section class="uni-field">
+          <input type="checkbox" id="technion">
+          <label for="technion">Technion</label>
+          <label for="bagrut-technion">Required Bagrut/Tawjihi Grade:</label>
+          <input type="text" id="bagrut-technion" name="grade_bagrut">
+          <label for="psyc-technion">Required Psychometric Grade:</label>
+          <input type="text" id="psyc-technion" name="grade_psychometric">
+        </section>
 
-        <input type="checkbox" id="hebrew-u">
-        <label for="hebrew-u">Hebrew University</label>
-        <label for="bagrut-hebrew-u">Required Bagrut/Tawjihi Grade:</label>
-        <input type="text" id="bagrut-hebrew-u" name="grade_bagrut">
-        <label for="psyc-hebrew-u">Required Psychometric Grade:</label>
-        <input type="text" id="psyc-hebrew-u" name="grade_psychometric">
-        <br>
+        <section class="uni-field">
+          <input type="checkbox" id="hebrew-u">
+          <label for="hebrew-u">Hebrew University</label>
+          <label for="bagrut-hebrew-u">Required Bagrut/Tawjihi Grade:</label>
+          <input type="text" id="bagrut-hebrew-u" name="grade_bagrut">
+          <label for="psyc-hebrew-u">Required Psychometric Grade:</label>
+          <input type="text" id="psyc-hebrew-u" name="grade_psychometric">
+        </section>
 
-        <input type="checkbox" id="tel-aviv">
-        <label for="tel-aviv">Tel Aviv University</label>
-        <label for="bagrut-tel-aviv">Required Bagrut/Tawjihi Grade:</label>
-        <input type="text" id="bagrut-tel-aviv" name="grade_bagrut">
-        <label for="psyc-tel-aviv">Required Psychometric Grade:</label>
-        <input type="text" id="psyc-tel-aviv" name="grade_psychometric">
-        <br>
+        <section class="uni-field">
+          <input type="checkbox" id="tel-aviv">
+          <label for="tel-aviv">Tel Aviv University</label>
+          <label for="bagrut-tel-aviv">Required Bagrut/Tawjihi Grade:</label>
+          <input type="text" id="bagrut-tel-aviv" name="grade_bagrut">
+          <label for="psyc-tel-aviv">Required Psychometric Grade:</label>
+          <input type="text" id="psyc-tel-aviv" name="grade_psychometric">
+        </section>
 
-        <input type="checkbox" id="arab">
-        <label for="arab">Arab American University</label>
-        <label for="bagrut-arab">Required Bagrut/Tawjihi Grade:</label>
-        <input type="text" id="bagrut-arab" name="grade_bagrut">
-        <label for="psyc-arab">Required Psychometric Grade:</label>
-        <input type="text" id="psyc-arab" name="grade_psychometric">
-        <br>
+        <section class="uni-field">
+          <input type="checkbox" id="arab">
+          <label for="arab">Arab American University</label>
+          <label for="bagrut-arab">Required Bagrut/Tawjihi Grade:</label>
+          <input type="text" id="bagrut-arab" name="grade_bagrut">
+          <label for="psyc-arab">Required Psychometric Grade:</label>
+          <input type="text" id="psyc-arab" name="grade_psychometric">
+        </section>
 
-        <input type="checkbox" id="gurion">
-        <label for="gurion">Ben Gurion University</label>
-        <label for="bagrut-gurion">Required Bagrut/Tawjihi Grade:</label>
-        <input type="text" id="bagrut-gurion">
-        <label for="psyc-gurion">Required Psychometric Grade:</label>
-        <input type="text" id="psyc-gurion">
-        <br>
+        <section class="uni-field">
+          <input type="checkbox" id="gurion">
+          <label for="gurion">Ben Gurion University</label>
+          <label for="bagrut-gurion">Required Bagrut/Tawjihi Grade:</label>
+          <input type="text" id="bagrut-gurion">
+          <label for="psyc-gurion">Required Psychometric Grade:</label>
+          <input type="text" id="psyc-gurion">
+        </section>
       </div>
 
       <input type="submit" value="Submit">
