@@ -7,15 +7,12 @@ const NavBarContainer = styled.div`
   height: 4rem;
   background: #26a69a;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   position: relative;
-  box-shadow: ${props =>
-    props.settings
-      ? 'none'
-      : `0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
-    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16)`};
   z-index: 2;
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
 `;
 
 const NavBarItem = styled.div`
@@ -29,6 +26,8 @@ const StyledLink = styled(Link)`
 const Icon = styled.i`
   color: white;
   font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
 `;
 
 const SettingsContainer = styled.div`
@@ -37,26 +36,22 @@ const SettingsContainer = styled.div`
   width: 100%;
   transform: ${props =>
     props.settings ? 'translateY(0)' : 'translateY(-100%)'};
-  transition: all cubic-bezier(0.47, 0, 0.75, 0.72) 0.3s;
+  transition: all cubic-bezier(0.47, 0, 0.75, 0.72) 0.12s;
   position: absolute;
   top: 4rem;
   right: 0;
-  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
-    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.09),
+    0 0.22rem 0.44rem rgba(0, 0, 0, 0.13);
 `;
 
 const Wrapper = styled.div`
   position: relative;
 `;
 
-const SettingsList = styled.ul`
-  &:last-child {
-    border-bottom: none;
-  }
-`;
+const SettingsList = styled.ul``;
 
 const SettlingsListItem = styled.li`
-  height: 4rem;
+  height: 3.8rem;
   border-bottom: 0.1rem solid gainsboro;
   border-width: thin;
   display: flex;
@@ -67,6 +62,9 @@ const SettlingsListItem = styled.li`
   &:active {
     background-color: gainsboro;
   }
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 const ListItemText = styled.p`
@@ -74,10 +72,12 @@ const ListItemText = styled.p`
   padding-right: 5%;
 `;
 
-const ListItemIcon = styled.p`
-  padding-right: 10%;
+const ListItemIcon = styled.i`
+  padding-right: 0.9rem;
   font-size: 1.5rem;
   color: #00796b;
+  cursor: pointer;
+  user-select: none;
 `;
 
 class NavBar extends Component {
