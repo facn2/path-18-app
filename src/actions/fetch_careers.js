@@ -1,11 +1,9 @@
 import axios from 'axios';
+import { FETCH_CAREERS } from '../constants';
 
 const fetchCareers = () => {
-  const request = axios.get('/api/careers');
   return dispatch => {
-    request.then(({ data }) => {
-      dispatch({ type: 'FETCH_CAREERS', payload: data });
-    });
+    dispatch({ type: FETCH_CAREERS, payload: axios.get('/api/careers') });
   };
 };
 

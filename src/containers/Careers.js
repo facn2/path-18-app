@@ -16,8 +16,8 @@ const CareersContainer = styled.div`
 `;
 
 class Careers extends Component {
-  componentWillMount() {
-    this.props.fetchCareers();
+  componentDidMount() {
+    fetchCareers();
   }
 
   render() {
