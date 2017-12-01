@@ -12,7 +12,7 @@ const Icon = styled.i`
 `;
 
 const IconWrapper = styled.div`
-  background-color: white;
+  background-color: #fff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -23,11 +23,11 @@ const IconWrapper = styled.div`
 `;
 
 const LikedIcon = styled(Icon)`
-  color: limegreen;
+  color: #26a69a;
 `;
 
 const DislikedIcon = styled(Icon)`
-  color: firebrick;
+  color: #d32f2f;
 `;
 
 const LikeAndDislikeButtons = () => {
