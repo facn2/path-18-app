@@ -29,7 +29,7 @@ app.get('/add-career', (request, response) => {
   response.sendFile('addCareer.html', { root: __dirname + '/../public/' });
 });
 
-app.post('/send-career', (request, response) => {
+app.post('/add-career', (request, response) => {
   addCareer(request.body, (err, res) => {
     if (err) {
       response.send(
