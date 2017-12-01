@@ -21,7 +21,6 @@ class Careers extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <CareersContainer>
         <Card />
