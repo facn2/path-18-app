@@ -6,7 +6,6 @@ const getAllCareers = callback => {
     if (error) {
       return callback(error);
     } else {
-      console.log(response);
       callback(null, response.rows);
     }
   });
