@@ -17,10 +17,11 @@ const CareersContainer = styled.div`
 
 class Careers extends Component {
   componentDidMount() {
-    fetchCareers();
+    this.props.fetchCareers();
   }
 
   render() {
+    console.log(this.props);
     return (
       <CareersContainer>
         <Card />
@@ -30,8 +31,10 @@ class Careers extends Component {
   }
 }
 
-const mapDispatchToProps = {
-  fetchCareers,
-};
+const mapDispatchToProps = dispatch => ({
+  fetchCareers: () => dispatch(fetchCareers()),
+});
 
-export default connect(null, mapDispatchToProps)(Careers);
+const mapStateToProps = state => ({ careers: state.careers });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Careers);

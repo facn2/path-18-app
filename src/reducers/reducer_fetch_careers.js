@@ -12,6 +12,7 @@ const initialState = {
 };
 
 const fetchCareersReducer = (state = initialState, action) => {
+  console.log(action.type);
   switch (action.type) {
     case FETCH_CAREERS_PENDING:
       return {
