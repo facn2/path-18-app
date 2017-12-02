@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Card from '../components/Card';
 import LikeAndDislikeButtons from '../components/LikeAndDislikeButtons';
+
+import fetchCareers from '../actions/fetch_careers';
 
 const CareersContainer = styled.div`
   background-color: whitesmoke;
@@ -13,6 +16,10 @@ const CareersContainer = styled.div`
 `;
 
 class Careers extends Component {
+  componentDidMount() {
+    this.props.fetchCareers();
+  }
+
   render() {
     return (
       <CareersContainer>
@@ -23,4 +30,10 @@ class Careers extends Component {
   }
 }
 
-export default Careers;
+const mapDispatchToProps = dispatch => ({
+  fetchCareers: () => dispatch(fetchCareers()),
+});
+
+const mapStateToProps = state => ({ careers: state.careers });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Careers);
