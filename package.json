@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
+    "devStart": "node server/start_server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -16,6 +17,7 @@
     "precommit-test"
   ],
   "dependencies": {
+    "body-parser": "^1.18.2",
     "env2": "^2.2.0",
     "express": "^4.16.2",
     "pg": "^7.4.0",
