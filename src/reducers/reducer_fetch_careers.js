@@ -5,7 +5,7 @@ import {
 } from '../constants';
 
 const initialState = {
-  data: [],
+  careerCards: [],
   dataFetched: false,
   isFetching: false,
   error: false,
@@ -16,13 +16,13 @@ const fetchCareersReducer = (state = initialState, action) => {
     case FETCH_CAREERS_PENDING:
       return {
         ...state,
-        data: [],
+        careerCards: [],
         isFetching: true,
       };
     case FETCH_CAREERS_FULFILLED:
       return {
         ...state,
-        data: action.payload,
+        careerCards: action.payload.data,
         isFetching: false,
         dataFetched: true,
       };
