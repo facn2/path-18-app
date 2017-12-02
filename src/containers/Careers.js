@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Swing from 'react-swing';
 import { Direction, Card } from 'swing';
 import CareerCard from '../components/Card';
 import LikeAndDislikeButtons from '../components/LikeAndDislikeButtons';
+
+import fetchCareers from '../actions/fetch_careers';
 
 const CareersContainer = styled.div`
   background-color: whitesmoke;
@@ -30,6 +33,10 @@ class Careers extends Component {
     this.state = {
       stack: null,
     };
+  }
+
+  componentDidMount() {
+    this.props.fetchCareers();
   }
 
   render() {
@@ -78,4 +85,10 @@ class Careers extends Component {
   }
 }
 
-export default Careers;
+const mapDispatchToProps = dispatch => ({
+  fetchCareers: () => dispatch(fetchCareers()),
+});
+
+const mapStateToProps = state => ({ careers: state.careers });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Careers);

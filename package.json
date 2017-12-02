@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "devStart": "node server/start_server.js",
+    "devStart": "nodemon server/start_server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -17,19 +17,26 @@
     "precommit-test"
   ],
   "dependencies": {
+    "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "env2": "^2.2.0",
     "express": "^4.16.2",
     "pg": "^7.4.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "react-swing": "^1.0.2",
     "styled-components": "^2.2.3",
-    "swing": "^3.1.1"
+    "swing": "^3.1.1",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^5.0.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "nodemon": "^1.12.1",
     "pre-commit": "^1.2.2"
   }
 }
