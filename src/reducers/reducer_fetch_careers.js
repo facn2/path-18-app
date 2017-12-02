@@ -24,6 +24,7 @@ const fetchCareersReducer = (state = initialState, action) => {
         ...state,
         data: action.payload,
         isFetching: false,
+        dataFetched: true,
       };
     case FETCH_CAREERS_REJECTED:
       return {
