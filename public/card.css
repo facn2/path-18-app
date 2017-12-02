@@ -1,0 +1,10 @@
+.cardwrapper {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-width: thin;
+  border-radius: 1rem;
+  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
+    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16);
+}
