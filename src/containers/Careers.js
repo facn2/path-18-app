@@ -57,7 +57,7 @@ class Careers extends Component {
                   Math.abs(yOffset) / element.offsetHeight,
                   1
                 );
-                if (Math.max(xConfidence, yConfidence) > 0.6) {
+                if (Math.max(xConfidence, yConfidence) > 0.65) {
                   return 1;
                 }
                 return Math.max(xConfidence, yConfidence);
