@@ -5,6 +5,14 @@
   position: absolute;
   border-width: thin;
   border-radius: 1rem;
-  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
-    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16);
+}
+
+.cardwrapper:last-child {
+  box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.09),
+    0 0.22rem 0.44rem rgba(0, 0, 0, 0.13);
+}
+
+.cardwrapper:first-child {
+  box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.09),
+    0 0.22rem 0.44rem rgba(0, 0, 0, 0.13);
 }

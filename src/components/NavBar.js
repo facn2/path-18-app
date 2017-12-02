@@ -40,6 +40,7 @@ const SettingsContainer = styled.div`
   position: absolute;
   top: 4rem;
   right: 0;
+  z-index: 1;
   box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.09),
     0 0.22rem 0.44rem rgba(0, 0, 0, 0.13);
 `;
