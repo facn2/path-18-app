@@ -28,6 +28,8 @@ const SwingWrapper = styled.div`
   overflow: visible;
 `;
 
+let swipeCount = 1;
+
 class Careers extends Component {
   constructor(props) {
     super(props);
@@ -52,8 +54,9 @@ class Careers extends Component {
           setStack={stack => this.setState({ stack: stack })}
           ref="stack"
           throwout={e => {
+            swipeCount++;
             this.likeCareer(e);
-            // delete the dom node
+            // TODO delete the dom node
           }}
           config={{
             allowedDirections: [Direction.LEFT, Direction.RIGHT],
@@ -90,6 +93,7 @@ class Careers extends Component {
       );
     }
     return <div />;
+    // TODO render out of careers
   };
 
   likeCareer = e => {
@@ -103,7 +107,7 @@ class Careers extends Component {
 
   throwCard = direction => {
     let cardRef = Object.keys(this.refs.stack.refs)[
-      Object.keys(this.refs.stack.refs).length - 1
+      Object.keys(this.refs.stack.refs).length - swipeCount
     ];
     let target = this.refs.stack.refs[cardRef];
     let el = ReactDOM.findDOMNode(target);

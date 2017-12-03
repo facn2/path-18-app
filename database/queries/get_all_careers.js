@@ -1,7 +1,8 @@
 const dbConnection = require('../db_connection');
 
 const getAllCareers = callback => {
-  const allCareersQuery = 'SELECT * FROM careers;';
+  const allCareersQuery =
+    'SELECT * FROM careers WHERE careers.id NOT IN (SELECT career_id FROM users_careers WHERE users_careers.user_id = 1);';
   dbConnection.query(allCareersQuery, (error, response) => {
     if (error) {
       return callback(error);
