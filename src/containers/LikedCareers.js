@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import fetchLikedCareers from '../actions/fetch_liked_careers';
 
 const LikedContainer = styled.div`
   color: green;
@@ -7,6 +9,10 @@ const LikedContainer = styled.div`
 const MainTitle = styled.h1``;
 
 class LikedCareers extends Component {
+  componentDidMount() {
+    this.props.fetchLikedCareers();
+  }
+
   render() {
     return (
       <LikedContainer>
@@ -16,4 +22,12 @@ class LikedCareers extends Component {
   }
 }
 
-export default LikedCareers;
+const mapDispatchToProps = dispatch => ({
+  fetchLikedCareers: () => dispatch(fetchLikedCareers()),
+});
+
+const mapStateToProps = state => ({
+  matchedCareers: state.matchedCareers,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LikedCareers);

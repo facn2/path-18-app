@@ -2,12 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const getAllCareers = require('../database/queries/get_all_careers');
 const addCareer = require('../database/queries/add_career');
+const getLikedCareers = require('../database/queries/get_liked_careers');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true
+    extended: true,
   })
 );
 
@@ -20,6 +21,17 @@ app.get('/api/careers', (request, response) => {
     } else {
       response.send(result);
     }
+  });
+});
+
+app.get('/api/careers/liked', (request, response) => {
+  getLikedCareers((error, result) => {
+    if (error) {
+      response.send(
+        '<h1>Sorry, there was a problem with the data Please try again!</h1>'
+      );
+    }
+    response.send(result);
   });
 });
 

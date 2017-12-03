@@ -37,4 +37,4 @@ const fetchLikedCareersReducer = (state = initialState, action) => {
   }
 };
 
-export default fetchCareersReducer;
+export default fetchLikedCareersReducer;
