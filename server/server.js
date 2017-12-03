@@ -28,9 +28,7 @@ app.post('/api/career/like', (request, response) => {
   const data = [request.body.user_id, request.body.career_id];
   likeCareer(data, (error, result) => {
     if (error) {
-      response.send(
-        '<h1>Sorry, there was a problem with the data Please try again!</h1>'
-      );
+      response.send(error);
     } else {
       response.send(result);
     }

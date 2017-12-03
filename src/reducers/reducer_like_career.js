@@ -22,8 +22,9 @@ const likeCareerReducer = (state = initialState, action) => {
     case LIKE_CAREER_FULFILLED:
       return {
         ...state,
-        likedCareers: action.payload,
+        likedCareers: action.payload.data,
         isFetching: false,
+        dataFetched: true,
       };
     case LIKE_CAREER_REJECTED:
       return {

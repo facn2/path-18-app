@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Swing from 'react-swing';
 import { Direction } from 'swing';
+import ReactDOM from 'react-dom';
 import CareerCard from '../components/Card';
 import LikeAndDislikeButtons from '../components/LikeAndDislikeButtons';
 
@@ -52,6 +53,7 @@ class Careers extends Component {
           ref="stack"
           throwout={e => {
             this.likeCareer(e);
+            // delete the dom node
           }}
           config={{
             allowedDirections: [Direction.LEFT, Direction.RIGHT],
@@ -99,11 +101,24 @@ class Careers extends Component {
     }
   };
 
+  throwCard = direction => {
+    let cardRef = Object.keys(this.refs.stack.refs)[
+      Object.keys(this.refs.stack.refs).length - 1
+    ];
+    let target = this.refs.stack.refs[cardRef];
+    let el = ReactDOM.findDOMNode(target);
+    let card = this.state.stack.getCard(el);
+    if (direction === 'right') {
+      return card.throwOut(0.3, 4, Swing.DIRECTION.RIGHT);
+    }
+    return card.throwOut(1, 2, Swing.DIRECTION.LEFT);
+  };
+
   render() {
     return (
       <CareersContainer>
         <SwingWrapper>{this.swingShow()}</SwingWrapper>
-        <LikeAndDislikeButtons />
+        <LikeAndDislikeButtons throwCard={this.throwCard.bind(this)} />
       </CareersContainer>
     );
   }

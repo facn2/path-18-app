@@ -30,14 +30,24 @@ const DislikedIcon = styled(Icon)`
   color: #d32f2f;
 `;
 
-const LikeAndDislikeButtons = () => {
+const LikeAndDislikeButtons = ({ throwCard }) => {
   return (
     <ButtonContainer>
       <IconWrapper>
-        <DislikedIcon className="material-icons">clear</DislikedIcon>
+        <DislikedIcon
+          className="material-icons"
+          onClick={() => throwCard('left')}
+        >
+          clear
+        </DislikedIcon>
       </IconWrapper>
       <IconWrapper>
-        <LikedIcon className="material-icons">done</LikedIcon>
+        <LikedIcon
+          className="material-icons"
+          onClick={() => throwCard('right')}
+        >
+          done
+        </LikedIcon>
       </IconWrapper>
     </ButtonContainer>
   );
