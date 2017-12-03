@@ -54,9 +54,8 @@ class Careers extends Component {
           setStack={stack => this.setState({ stack: stack })}
           ref="stack"
           throwout={e => {
-            swipeCount++;
+            swipeCount++; // someone please suggest a better way to do this
             this.likeCareer(e);
-            // TODO delete the dom node
           }}
           config={{
             allowedDirections: [Direction.LEFT, Direction.RIGHT],
@@ -92,8 +91,8 @@ class Careers extends Component {
         </Swing>
       );
     }
-    return <div />;
-    // TODO render out of careers
+    // TODO render loading
+    return;
   };
 
   likeCareer = e => {
@@ -106,12 +105,12 @@ class Careers extends Component {
   };
 
   throwCard = direction => {
-    let cardRef = Object.keys(this.refs.stack.refs)[
+    const cardRef = Object.keys(this.refs.stack.refs)[
       Object.keys(this.refs.stack.refs).length - swipeCount
     ];
-    let target = this.refs.stack.refs[cardRef];
-    let el = ReactDOM.findDOMNode(target);
-    let card = this.state.stack.getCard(el);
+    const target = this.refs.stack.refs[cardRef];
+    const el = ReactDOM.findDOMNode(target);
+    const card = this.state.stack.getCard(el);
     if (direction === 'right') {
       return card.throwOut(0.3, 4, Swing.DIRECTION.RIGHT);
     }
