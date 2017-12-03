@@ -28,14 +28,14 @@ const CareerTagline = styled.p`
   font-size: 1rem;
 `;
 
-const Card = () => (
+const CareerCard = ({ card }) => (
   <CardContainer>
     <CardImageWrapper />
     <CareerTextWrapper>
-      <CareerTitle>Doctor</CareerTitle>
-      <CareerTagline>This is what a doctor does</CareerTagline>
+      <CareerTitle>{card.title_ar}</CareerTitle>
+      <CareerTagline>{card.tagline_ar}</CareerTagline>
     </CareerTextWrapper>
   </CardContainer>
 );
 
-export default Card;
+export default CareerCard;
