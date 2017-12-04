@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Swing from 'react-swing';
 import { Direction } from 'swing';
@@ -29,7 +30,7 @@ const SwingWrapper = styled.div`
 `;
 
 const FinalCard = styled.div`
-  background-color: white;
+  background-color: #fafafa;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -52,23 +53,6 @@ const Wrapper = styled.div`
   flex-grow: 4;
 `;
 
-const WrapperText = styled.p`
-  text-align: center;
-  padding-bottom: 1rem;
-  font-size: 0.9rem;
-  color: #455a64;
-`;
-
-const LikedButton = styled.button`
-  text-decoration: none;
-  background-color: #fff;
-  color: #00796b;
-  border: 0.1rem solid gainsboro;
-  ${'' /* width: 10rem; */} height: 3rem;
-  font-size: 1rem;
-  padding: 1rem;
-`;
-
 const IconWrapper = styled.div`
   background-color: #26a69a;
   border-radius: 50%;
@@ -78,6 +62,27 @@ const CompleteIcon = styled.i`
   padding: 1.2rem;
   font-size: 4rem;
   color: #fff;
+`;
+
+const WrapperText = styled.p`
+  text-align: center;
+  padding-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #455a64;
+`;
+
+const StyledLink = styled(Link)``;
+
+const LikedButton = styled.button`
+  text-decoration: none;
+  background-color: #fff;
+  color: #00796b;
+  text-align: center;
+  border: 0.1rem solid gainsboro;
+  border-radius: 3rem;
+  height: 2rem;
+  width: 8rem;
+  font-size: 1rem;
 `;
 
 let swipeCount = 1;
@@ -148,9 +153,11 @@ class Careers extends Component {
             <Wrapper>
               <WrapperText>
                 You have swiped through all the careers. Check out the careers
-                you have liked for more details
+                you have liked for more details.
               </WrapperText>
-              <LikedButton>Liked Careers</LikedButton>
+              <StyledLink to="/LikedCareers">
+                <LikedButton>Liked Careers</LikedButton>
+              </StyledLink>
             </Wrapper>
           </FinalCard>
         </div>
