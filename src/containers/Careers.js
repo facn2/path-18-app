@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Swing from 'react-swing';
 import { Direction } from 'swing';
 import ReactDOM from 'react-dom';
 import CareerCard from '../components/Card';
 import LikeAndDislikeButtons from '../components/LikeAndDislikeButtons';
+import FinalCard from '../components/FinalCard';
 
 import fetchCareers from '../actions/fetch_careers';
 import likeCareerAction from '../actions/like_career';
@@ -43,62 +43,6 @@ const SwingWrapper = styled.div`
   overflow: visible;
 `;
 
-const FinalCard = styled.div`
-  background-color: #fafafa;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  border-width: thin;
-  border-radius: 1rem;
-  z-index: -1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 2rem;
-  flex-grow: 4;
-`;
-
-const IconWrapper = styled.div`
-  background-color: #26a69a;
-  border-radius: 50%;
-`;
-
-const CompleteIcon = styled.i`
-  padding: 1.2rem;
-  font-size: 4rem;
-  color: #fff;
-`;
-
-const WrapperText = styled.p`
-  text-align: center;
-  padding-bottom: 1rem;
-  font-size: 0.9rem;
-  color: #455a64;
-`;
-
-const StyledLink = styled(Link)``;
-
-const LikedButton = styled.button`
-  text-decoration: none;
-  background-color: #fff;
-  color: #00796b;
-  text-align: center;
-  border: 0.1rem solid gainsboro;
-  border-radius: 3rem;
-  height: 2rem;
-  width: 8rem;
-  font-size: 1rem;
-`;
-
 class Careers extends Component {
   constructor(props) {
     super(props);
@@ -112,6 +56,10 @@ class Careers extends Component {
   componentDidMount() {
     this.props.fetchCareers();
   }
+
+  hideButtons = () => {
+    return this.props.careers.careerCards.length + 1 === this.state.currentCard;
+  };
 
   swingShow = () => {
     if (this.props.careers.dataFetched) {
@@ -156,27 +104,12 @@ class Careers extends Component {
               </CardWrapper>
             ))}
           </Swing>
-          <FinalCard>
-            <Wrapper>
-              <IconWrapper>
-                <CompleteIcon className="material-icons">thumb_up</CompleteIcon>
-              </IconWrapper>
-            </Wrapper>
-            <Wrapper>
-              <WrapperText>
-                You have swiped through all the careers. Check out the careers
-                you have liked for more details.
-              </WrapperText>
-              <StyledLink to="/LikedCareers">
-                <LikedButton>Liked Careers</LikedButton>
-              </StyledLink>
-            </Wrapper>
-          </FinalCard>
+          <FinalCard />
         </div>
       );
     }
     // TODO render loading
-    return;
+    return <div />;
   };
 
   likeCareer = e => {
@@ -204,7 +137,10 @@ class Careers extends Component {
     return (
       <CareersContainer>
         <SwingWrapper>{this.swingShow()}</SwingWrapper>
-        <LikeAndDislikeButtons throwCard={this.throwCard.bind(this)} />
+        <LikeAndDislikeButtons
+          throwCard={this.throwCard.bind(this)}
+          hide={this.hideButtons()}
+        />
       </CareersContainer>
     );
   }

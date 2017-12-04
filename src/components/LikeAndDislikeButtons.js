@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -22,6 +22,38 @@ const IconWrapper = styled.div`
   height: 4rem;
 `;
 
+const IconLeft = styled(IconWrapper)`
+  animation: ${props =>
+    props.side === 'left' && props.hide
+      ? `${goSmallRight} 0.2s ease-in forwards`
+      : 'none'};
+`;
+
+const IconRight = styled(IconWrapper)`
+  animation: ${props =>
+    props.side === 'right' && props.hide
+      ? `${goSmallLeft} 0.2s ease-in forwards`
+      : 'none'};
+`;
+
+const goSmallRight = keyframes`
+	from {
+		transform: scale(1, 1) translate(0, 0);
+	}
+	to {
+		transform: scale(0, 0) translate(20rem, 0);
+	}
+`;
+
+const goSmallLeft = keyframes`
+from {
+  transform: scale(1, 1) translate(0, 0);
+}
+to {
+  transform: scale(0, 0) translate(-20rem, 0);
+}
+`;
+
 const LikedIcon = styled(Icon)`
   color: #26a69a;
 `;
@@ -30,25 +62,25 @@ const DislikedIcon = styled(Icon)`
   color: #d32f2f;
 `;
 
-const LikeAndDislikeButtons = ({ throwCard }) => {
+const LikeAndDislikeButtons = ({ throwCard, hide }) => {
   return (
     <ButtonContainer>
-      <IconWrapper>
+      <IconLeft hide={hide} side={'left'}>
         <DislikedIcon
           className="material-icons"
-          onClick={() => throwCard('left')}
+          onClick={() => (hide ? null : throwCard('left'))}
         >
           clear
         </DislikedIcon>
-      </IconWrapper>
-      <IconWrapper>
+      </IconLeft>
+      <IconRight hide={hide} side={'right'}>
         <LikedIcon
           className="material-icons"
-          onClick={() => throwCard('right')}
+          onClick={() => (hide ? null : throwCard('right'))}
         >
           done
         </LikedIcon>
-      </IconWrapper>
+      </IconRight>
     </ButtonContainer>
   );
 };
