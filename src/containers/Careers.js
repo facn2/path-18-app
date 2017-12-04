@@ -112,9 +112,9 @@ class Careers extends Component {
     const el = ReactDOM.findDOMNode(target);
     const card = this.state.stack.getCard(el);
     if (direction === 'right') {
-      return card.throwOut(0.3, 4, Swing.DIRECTION.RIGHT);
+      return card.throwOut(0.3, 0.1, Swing.DIRECTION.RIGHT);
     }
-    return card.throwOut(1, 2, Swing.DIRECTION.LEFT);
+    return card.throwOut(0.3, 0.1, Swing.DIRECTION.LEFT);
   };
 
   render() {

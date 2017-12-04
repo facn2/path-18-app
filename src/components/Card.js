@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const CardContainer = styled.div`
   height: 100%;
-  padding-top: 2%;
 `;
 
 const CardImageWrapper = styled.div`
