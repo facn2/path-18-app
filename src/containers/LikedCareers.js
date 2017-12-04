@@ -7,6 +7,20 @@ const LikedContainer = styled.div`
   width: 100%;
 `;
 
+const LikedTitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border-bottom: 0.1rem solid gainsboro;
+  border-width: thin;
+  height: 4rem;
+`;
+
+const LikedTitle = styled.h1`
+  color: #00796b;
+`;
+
 const LikedList = styled.ul`
   width: 100%;
   height: 80%;
@@ -22,6 +36,9 @@ const LikedListItem = styled.li`
   align-items: center;
   font-size: 1.2rem;
   color: #455a64;
+  &:active {
+    background-color: gainsboro;
+  }
 `;
 
 const LikedListText = styled.p`
@@ -63,7 +80,14 @@ class LikedCareers extends Component {
   };
 
   render() {
-    return <LikedContainer>{this.likedCareersList()}</LikedContainer>;
+    return (
+      <LikedContainer>
+        <LikedTitleWrapper>
+          <LikedTitle>Your liked careers...</LikedTitle>
+        </LikedTitleWrapper>
+        {this.likedCareersList()}
+      </LikedContainer>
+    );
   }
 }
 
