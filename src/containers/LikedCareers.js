@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import fetchLikedCareers from '../actions/fetch_liked_careers';
 
 const LikedContainer = styled.div`
@@ -35,10 +36,15 @@ const LikedListItem = styled.li`
   justify-content: flex-end;
   align-items: center;
   font-size: 1.2rem;
-  color: #455a64;
   &:active {
     background-color: gainsboro;
   }
+`;
+
+const CareerLink = styled(Link)`
+  color: #455a64;
+  text-decoration: none;
+  width: 100%;
 `;
 
 const LikedListText = styled.p`
@@ -69,7 +75,9 @@ class LikedCareers extends Component {
           {this.props.matchedCareers.likedCareers.map(career => {
             return (
               <LikedListItem key={`career${career.id}`}>
-                <LikedListText>{career.title_ar}</LikedListText>
+                <CareerLink to={{ pathname: `career/${career.title_ar}` }}>
+                  <LikedListText>{career.title_ar}</LikedListText>
+                </CareerLink>
                 <LikedListIcon className="material-icons">clear</LikedListIcon>
               </LikedListItem>
             );
