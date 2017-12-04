@@ -28,6 +28,58 @@ const SwingWrapper = styled.div`
   overflow: visible;
 `;
 
+const FinalCard = styled.div`
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-width: thin;
+  border-radius: 1rem;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+  flex-grow: 4;
+`;
+
+const WrapperText = styled.p`
+  text-align: center;
+  padding-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #455a64;
+`;
+
+const LikedButton = styled.button`
+  text-decoration: none;
+  background-color: #fff;
+  color: #00796b;
+  border: 0.1rem solid gainsboro;
+  ${'' /* width: 10rem; */} height: 3rem;
+  font-size: 1rem;
+  padding: 1rem;
+`;
+
+const IconWrapper = styled.div`
+  background-color: #26a69a;
+  border-radius: 50%;
+`;
+
+const CompleteIcon = styled.i`
+  padding: 1.2rem;
+  font-size: 4rem;
+  color: #fff;
+`;
+
 let swipeCount = 1;
 
 class Careers extends Component {
@@ -44,51 +96,64 @@ class Careers extends Component {
   }
 
   swingShow = () => {
-    if (
-      this.props.careers.dataFetched &&
-      this.props.careers.careerCards.length
-    ) {
+    if (this.props.careers.dataFetched) {
       return (
-        <Swing
-          tagName="div"
-          setStack={stack => this.setState({ stack: stack })}
-          ref="stack"
-          throwout={e => {
-            swipeCount++; // someone please suggest a better way to do this
-            this.likeCareer(e);
-          }}
-          config={{
-            allowedDirections: [Direction.LEFT, Direction.RIGHT],
-            maxRotation: 5,
-            minThrowOutDistance: 1000,
-            maxThrowOutDistance: 1400,
-            throwOutConfidence: (xOffset, yOffset, element) => {
-              const xConfidence = Math.min(
-                Math.abs(xOffset) / element.offsetWidth,
-                1
-              );
-              const yConfidence = Math.min(
-                Math.abs(yOffset) / element.offsetHeight,
-                1
-              );
-              if (Math.max(xConfidence, yConfidence) > 0.65) {
-                return 1;
-              }
-              return Math.max(xConfidence, yConfidence);
-            },
-          }}
-        >
-          {this.props.careers.careerCards.map(card => (
-            <div
-              className="cardwrapper"
-              ref={`card${card.id}`}
-              id={`card${card.id}`}
-              key={card.id}
-            >
-              <CareerCard card={card} />
-            </div>
-          ))}
-        </Swing>
+        <div>
+          <Swing
+            tagName="div"
+            setStack={stack => this.setState({ stack: stack })}
+            ref="stack"
+            throwout={e => {
+              swipeCount++; // someone please suggest a better way to do this
+              this.likeCareer(e);
+            }}
+            config={{
+              allowedDirections: [Direction.LEFT, Direction.RIGHT],
+              maxRotation: 5,
+              minThrowOutDistance: 1000,
+              maxThrowOutDistance: 1400,
+              throwOutConfidence: (xOffset, yOffset, element) => {
+                const xConfidence = Math.min(
+                  Math.abs(xOffset) / element.offsetWidth,
+                  1
+                );
+                const yConfidence = Math.min(
+                  Math.abs(yOffset) / element.offsetHeight,
+                  1
+                );
+                if (Math.max(xConfidence, yConfidence) > 0.65) {
+                  return 1;
+                }
+                return Math.max(xConfidence, yConfidence);
+              },
+            }}
+          >
+            {this.props.careers.careerCards.map(card => (
+              <div
+                className="cardwrapper"
+                ref={`card${card.id}`}
+                id={`card${card.id}`}
+                key={card.id}
+              >
+                <CareerCard card={card} />
+              </div>
+            ))}
+          </Swing>
+          <FinalCard>
+            <Wrapper>
+              <IconWrapper>
+                <CompleteIcon className="material-icons">thumb_up</CompleteIcon>
+              </IconWrapper>
+            </Wrapper>
+            <Wrapper>
+              <WrapperText>
+                You have swiped through all the careers. Check out the careers
+                you have liked for more details
+              </WrapperText>
+              <LikedButton>Liked Careers</LikedButton>
+            </Wrapper>
+          </FinalCard>
+        </div>
       );
     }
     // TODO render loading
