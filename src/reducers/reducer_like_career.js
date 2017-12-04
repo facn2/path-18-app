@@ -5,7 +5,6 @@ import {
 } from '../constants';
 
 const initialState = {
-  likedCareers: [],
   dataFetched: false,
   isFetching: false,
   error: false,
@@ -16,13 +15,11 @@ const likeCareerReducer = (state = initialState, action) => {
     case LIKE_CAREER_PENDING:
       return {
         ...state,
-        likedCareers: [],
         isFetching: true,
       };
     case LIKE_CAREER_FULFILLED:
       return {
         ...state,
-        likedCareers: action.payload.data,
         isFetching: false,
         dataFetched: true,
       };

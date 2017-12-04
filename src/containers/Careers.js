@@ -19,6 +19,20 @@ const CareersContainer = styled.div`
   flex-direction: column;
 `;
 
+const CardWrapper = styled.div`
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-width: thin;
+  border-radius: 1rem;
+  &:last-child,
+  &:first-child {
+    box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.09),
+      0 0.22rem 0.44rem rgba(0, 0, 0, 0.13);
+  }
+`;
+
 const SwingWrapper = styled.div`
   position: relative;
   height: 70%;
@@ -28,14 +42,13 @@ const SwingWrapper = styled.div`
   overflow: visible;
 `;
 
-let swipeCount = 1;
-
 class Careers extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       stack: null,
+      currentCard: 1,
     };
   }
 
@@ -54,7 +67,7 @@ class Careers extends Component {
           setStack={stack => this.setState({ stack: stack })}
           ref="stack"
           throwout={e => {
-            swipeCount++; // someone please suggest a better way to do this
+            this.setState({ currentCard: this.state.currentCard + 1 });
             this.likeCareer(e);
           }}
           config={{
@@ -78,15 +91,14 @@ class Careers extends Component {
             },
           }}
         >
-          {this.props.careers.careerCards.map(card => (
-            <div
-              className="cardwrapper"
-              ref={`card${card.id}`}
+          {this.props.careers.careerCards.map((card, index) => (
+            <CardWrapper
+              ref={`card${index}`}
               id={`card${card.id}`}
               key={card.id}
             >
               <CareerCard card={card} />
-            </div>
+            </CardWrapper>
           ))}
         </Swing>
       );
@@ -105,9 +117,8 @@ class Careers extends Component {
   };
 
   throwCard = direction => {
-    const cardRef = Object.keys(this.refs.stack.refs)[
-      Object.keys(this.refs.stack.refs).length - swipeCount
-    ];
+    const cardRef = `card${this.props.careers.careerCards.length -
+      this.state.currentCard}`;
     const target = this.refs.stack.refs[cardRef];
     const el = ReactDOM.findDOMNode(target);
     const card = this.state.stack.getCard(el);
