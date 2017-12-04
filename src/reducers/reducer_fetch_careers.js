@@ -18,6 +18,7 @@ const fetchCareersReducer = (state = initialState, action) => {
         ...state,
         careerCards: [],
         isFetching: true,
+        dataFetched: false,
       };
     case FETCH_CAREERS_FULFILLED:
       return {

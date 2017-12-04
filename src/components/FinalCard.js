@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const FinalCardContainer = styled.div`
   background-color: #fafafa;
@@ -12,7 +11,7 @@ const FinalCardContainer = styled.div`
   z-index: -1;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
@@ -21,9 +20,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  padding: 2rem;
-  flex-grow: 4;
 `;
 
 const IconWrapper = styled.div`
@@ -39,23 +35,10 @@ const CompleteIcon = styled.i`
 
 const WrapperText = styled.p`
   text-align: center;
-  padding-bottom: 1rem;
-  font-size: 0.9rem;
-  color: #455a64;
-`;
-
-const StyledLink = styled(Link)``;
-
-const LikedButton = styled.button`
-  text-decoration: none;
-  background-color: #fff;
-  color: #00796b;
-  text-align: center;
-  border: 0.1rem solid gainsboro;
-  border-radius: 3rem;
-  height: 2rem;
-  width: 8rem;
+  padding: 0 2rem;
   font-size: 1rem;
+  line-height: 1.5rem;
+  color: #455a64;
 `;
 
 const FinalCard = () => (
@@ -70,9 +53,6 @@ const FinalCard = () => (
         You have swiped through all the careers. Check out the careers you have
         liked for more details.
       </WrapperText>
-      <StyledLink to="/LikedCareers">
-        <LikedButton>Liked Careers</LikedButton>
-      </StyledLink>
     </Wrapper>
   </FinalCardContainer>
 );

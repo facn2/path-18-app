@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  padding: 0 2rem;
 `;
 
 const Icon = styled.i`
@@ -20,37 +23,30 @@ const IconWrapper = styled.div`
   border: 0.2rem solid gainsboro;
   width: 4rem;
   height: 4rem;
-`;
-
-const IconLeft = styled(IconWrapper)`
+  opacity: ${props => (props.cardLength ? '1' : '0')};
   animation: ${props =>
-    props.side === 'left' && props.hide
-      ? `${goSmallRight} 0.2s ease-in forwards`
+    props.hide
+      ? props.side === 'left'
+        ? `${goLeft} 0.2s ease-in forwards`
+        : `${goRight} 0.2s ease-in forwards`
       : 'none'};
 `;
 
-const IconRight = styled(IconWrapper)`
-  animation: ${props =>
-    props.side === 'right' && props.hide
-      ? `${goSmallLeft} 0.2s ease-in forwards`
-      : 'none'};
-`;
-
-const goSmallRight = keyframes`
+const goRight = keyframes`
 	from {
-		transform: scale(1, 1) translate(0, 0);
+		transform: translateX(0);
 	}
 	to {
-		transform: scale(0, 0) translate(20rem, 0);
+		transform: translateX(10rem);
 	}
 `;
 
-const goSmallLeft = keyframes`
+const goLeft = keyframes`
 from {
-  transform: scale(1, 1) translate(0, 0);
+  transform: translateX(0);
 }
 to {
-  transform: scale(0, 0) translate(-20rem, 0);
+  transform: translateX(-10rem);
 }
 `;
 
@@ -62,25 +58,59 @@ const DislikedIcon = styled(Icon)`
   color: #d32f2f;
 `;
 
-const LikeAndDislikeButtons = ({ throwCard, hide }) => {
+const StyledLink = styled(Link)``;
+
+const LikedButton = styled.button`
+  text-decoration: none;
+  background-color: #f06292;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.09),
+    0 0.22rem 0.44rem rgba(0, 0, 0, 0.13);
+  ${'' /* border: 0.2rem solid gainsboro; */} border-radius: 3rem;
+  height: 3rem;
+  text-overflow: clip;
+  overflow: hidden;
+  ${props =>
+    props.hide && props.dataFetched
+      ? `font-size: 1rem;
+width: 10rem;
+opacity: 1`
+      : `font-size: 0rem;
+width: 0rem;
+opacity: 0`};
+  transition: 0.2s width ease, 0.2s font-size ease;
+`;
+
+const LikeAndDislikeButtons = ({
+  throwCard,
+  hide,
+  cardLength,
+  dataFetched,
+}) => {
   return (
     <ButtonContainer>
-      <IconLeft hide={hide} side={'left'}>
+      <IconWrapper hide={hide} side={'left'} cardLength={cardLength}>
         <DislikedIcon
           className="material-icons"
           onClick={() => (hide ? null : throwCard('left'))}
         >
           clear
         </DislikedIcon>
-      </IconLeft>
-      <IconRight hide={hide} side={'right'}>
+      </IconWrapper>
+      <StyledLink to="/LikedCareers">
+        <LikedButton hide={hide} dataFetched={dataFetched}>
+          Liked Careers
+        </LikedButton>
+      </StyledLink>
+      <IconWrapper hide={hide} side={'right'} cardLength={cardLength}>
         <LikedIcon
           className="material-icons"
           onClick={() => (hide ? null : throwCard('right'))}
         >
           done
         </LikedIcon>
-      </IconRight>
+      </IconWrapper>
     </ButtonContainer>
   );
 };

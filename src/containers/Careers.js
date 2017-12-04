@@ -8,8 +8,7 @@ import CareerCard from '../components/Card';
 import LikeAndDislikeButtons from '../components/LikeAndDislikeButtons';
 import FinalCard from '../components/FinalCard';
 
-import fetchCareers from '../actions/fetch_careers';
-import likeCareerAction from '../actions/like_career';
+import { fetchCareers, likeCareer } from '../actions/career_cards';
 
 const CareersContainer = styled.div`
   background-color: whitesmoke;
@@ -57,6 +56,8 @@ class Careers extends Component {
     this.props.fetchCareers();
   }
 
+  componentWillUnmount() {}
+
   hideButtons = () => {
     return this.props.careers.careerCards.length + 1 === this.state.currentCard;
   };
@@ -71,7 +72,7 @@ class Careers extends Component {
             ref="stack"
             throwout={e => {
               this.setState({ currentCard: this.state.currentCard + 1 });
-              this.likeCareer(e);
+              this.checkThrowRight(e);
             }}
             config={{
               allowedDirections: [Direction.LEFT, Direction.RIGHT],
@@ -112,9 +113,9 @@ class Careers extends Component {
     return <div />;
   };
 
-  likeCareer = e => {
+  checkThrowRight = e => {
     if (e.throwDirection.toString() === 'Symbol(RIGHT)') {
-      return this.props.likeCareerAction({
+      return this.props.likeCareer({
         user_id: 1,
         career_id: Number(e.target.id.slice(4)),
       });
@@ -140,6 +141,8 @@ class Careers extends Component {
         <LikeAndDislikeButtons
           throwCard={this.throwCard.bind(this)}
           hide={this.hideButtons()}
+          cardLength={this.props.careers.careerCards.length}
+          dataFetched={this.props.careers.dataFetched}
         />
       </CareersContainer>
     );
@@ -148,7 +151,7 @@ class Careers extends Component {
 
 const mapDispatchToProps = dispatch => ({
   fetchCareers: () => dispatch(fetchCareers()),
-  likeCareerAction: data => dispatch(likeCareerAction(data)),
+  likeCareer: data => dispatch(likeCareer(data)),
 });
 
 const mapStateToProps = state => ({
