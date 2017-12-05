@@ -154,7 +154,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   careers: state.careers,
-  likedCareers: state.likedCareers,
+  likeCareer: state.likeCareer,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Careers);

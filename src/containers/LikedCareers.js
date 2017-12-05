@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import fetchLikedCareers from '../actions/fetch_liked_careers';
+import { fetchLikedCareers, unlikeCareer } from '../actions/matched_careers';
 
 const LikedContainer = styled.div`
   width: 100%;
@@ -78,13 +78,23 @@ class LikedCareers extends Component {
                 <CareerLink to={{ pathname: `career/${career.title_ar}` }}>
                   <LikedListText>{career.title_ar}</LikedListText>
                 </CareerLink>
-                <LikedListIcon className="material-icons">clear</LikedListIcon>
+                <LikedListIcon
+                  className="material-icons"
+                  onClick={() => this.removeFromList(career.id)}
+                >
+                  clear
+                </LikedListIcon>
               </LikedListItem>
             );
           })}
         </LikedList>
       );
     }
+  };
+
+  removeFromList = id => {
+    console.log(id);
+    this.props.unlikeCareer(id);
   };
 
   render() {
@@ -101,10 +111,12 @@ class LikedCareers extends Component {
 
 const mapDispatchToProps = dispatch => ({
   fetchLikedCareers: () => dispatch(fetchLikedCareers()),
+  unlikeCareer: () => dispatch(unlikeCareer()),
 });
 
 const mapStateToProps = state => ({
   matchedCareers: state.matchedCareers,
+  unlikeCareer: state.unlikeCareer,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LikedCareers);

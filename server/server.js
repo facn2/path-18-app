@@ -33,7 +33,9 @@ app.get('/api/careers/liked', (request, response) => {
       );
     }
     response.send(result);
-    
+  });
+});
+
 app.post('/api/career/like', (request, response) => {
   const data = [request.body.user_id, request.body.career_id];
   likeCareer(data, (error, result) => {
