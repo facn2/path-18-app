@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { fetchLikedCareers, unlikeCareer } from '../actions/matched_careers';
 
 const LikedContainer = styled.div`
@@ -30,6 +31,8 @@ const LikedList = styled.ul`
 const LikedListItem = styled.li`
   width: 100%;
   height: 3rem;
+  transition: all 0.2s ease;
+  overflow: hidden;
   border-bottom: 0.1rem solid gainsboro;
   border-width: thin;
   display: flex;
@@ -60,36 +63,42 @@ const LikedListIcon = styled.i`
   user-select: none;
 `;
 
+const Fade = ({ children, ...props }) => (
+  <CSSTransition {...props} timeout={205} classNames="fade">
+    {children}
+  </CSSTransition>
+);
+
 class LikedCareers extends Component {
   componentDidMount() {
     this.props.fetchLikedCareers();
   }
 
   likedCareersList = () => {
-    if (
-      this.props.matchedCareers.dataFetched &&
-      this.props.matchedCareers.likedCareers.length
-    ) {
-      return (
-        <LikedList>
+    return (
+      <LikedList>
+        <TransitionGroup>
           {this.props.matchedCareers.likedCareers.map(career => {
             return (
-              <LikedListItem key={`career${career.id}`}>
-                <CareerLink to={{ pathname: `career/${career.title_ar}` }}>
-                  <LikedListText>{career.title_ar}</LikedListText>
-                </CareerLink>
-                <LikedListIcon
-                  className="material-icons"
-                  onClick={() => this.removeFromList(career.id)}
-                >
-                  clear
-                </LikedListIcon>
-              </LikedListItem>
+              <Fade key={`career${career.id}`}>
+                <LikedListItem>
+                  <CareerLink to={{ pathname: `career/${career.title_ar}` }}>
+                    <LikedListText>{career.title_ar}</LikedListText>
+                  </CareerLink>
+                  <LikedListIcon
+                    className="material-icons"
+                    onClick={() =>
+                      career.isDeleting ? null : this.removeFromList(career.id)}
+                  >
+                    clear
+                  </LikedListIcon>
+                </LikedListItem>
+              </Fade>
             );
           })}
-        </LikedList>
-      );
-    }
+        </TransitionGroup>
+      </LikedList>
+    );
   };
 
   removeFromList = id => {

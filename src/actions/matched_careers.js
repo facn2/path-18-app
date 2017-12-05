@@ -15,6 +15,7 @@ export const unlikeCareer = data => {
     dispatch({
       type: UNLIKE_CAREER,
       payload: axios.delete(`api/career/like/${data.career_id}`),
+      meta: { id: data.career_id },
     });
   };
 };

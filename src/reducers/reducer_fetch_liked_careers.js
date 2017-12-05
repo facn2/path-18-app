@@ -36,10 +36,16 @@ const fetchLikedCareersReducer = (state = initialState, action) => {
         error: true,
       };
     case UNLIKE_CAREER_PENDING:
+      console.log(action);
       return {
         ...state,
         isFetching: true,
         dataFetched: false,
+        likedCareers: state.likedCareers.map(career => {
+          return career.id === action.meta.id
+            ? { ...career, isDeleting: true }
+            : career;
+        }),
       };
     case UNLIKE_CAREER_FULFILLED:
       return {
