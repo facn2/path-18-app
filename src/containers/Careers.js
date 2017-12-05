@@ -6,9 +6,9 @@ import { Direction } from 'swing';
 import ReactDOM from 'react-dom';
 import CareerCard from '../components/Card';
 import LikeAndDislikeButtons from '../components/LikeAndDislikeButtons';
+import FinalCard from '../components/FinalCard';
 
-import fetchCareers from '../actions/fetch_careers';
-import likeCareerAction from '../actions/like_career';
+import { fetchCareers, likeCareer } from '../actions/career_cards';
 
 const CareersContainer = styled.div`
   background-color: whitesmoke;
@@ -56,60 +56,64 @@ class Careers extends Component {
     this.props.fetchCareers();
   }
 
+  hideButtons = () => {
+    return this.props.careers.careerCards.length + 1 === this.state.currentCard;
+  };
+
   swingShow = () => {
-    if (
-      this.props.careers.dataFetched &&
-      this.props.careers.careerCards.length
-    ) {
+    if (this.props.careers.dataFetched) {
       return (
-        <Swing
-          tagName="div"
-          setStack={stack => this.setState({ stack: stack })}
-          ref="stack"
-          throwout={e => {
-            this.setState({ currentCard: this.state.currentCard + 1 });
-            this.likeCareer(e);
-          }}
-          config={{
-            allowedDirections: [Direction.LEFT, Direction.RIGHT],
-            maxRotation: 5,
-            minThrowOutDistance: 1000,
-            maxThrowOutDistance: 1400,
-            throwOutConfidence: (xOffset, yOffset, element) => {
-              const xConfidence = Math.min(
-                Math.abs(xOffset) / element.offsetWidth,
-                1
-              );
-              const yConfidence = Math.min(
-                Math.abs(yOffset) / element.offsetHeight,
-                1
-              );
-              if (Math.max(xConfidence, yConfidence) > 0.65) {
-                return 1;
-              }
-              return Math.max(xConfidence, yConfidence);
-            },
-          }}
-        >
-          {this.props.careers.careerCards.map((card, index) => (
-            <CardWrapper
-              ref={`card${index}`}
-              id={`card${card.id}`}
-              key={card.id}
-            >
-              <CareerCard card={card} />
-            </CardWrapper>
-          ))}
-        </Swing>
+        <div>
+          <Swing
+            tagName="div"
+            setStack={stack => this.setState({ stack: stack })}
+            ref="stack"
+            throwout={e => {
+              this.setState({ currentCard: this.state.currentCard + 1 });
+              this.checkThrowRight(e);
+            }}
+            config={{
+              allowedDirections: [Direction.LEFT, Direction.RIGHT],
+              maxRotation: 5,
+              minThrowOutDistance: 1000,
+              maxThrowOutDistance: 1400,
+              throwOutConfidence: (xOffset, yOffset, element) => {
+                const xConfidence = Math.min(
+                  Math.abs(xOffset) / element.offsetWidth,
+                  1
+                );
+                const yConfidence = Math.min(
+                  Math.abs(yOffset) / element.offsetHeight,
+                  1
+                );
+                if (Math.max(xConfidence, yConfidence) > 0.65) {
+                  return 1;
+                }
+                return Math.max(xConfidence, yConfidence);
+              },
+            }}
+          >
+            {this.props.careers.careerCards.map((card, index) => (
+              <CardWrapper
+                ref={`card${index}`}
+                id={`card${card.id}`}
+                key={card.id}
+              >
+                <CareerCard card={card} />
+              </CardWrapper>
+            ))}
+          </Swing>
+          <FinalCard />
+        </div>
       );
     }
     // TODO render loading
-    return;
+    return <div />;
   };
 
-  likeCareer = e => {
+  checkThrowRight = e => {
     if (e.throwDirection.toString() === 'Symbol(RIGHT)') {
-      return this.props.likeCareerAction({
+      return this.props.likeCareer({
         user_id: 1,
         career_id: Number(e.target.id.slice(4)),
       });
@@ -132,7 +136,12 @@ class Careers extends Component {
     return (
       <CareersContainer>
         <SwingWrapper>{this.swingShow()}</SwingWrapper>
-        <LikeAndDislikeButtons throwCard={this.throwCard.bind(this)} />
+        <LikeAndDislikeButtons
+          throwCard={this.throwCard.bind(this)}
+          hide={this.hideButtons()}
+          cardLength={this.props.careers.careerCards.length}
+          dataFetched={this.props.careers.dataFetched}
+        />
       </CareersContainer>
     );
   }
@@ -140,7 +149,7 @@ class Careers extends Component {
 
 const mapDispatchToProps = dispatch => ({
   fetchCareers: () => dispatch(fetchCareers()),
-  likeCareerAction: data => dispatch(likeCareerAction(data)),
+  likeCareer: data => dispatch(likeCareer(data)),
 });
 
 const mapStateToProps = state => ({
