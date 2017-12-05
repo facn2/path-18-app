@@ -2,6 +2,9 @@ import {
   FETCH_LIKED_CAREERS_PENDING,
   FETCH_LIKED_CAREERS_FULFILLED,
   FETCH_LIKED_CAREERS_REJECTED,
+  UNLIKE_CAREER_PENDING,
+  UNLIKE_CAREER_REJECTED,
+  UNLIKE_CAREER_FULFILLED,
 } from '../constants';
 
 const initialState = {
@@ -30,6 +33,27 @@ const fetchLikedCareersReducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         dataFetched: false,
+        error: true,
+      };
+    case UNLIKE_CAREER_PENDING:
+      return {
+        ...state,
+        isFetching: true,
+        dataFetched: false,
+      };
+    case UNLIKE_CAREER_FULFILLED:
+      return {
+        ...state,
+        isFetching: false,
+        dataFetched: true,
+        likedCareers: state.likedCareers.filter(career => {
+          return career.id !== action.payload.data[0].career_id;
+        }),
+      };
+    case UNLIKE_CAREER_REJECTED:
+      return {
+        ...state,
+        isFetching: false,
         error: true,
       };
     default:

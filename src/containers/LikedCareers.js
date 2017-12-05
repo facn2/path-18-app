@@ -93,8 +93,7 @@ class LikedCareers extends Component {
   };
 
   removeFromList = id => {
-    console.log(id);
-    this.props.unlikeCareer(id);
+    this.props.unlikeCareer({ career_id: id });
   };
 
   render() {
@@ -111,7 +110,7 @@ class LikedCareers extends Component {
 
 const mapDispatchToProps = dispatch => ({
   fetchLikedCareers: () => dispatch(fetchLikedCareers()),
-  unlikeCareer: () => dispatch(unlikeCareer()),
+  unlikeCareer: id => dispatch(unlikeCareer(id)),
 });
 
 const mapStateToProps = state => ({

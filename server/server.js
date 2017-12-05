@@ -4,6 +4,7 @@ const getAllCareers = require('../database/queries/get_all_careers');
 const addCareer = require('../database/queries/add_career');
 const getLikedCareers = require('../database/queries/get_liked_careers');
 const likeCareer = require('../database/queries/like_career');
+const unlikeCareer = require('../database/queries/unlike_career');
 
 const app = express();
 app.use(bodyParser.json());
@@ -39,6 +40,17 @@ app.get('/api/careers/liked', (request, response) => {
 app.post('/api/career/like', (request, response) => {
   const data = [request.body.user_id, request.body.career_id];
   likeCareer(data, (error, result) => {
+    if (error) {
+      response.send(error);
+    } else {
+      response.send(result);
+    }
+  });
+});
+
+app.delete('/api/career/like/:id', (request, response) => {
+  const data = [1, request.params.id];
+  unlikeCareer(data, (error, result) => {
     if (error) {
       response.send(error);
     } else {

@@ -11,11 +11,10 @@ export const fetchLikedCareers = () => {
 };
 
 export const unlikeCareer = data => {
-  console.log(data);
   return dispatch => {
     dispatch({
       type: UNLIKE_CAREER,
-      payload: axios.delete('api/career/like', data),
+      payload: axios.delete(`api/career/like/${data.career_id}`),
     });
   };
 };
