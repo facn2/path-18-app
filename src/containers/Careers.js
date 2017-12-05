@@ -56,8 +56,6 @@ class Careers extends Component {
     this.props.fetchCareers();
   }
 
-  componentWillUnmount() {}
-
   hideButtons = () => {
     return this.props.careers.careerCards.length + 1 === this.state.currentCard;
   };
