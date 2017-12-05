@@ -9,7 +9,7 @@ const NavBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  position: fixed;
   z-index: 2;
   padding-left: 0.9rem;
   padding-right: 0.9rem;

@@ -12,7 +12,7 @@ import { fetchCareers, likeCareer } from '../actions/career_cards';
 
 const CareersContainer = styled.div`
   background-color: whitesmoke;
-  padding-top: 1%;
+  margin-top: 4rem;
   height: calc(100vh - 4rem);
   display: flex;
   justify-content: space-evenly;

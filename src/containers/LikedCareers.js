@@ -7,6 +7,7 @@ import { fetchLikedCareers, unlikeCareer } from '../actions/matched_careers';
 
 const LikedContainer = styled.div`
   width: 100%;
+  margin-top: 4rem;
 `;
 
 const LikedTitleWrapper = styled.div`
