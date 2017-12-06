@@ -116,7 +116,7 @@ class LikedCareers extends Component {
                     <LikedListText>{career.title_ar}</LikedListText>
                   </CareerLink>
                   <CategoryIcon className="material-icons">
-                    {career.icon_url}
+                    {career.icon_name}
                   </CategoryIcon>
                 </LikedListItem>
               </Fade>

@@ -14,3 +14,16 @@
 .icon-wrapper input[type='radio']:checked + label {
   color: #f06292;
 }
+
+.color-picker-label {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  display: inline-block;
+  border: #fff 0.2rem solid;
+  margin: 0.74rem;
+}
+
+.color-wrapper input[type='radio']:checked + label {
+  border: #424242 0.2rem solid;
+}

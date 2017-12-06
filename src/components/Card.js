@@ -7,8 +7,21 @@ const CardContainer = styled.div`
 
 const CardImageWrapper = styled.div`
   height: 70%;
-  background-color: gainsboro;
-  margin: 7%;
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const IconWrapper = styled.div`
+  background-color: ${props => props.color};
+  border-radius: 50%;
+`;
+
+const CardIcon = styled.i`
+  color: #fff;
+  padding: 1.7rem;
+  font-size: 7rem;
 `;
 
 const CareerTextWrapper = styled.div`
@@ -29,7 +42,11 @@ const CareerTagline = styled.p`
 
 const CareerCard = ({ card }) => (
   <CardContainer>
-    <CardImageWrapper />
+    <CardImageWrapper>
+      <IconWrapper color={card.icon_color}>
+        <CardIcon className="material-icons">{card.icon_name}</CardIcon>
+      </IconWrapper>
+    </CardImageWrapper>
     <CareerTextWrapper>
       <CareerTitle>{card.title_ar}</CareerTitle>
       <CareerTagline>{card.tagline_ar}</CareerTagline>

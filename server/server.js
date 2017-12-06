@@ -64,6 +64,7 @@ app.get('/add-career', (request, response) => {
 });
 
 app.post('/add-career', (request, response) => {
+  console.log(request.body);
   addCareer(request.body, (err, res) => {
     if (err) {
       response.send(
