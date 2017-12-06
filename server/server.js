@@ -74,4 +74,8 @@ app.post('/add-career', (request, response) => {
   });
 });
 
+app.get('/public/addcareer.css', (request, response) => {
+  response.sendFile('addcareer.css', { root: __dirname + '/../public/' });
+});
+
 module.exports = app;

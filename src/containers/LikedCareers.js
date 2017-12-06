@@ -45,6 +45,7 @@ const LikedList = styled.ul`
 
 const LikedListItem = styled.li`
   background-color: #fff;
+  overflow: hidden;
   width: 100%;
   height: 3rem;
   transition: all 0.2s ease;

@@ -1,0 +1,16 @@
+.radio {
+  display: none;
+}
+
+.job-icon {
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+.job-icon-label {
+  color: #26a69a;
+}
+
+.icon-wrapper input[type='radio']:checked + label {
+  color: #f06292;
+}
