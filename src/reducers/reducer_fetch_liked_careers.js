@@ -36,7 +36,6 @@ const fetchLikedCareersReducer = (state = initialState, action) => {
         error: true,
       };
     case UNLIKE_CAREER_PENDING:
-      console.log(action);
       return {
         ...state,
         isFetching: true,
