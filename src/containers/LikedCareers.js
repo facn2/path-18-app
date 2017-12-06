@@ -8,20 +8,34 @@ import { fetchLikedCareers, unlikeCareer } from '../actions/matched_careers';
 const LikedContainer = styled.div`
   width: 100%;
   margin-top: 4rem;
+  background-color: whitesmoke;
+  height: 100%;
 `;
 
 const LikedTitleWrapper = styled.div`
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   font-size: 1.5rem;
   border-bottom: 0.1rem solid gainsboro;
   border-width: thin;
-  height: 4rem;
+  height: 100%;
+  padding-top: 1.3rem;
+  padding-bottom: 1.1rem;
 `;
 
 const LikedTitle = styled.h1`
   color: #00796b;
+`;
+
+const LikedDescription = styled.p`
+  color: #455a64;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.3rem 1rem 0 1rem;
+  line-height: 1rem;
 `;
 
 const LikedList = styled.ul`
@@ -30,10 +44,10 @@ const LikedList = styled.ul`
 `;
 
 const LikedListItem = styled.li`
+  background-color: #fff;
   width: 100%;
   height: 3rem;
   transition: all 0.2s ease;
-  overflow: hidden;
   border-bottom: 0.1rem solid gainsboro;
   border-width: thin;
   display: flex;
@@ -49,18 +63,25 @@ const CareerLink = styled(Link)`
   color: #455a64;
   text-decoration: none;
   width: 100%;
+  padding-right: 0.9rem;
 `;
 
 const LikedListText = styled.p`
   text-align: right;
-  padding-right: 5%;
 `;
 
-const LikedListIcon = styled.i`
-  padding-right: 0.9rem;
+const DeleteIcon = styled.i`
+  padding-left: 0.9rem;
   font-size: 1.5rem;
-  color: #d32f2f;
+  color: #9e9e9e;
   cursor: pointer;
+  user-select: none;
+`;
+
+const CategoryIcon = styled.i`
+  padding-right: 0.9rem;
+  font-size: 1.6rem;
+  color: #f06292;
   user-select: none;
 `;
 
@@ -83,16 +104,19 @@ class LikedCareers extends Component {
             return (
               <Fade key={`career${career.id}`}>
                 <LikedListItem>
-                  <CareerLink to={{ pathname: `career/${career.title_ar}` }}>
-                    <LikedListText>{career.title_ar}</LikedListText>
-                  </CareerLink>
-                  <LikedListIcon
+                  <DeleteIcon
                     className="material-icons"
                     onClick={() =>
                       career.isDeleting ? null : this.removeFromList(career.id)}
                   >
                     clear
-                  </LikedListIcon>
+                  </DeleteIcon>
+                  <CareerLink to={{ pathname: `career/${career.title_ar}` }}>
+                    <LikedListText>{career.title_ar}</LikedListText>
+                  </CareerLink>
+                  <CategoryIcon className="material-icons">
+                    {career.icon_url}
+                  </CategoryIcon>
                 </LikedListItem>
               </Fade>
             );
@@ -110,7 +134,10 @@ class LikedCareers extends Component {
     return (
       <LikedContainer>
         <LikedTitleWrapper>
-          <LikedTitle>Your liked careers...</LikedTitle>
+          <LikedTitle>Liked careers</LikedTitle>
+          <LikedDescription>
+            Click on a career for more details.
+          </LikedDescription>
         </LikedTitleWrapper>
         {this.likedCareersList()}
       </LikedContainer>

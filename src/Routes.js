@@ -8,6 +8,8 @@ import NavBar from './components/NavBar';
 
 const AppWrapper = styled.div`
   overflow: hidden;
+  height: 100%;
+  min-height: 25rem;
 `;
 
 const Main = () => {
