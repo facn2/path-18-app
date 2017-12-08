@@ -15,47 +15,44 @@ app.use(
 );
 
 app.get('/api/careers', (request, response) => {
-  getAllCareers((error, result) => {
+  const userId = 1;
+  getAllCareers(userId, (error, result) => {
     if (error) {
-      response.send(
-        '<h1>Sorry, there was a problem with the data Please try again!</h1>'
-      );
-    } else {
-      response.send(result);
+      return response.send(error);
     }
+    response.send(result);
   });
 });
 
 app.get('/api/careers/liked', (request, response) => {
-  getLikedCareers((error, result) => {
+  const userId = 1;
+  getLikedCareers(userId, (error, result) => {
     if (error) {
-      response.send(
-        '<h1>Sorry, there was a problem with the data Please try again!</h1>'
-      );
+      return response.send(error);
     }
     response.send(result);
   });
 });
 
 app.post('/api/career/like', (request, response) => {
-  const data = [request.body.user_id, request.body.career_id];
-  likeCareer(data, (error, result) => {
+  const userId = 1;
+  const careerId = request.body.career_id;
+  likeCareer(userId, careerId, (error, result) => {
     if (error) {
-      response.send(error);
-    } else {
-      response.send(result);
+      return response.send(error);
     }
+    response.send(result);
   });
 });
 
 app.delete('/api/career/like/:id', (request, response) => {
-  const data = [1, request.params.id];
-  unlikeCareer(data, (error, result) => {
+  const userId = 1;
+  const careerId = request.params.id;
+  unlikeCareer(userId, careerId, (error, result) => {
     if (error) {
-      response.send(error);
-    } else {
-      response.send(result);
+      return response.send(error);
     }
+    response.send(result);
   });
 });
 

@@ -97,35 +97,27 @@ class LikedCareers extends Component {
     this.props.fetchLikedCareers();
   }
 
-  likedCareersList = () => {
-    return (
-      <LikedList>
-        <TransitionGroup>
-          {this.props.matchedCareers.likedCareers.map(career => {
-            return (
-              <Fade key={`career${career.id}`}>
-                <LikedListItem>
-                  <DeleteIcon
-                    className="material-icons"
-                    onClick={() =>
-                      career.isDeleting ? null : this.removeFromList(career.id)}
-                  >
-                    clear
-                  </DeleteIcon>
-                  <CareerLink to={{ pathname: `career/${career.title_ar}` }}>
-                    <LikedListText>{career.title_ar}</LikedListText>
-                  </CareerLink>
-                  <CategoryIcon className="material-icons">
-                    {career.icon_name}
-                  </CategoryIcon>
-                </LikedListItem>
-              </Fade>
-            );
-          })}
-        </TransitionGroup>
-      </LikedList>
-    );
-  };
+  likedCareersList = () => {};
+
+  likedCareersList = career => (
+    <Fade key={`career${career.id}`}>
+      <LikedListItem>
+        <DeleteIcon
+          className="material-icons"
+          onClick={() =>
+            career.isDeleting ? null : this.removeFromList(career.id)}
+        >
+          clear
+        </DeleteIcon>
+        <CareerLink to={{ pathname: `career/${career.title_ar}` }}>
+          <LikedListText>{career.title_ar}</LikedListText>
+        </CareerLink>
+        <CategoryIcon className="material-icons">
+          {career.icon_name}
+        </CategoryIcon>
+      </LikedListItem>
+    </Fade>
+  );
 
   removeFromList = id => {
     this.props.unlikeCareer({ career_id: id });
@@ -140,7 +132,11 @@ class LikedCareers extends Component {
             Click on a career for more details.
           </LikedDescription>
         </LikedTitleWrapper>
-        {this.likedCareersList()}
+        <LikedList>
+          <TransitionGroup>
+            {this.props.matchedCareers.likedCareers.map(this.likedCareersList)}
+          </TransitionGroup>
+        </LikedList>
       </LikedContainer>
     );
   }
