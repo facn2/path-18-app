@@ -20,12 +20,10 @@ const CareersContainer = styled.div`
 `;
 
 const CardWrapper = styled.div`
-  background-color: white;
   height: 100%;
   width: 100%;
   position: absolute;
   border-radius: 1rem;
-  border: ${props => props.color} solid 0.3rem;
   &:last-child,
   &:first-child {
     box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.09),
@@ -98,7 +96,6 @@ class Careers extends Component {
                 ref={`card${index}`}
                 id={`card${card.id}`}
                 key={card.id}
-                color={card.icon_color}
               >
                 <CareerCard card={card} />
               </CardWrapper>

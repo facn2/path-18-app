@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 const CardContainer = styled.div`
   height: 100%;
+  background-color: white;
+  width: 100%;
+  border-radius: 1rem;
+  border: ${props => props.color} solid 0.3rem;
 `;
 
 const CardImageWrapper = styled.div`
@@ -41,7 +45,7 @@ const CareerTagline = styled.p`
 `;
 
 const CareerCard = ({ card }) => (
-  <CardContainer>
+  <CardContainer color={card.icon_color}>
     <CardImageWrapper>
       <IconWrapper color={card.icon_color}>
         <CardIcon className="material-icons">{card.icon_name}</CardIcon>
