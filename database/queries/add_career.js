@@ -1,7 +1,8 @@
 const dbConnection = require('../db_connection');
 
 const addCareer = (data, callback) => {
-  const newCareerQuery = `INSERT INTO careers
+  const newCareerQuery = `
+    INSERT INTO careers
     (title_ar, title_he, tagline_ar, tagline_he,
     description_ar, description_he, salary_start,
     salary_ten_year, icon_name, icon_color)
