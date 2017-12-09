@@ -12,7 +12,7 @@ import { fetchCareers, likeCareer } from '../actions/career_cards';
 
 const CareersContainer = styled.div`
   background-color: whitesmoke;
-  padding-top: 1%;
+  margin-top: 4rem;
   height: calc(100vh - 4rem);
   display: flex;
   justify-content: space-evenly;
@@ -20,11 +20,9 @@ const CareersContainer = styled.div`
 `;
 
 const CardWrapper = styled.div`
-  background-color: white;
   height: 100%;
   width: 100%;
   position: absolute;
-  border-width: thin;
   border-radius: 1rem;
   &:last-child,
   &:first-child {
@@ -154,7 +152,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   careers: state.careers,
-  likedCareers: state.likedCareers,
+  likeCareer: state.likeCareer,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Careers);
