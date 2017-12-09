@@ -13,6 +13,7 @@ const NavBarContainer = styled.div`
   z-index: 2;
   padding-left: 0.9rem;
   padding-right: 0.9rem;
+  max-width: 25rem;
 `;
 
 const NavBarItem = styled.div`
