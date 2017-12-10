@@ -2,20 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
+  height: 100%;
   background-color: white;
-  height: 70%;
-  margin: 0 2rem;
-  overflow: auto;
-  border-width: thin;
+  width: 100%;
   border-radius: 1rem;
-  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.09),
-    0 0.4rem 0.4rem rgba(0, 0, 0, 0.16);
+  border: ${props => props.color} solid 0.3rem;
 `;
 
 const CardImageWrapper = styled.div`
   height: 70%;
-  background-color: gainsboro;
-  margin: 7%;
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const IconWrapper = styled.div`
+  background-color: ${props => props.color};
+  border-radius: 50%;
+`;
+
+const CardIcon = styled.i`
+  color: #fff;
+  padding: 1.7rem;
+  font-size: 7rem;
 `;
 
 const CareerTextWrapper = styled.div`
@@ -34,16 +44,18 @@ const CareerTagline = styled.p`
   font-size: 1rem;
 `;
 
-const Card = () => {
-  return (
-    <CardContainer>
-      <CardImageWrapper>{/* insert image here */}</CardImageWrapper>
-      <CareerTextWrapper>
-        <CareerTitle>Doctor</CareerTitle>
-        <CareerTagline>This is what a doctor does</CareerTagline>
-      </CareerTextWrapper>
-    </CardContainer>
-  );
-};
+const CareerCard = ({ card }) => (
+  <CardContainer color={card.icon_color}>
+    <CardImageWrapper>
+      <IconWrapper color={card.icon_color}>
+        <CardIcon className="material-icons">{card.icon_name}</CardIcon>
+      </IconWrapper>
+    </CardImageWrapper>
+    <CareerTextWrapper>
+      <CareerTitle>{card.title_ar}</CareerTitle>
+      <CareerTagline>{card.tagline_ar}</CareerTagline>
+    </CareerTextWrapper>
+  </CardContainer>
+);
 
-export default Card;
+export default CareerCard;

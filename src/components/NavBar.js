@@ -9,10 +9,11 @@ const NavBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  position: fixed;
   z-index: 2;
   padding-left: 0.9rem;
   padding-right: 0.9rem;
+  max-width: 25rem;
 `;
 
 const NavBarItem = styled.div`
@@ -40,6 +41,7 @@ const SettingsContainer = styled.div`
   position: absolute;
   top: 4rem;
   right: 0;
+  z-index: 1;
   box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.09),
     0 0.22rem 0.44rem rgba(0, 0, 0, 0.13);
 `;
