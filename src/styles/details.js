@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-// TODO arrows on university sides for swiping
-// TODO swipe universities
-
 const CareerContainer = styled.div`
   width: 100%;
   margin-top: 4rem;
@@ -113,7 +110,54 @@ const UserTawjihi = styled.p`
   text-align: right;
 `;
 
+const Icon = styled.i`
+  font-size: 2rem;
+  color: #f06292;
+`;
+
+const CareerLogo = styled(Icon)`
+  font-size: 1.5rem;
+  background-color: #f06292;
+  border-radius: 50%;
+  color: #fff;
+  padding: 0.5rem;
+  display: inline-block;
+`;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 0.5rem;
+`;
+
+const Description = styled.div`
+  padding: 0 1rem;
+`;
+
+const TopSection = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem 1rem 0;
+`;
+
+const CareerTagline = styled.div``;
+
+const TitleTagWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-right: 0.8rem;
+`;
+
 export {
+  Icon,
+  CareerLogo,
+  TitleWrapper,
+  Description,
+  TopSection,
+  CareerTagline,
+  TitleTagWrapper,
   CareerContainer,
   CareerTitle,
   SectionTitle,

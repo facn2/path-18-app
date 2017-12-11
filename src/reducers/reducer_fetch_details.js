@@ -1,7 +1,7 @@
 import {
-  FETCH_CAREER_BY_ID_PENDING,
-  FETCH_CAREER_BY_ID_FULFILLED,
-  FETCH_CAREER_BY_ID_REJECTED,
+  FETCH_DETAILS_PENDING,
+  FETCH_DETAILS_FULFILLED,
+  FETCH_DETAILS_REJECTED,
 } from '../constants';
 
 const initialState = {
@@ -11,23 +11,23 @@ const initialState = {
   error: false,
 };
 
-const fetchCareerByIdReducer = (state = initialState, action) => {
+const fetchDetailsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_CAREER_BY_ID_PENDING:
+    case FETCH_DETAILS_PENDING:
       return {
         ...state,
         career: [],
         isFetching: true,
         dataFetched: false,
       };
-    case FETCH_CAREER_BY_ID_FULFILLED:
+    case FETCH_DETAILS_FULFILLED:
       return {
         ...state,
         career: action.payload.data,
         isFetching: false,
         dataFetched: true,
       };
-    case FETCH_CAREER_BY_ID_REJECTED:
+    case FETCH_DETAILS_REJECTED:
       return {
         ...state,
         isFetching: false,
@@ -38,4 +38,4 @@ const fetchCareerByIdReducer = (state = initialState, action) => {
   }
 };
 
-export default fetchCareerByIdReducer;
+export default fetchDetailsReducer;

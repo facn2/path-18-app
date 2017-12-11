@@ -6,6 +6,8 @@ const getLikedCareers = require('../database/queries/get_liked_careers');
 const likeCareer = require('../database/queries/like_career');
 const unlikeCareer = require('../database/queries/unlike_career');
 const getCareerById = require('../database/queries/career_by_id');
+const getUniByCareerId = require('../database/queries/get_career_uni');
+const getUserGrades = require('../database/queries/get_user_grades');
 
 const app = express();
 app.use(bodyParser.json());
@@ -35,13 +37,28 @@ app.get('/api/careers/liked', (request, response) => {
   });
 });
 
-app.get('/api/career/:id', (request, response) => {
+app.get('/api/details/:id', (request, response) => {
   const careerId = request.params.id;
+  const userId = 1;
+  const details = {};
   getCareerById(careerId, (error, result) => {
     if (error) {
       return response.send(error);
     }
-    response.send(result);
+    details.career = result;
+    getUniByCareerId(careerId, (error, result) => {
+      if (error) {
+        return response.send(error);
+      }
+      details.uniGrades = result;
+      getUserGrades(userId, (error, result) => {
+        if (error) {
+          return response.send(error);
+        }
+        details.userGrades = result;
+        response.send(details);
+      });
+    });
   });
 });
 
