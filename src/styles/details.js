@@ -4,144 +4,126 @@ import styled from 'styled-components';
 // TODO swipe universities
 
 const CareerContainer = styled.div`
-  background-color: #f5f5f5;
-  padding: 2.5rem;
-  font-size: 1.2rem;
-  height: calc(100vh - 4rem);
-  line-height: 1.8rem;
-`;
-
-const GeneralSection = styled.section`
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  margin-top: 4rem;
+  background-color: #fff;
+  height: 100%;
+  font-size: 0.9rem;
+  color: #455a64;
+  text-align: right;
 `;
 
 const CareerTitle = styled.h1`
-  font-size: 2rem;
-  line-height: 2.8rem;
-`;
-const About = styled.h3`
+  text-align: right;
   font-size: 1.5rem;
-  color: #00695c;
+  padding-bottom: 0.3rem;
 `;
 
-const CareerDescription = styled.p`
+const SectionTitle = styled.h3`
   font-size: 1.3rem;
-  padding: 0.5rem 0 1.5rem 0;
-  border-bottom: 0.1rem solid #dcdcdc;
+  text-align: center;
+  margin: 0 auto;
 `;
 
-const SalarySection = styled.section`
+const DetailSection = styled.div`
+  padding: 1rem 0;
+  border-bottom: 0.1rem solid gainsboro;
+  border-width: thin;
+  line-height: 1.2rem;
   padding: 1.5rem 0;
-  border-bottom: 0.1rem solid #dcdcdc;
-  font-size: 1.3rem;
 `;
 
 const Salary = styled.h3`
-  font-size: 1.5rem;
-  color: #00695c;
-`;
-
-const SalarySrart = styled.p`
   font-size: 1.3rem;
 `;
 
-const Start = styled.span``;
-
-const SalaryTenYear = styled.p``;
-
-const TenYear = styled.span``;
-
-const UniSection = styled.section`
-  font-size: 1.3rem;
-  padding: 1.5rem 0;
+const SalaryStart = styled.div`
+  text-align: right;
 `;
 
-const University = styled.h3`
-  font-size: 1.5rem;
-  color: #00695c;
+const Start = styled.div`
+  text-align: right;
+`;
+
+const SalaryTenYear = styled.div`
+  text-align: right;
+`;
+
+const TenYear = styled.div`
+  text-align: right;
+`;
+
+const TableContainer = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+`;
+
+const TableColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  padding: 0 0.4rem;
   text-align: center;
+  line-height: 1.2rem;
 `;
 
-const GradesContainer = styled.table``;
-const TableRow1 = styled.tr``;
-const TableRow2 = styled.tr``;
-const TableRow3 = styled.tr``;
-const TableRow4 = styled.tr``;
-
-const Grades = styled.th`
-  font-size: 1.5rem;
+const Grades = styled.p`
   color: #00695c;
-  padding-top: 1rem;
-  text-align: left;
+  text-align: right;
+  font-size: 1rem;
 `;
 
-const Column1 = styled.td``;
-const Column2 = styled.td``;
-
-const GradeBagrut = styled.th`
-  text-align: left;
-  padding-top: 0.5rem;
+const GradeBagrut = styled.p`
+  text-align: right;
 `;
 
-const ReqBagrut = styled.td`
-  padding-left: 0.6rem;
+const ReqBagrut = styled.p`
+  text-align: right;
 `;
 
-const UserBagrut = styled.td`
+const UserBagrut = styled.p`
   color: #269826;
-  padding-left: 1rem;
+  text-align: right;
 `;
 
-const GradePsyc = styled.th`
-  text-align: left;
-  padding-top: 0.5rem;
+const GradePsyc = styled.p`
+  text-align: right;
 `;
 
-const ReqPsyc = styled.td`
-  padding-left: 0.6rem;
+const ReqPsyc = styled.p`
+  text-align: right;
 `;
 
-const UserPsyc = styled.td`
+const UserPsyc = styled.p`
   color: #d32f2f;
-  padding-left: 1rem;
+  text-align: right;
 `;
 
-const GradeTawjihi = styled.th`
-  text-align: left;
-  padding-top: 0.5rem;
+const GradeTawjihi = styled.p`
+  text-align: right;
 `;
 
-const ReqTawjihi = styled.td`
-  padding-left: 0.6rem;
+const ReqTawjihi = styled.p`
+  text-align: right;
 `;
 
-const UserTawjihi = styled.td`
-  padding-left: 1rem;
+const UserTawjihi = styled.p`
+  text-align: right;
 `;
 
 export {
   CareerContainer,
-  GeneralSection,
   CareerTitle,
-  About,
-  CareerDescription,
-  SalarySection,
-  Salary,
-  SalarySrart,
+  SectionTitle,
+  DetailSection,
+  SalaryStart,
   Start,
   SalaryTenYear,
   TenYear,
-  UniSection,
-  University,
-  GradesContainer,
-  TableRow1,
-  TableRow2,
-  TableRow3,
-  TableRow4,
-  Column1,
-  Column2,
-  Grades,
+  TableContainer,
+  TableColumn,
   GradeBagrut,
   ReqBagrut,
   UserBagrut,
@@ -150,5 +132,5 @@ export {
   UserPsyc,
   GradeTawjihi,
   ReqTawjihi,
-  UserTawjihi
+  UserTawjihi,
 };
