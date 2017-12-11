@@ -23,6 +23,8 @@ import {
   UserTawjihi,
 } from './../styles/details.js';
 
+import { fetchCareerById } from '../actions/fetch_careers';
+
 const Icon = styled.i`
   font-size: 2rem;
   color: #f06292;
@@ -64,9 +66,9 @@ const TitleTagWrapper = styled.div`
 `;
 
 class CareerDetails extends Component {
-  componentWillMount() {
+  componentDidMount() {
     console.log(this.props.match.params.id);
-    console.log(this.props);
+    this.props.fetchCareerById({ career_id: this.props.match.params.id });
   }
 
   render() {
@@ -133,8 +135,12 @@ class CareerDetails extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  fetchCareerById: id => dispatch(fetchCareerById(id)),
+});
+
 const mapStateToProps = state => ({
   matchedCareers: state.matchedCareers,
 });
 
-export default connect(mapStateToProps)(CareerDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(CareerDetails);
