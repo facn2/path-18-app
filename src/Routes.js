@@ -21,7 +21,7 @@ const Main = () => {
     <AppWrapper>
       <NavBar />
       <Switch>
-        <Route path="/" exact component={Login} />
+        <Route path="/login" exact component={Login} />
         <Route path="/Careers" exact component={Careers} />
         <Route path="/LikedCareers" exact component={LikedCareers} />
         <Route path="/Careers/Details/:title" exact component={CareerDetails} />

@@ -12,11 +12,7 @@ class Login extends Component {
           quisquam modi exercitationem tenetur a molestiae et at quod rem
           repellendus incidunt!
         </p>
-        <a
-          href={`https://www.facebook.com/v2.11/dialog/oauth?client_id=764320583760204&redirect_uri=http://localhost:4000/auth/facebook`}
-        >
-          Login
-        </a>
+        <a href="http://localhost:4000/hello/facebook">Login</a>
       </div>
     );
   }

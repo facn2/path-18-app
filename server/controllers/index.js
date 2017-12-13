@@ -22,17 +22,12 @@ passport.use(
     },
     function(accessToken, refreshToken, profile, cb) {
       console.log('HELLO!');
+      console.log('accessToken', accessToken);
+      console.log('refreshToken', refreshToken);
+      console.log('profile', profile);
       return cb(null, profile);
     }
   )
-);
-
-router.get(
-  '/auth/facebook',
-  passport.authenticate('facebook', {
-    successRedirect: 'http://localhost:3000/',
-    failureRedirect: '/login',
-  })
 );
 
 passport.serializeUser(function(user, cb) {
@@ -43,6 +38,20 @@ passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
 
+router.get(
+  '/auth/facebook',
+  passport.authenticate('facebook', {
+    successRedirect: 'http://localhost:3000/careers',
+    failureRedirect: '/login',
+  })
+);
+
+router.get('/hello/facebook', (req, res) => {
+  res.redirect(
+    'https://www.facebook.com/v2.11/dialog/oauth?client_id=764320583760204&redirect_uri=http://localhost:4000/auth/facebook'
+  );
+});
+
 router.get('/', addCareerController);
 
 router.get('/api/careers', allCareers);
@@ -50,15 +59,6 @@ router.get('/api/careers', allCareers);
 router.get('/api/careers/liked', likedCareers);
 
 router.post('/api/career/like', likeCareer);
-
-// router.get('/auth/facebook', passport.authenticate('facebook'));
-// router.get(
-//   '/auth/facebook/callback',
-//   passport.authenticate('facebook', {
-//     successRedirect: '/wooo',
-//     failureRedirect: '/login',
-//   })
-// );
 
 router.delete('/api/career/like/:id', unlikeCareer);
 
