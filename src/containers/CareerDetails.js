@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Slider from 'react-slick';
+import styled from 'styled-components';
 import {
   Icon,
   CareerLogo,
@@ -23,17 +25,35 @@ import {
 
 import { fetchDetails } from '../actions/career_details';
 
+const UniWrapper = styled.div``;
+
 class CareerDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
+  }
   componentDidMount() {
     this.props.fetchDetails({ career_id: this.props.match.params.id });
   }
 
+  next() {
+    this.slider.slickNext();
+  }
+  previous() {
+    this.slider.slickPrev();
+  }
+
   uniGrades = uni => (
-    <div key={uni.uni_id}>
+    <UniWrapper key={uni.uni_id}>
       <TitleWrapper>
-        <Icon className="material-icons">keyboard_arrow_left</Icon>
+        <Icon className="material-icons" onClick={this.previous}>
+          keyboard_arrow_left
+        </Icon>
         <SectionTitle>{`${uni.name_ar} University`}</SectionTitle>
-        <Icon className="material-icons">keyboard_arrow_right</Icon>
+        <Icon className="material-icons" onClick={this.next}>
+          keyboard_arrow_right
+        </Icon>
       </TitleWrapper>
       <TableContainer>
         <TableColumn>
@@ -61,10 +81,22 @@ class CareerDetails extends Component {
           <Grade>Psychometric</Grade>
         </TableColumn>
       </TableContainer>
-    </div>
+    </UniWrapper>
   );
 
   showDetails = () => {
+    const settings = {
+      dots: true,
+      centerMode: true,
+      accessibility: true,
+      speed: 700,
+      swipeToSlide: true,
+      draggable: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      centerPadding: 0,
+    };
     if (this.props.careerDetail.dataFetched) {
       return (
         <div>
@@ -106,14 +138,15 @@ class CareerDetails extends Component {
           </DetailSection>
 
           <DetailSection>
-            {this.props.careerDetail.career.uniGrades.map(this.uniGrades)}
+            <Slider ref={c => (this.slider = c)} {...settings}>
+              {this.props.careerDetail.career.uniGrades.map(this.uniGrades)}
+            </Slider>
           </DetailSection>
         </div>
       );
     }
     return <div>Loading career details</div>;
   };
-
   render() {
     return <CareerContainer>{this.showDetails()}</CareerContainer>;
   }
