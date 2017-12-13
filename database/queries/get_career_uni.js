@@ -7,12 +7,14 @@ const getUniByCareerId = (careerId, callback) => {
     WHERE UC.career_id = $1;
   `;
 
-  dbConnection.query(getUniByCareerIdQuery, [careerId], (error, response) => {
-    if (error) {
-      console.log('Fetch uni by id error: ', error);
-      return callback(error);
-    }
-    callback(null, response.rows);
+  return new Promise((resolve, reject) => {
+    dbConnection.query(getUniByCareerIdQuery, [careerId], (error, response) => {
+      if (error) {
+        console.log('Fetch uni by id error: ', error);
+        reject(error);
+      }
+      resolve(response.rows);
+    });
   });
 };
 

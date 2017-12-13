@@ -16,29 +16,19 @@ const allCareers = (request, response) => {
   });
 };
 
-const careerDetails = (request, response) => {
+const careerDetails = async (request, response) => {
   const careerId = request.params.id;
   const userId = 1;
   const details = {};
-  getCareerById(careerId, (error, result) => {
-    if (error) {
-      return response.send(error);
-    }
-    details.career = result;
-    getUniByCareerId(careerId, (error, result) => {
-      if (error) {
-        return response.send(error);
-      }
-      details.uniGrades = result;
-      getUserGrades(userId, (error, result) => {
-        if (error) {
-          return response.send(error);
-        }
-        details.userGrades = result;
-        response.send(details);
-      });
-    });
-  });
+  try {
+    details.career = await getCareerById(careerId);
+    details.uniGrades = await getUniByCareerId(careerId);
+    details.userGrades = await getUserGrades(userId);
+    response.send(details);
+  } catch (error) {
+    console.log(error);
+    response.send(error);
+  }
 };
 
 const likedCareers = (request, response) => {

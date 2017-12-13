@@ -7,13 +7,15 @@ const getUserGrades = (userId, callback) => {
     WHERE id = $1;
   `;
 
-  dbConnection.query(getUserGradesQuery, [userId], (error, response) => {
-    if (error) {
-      console.log('Fetch user grades error: ', error);
-      return callback(error);
-    }
-    console.log(response.rows);
-    callback(null, response.rows);
+  return new Promise((resolve, reject) => {
+    dbConnection.query(getUserGradesQuery, [userId], (error, response) => {
+      if (error) {
+        console.log('Fetch user grades error: ', error);
+        reject(error);
+      }
+      console.log(response.rows);
+      resolve(response.rows);
+    });
   });
 };
 
