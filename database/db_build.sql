@@ -4,11 +4,10 @@ DROP TABLE IF EXISTS users, careers, admins, universities, users_careers, univer
 
 CREATE TABLE users(
   id                    SERIAL    PRIMARY KEY,
-  first_name            TEXT      NOT NULL,
-  last_name             TEXT      NOT NULL,
-  email                 TEXT      NOT NULL UNIQUE,
-  grade_bagrut          INTEGER   NOT NULL,
-  grade_psychometric    INTEGER   NOT NULL,
+  fb_id                 BIGINT   NOT NULL,
+  name                  TEXT      NOT NULL,
+  grade_bagrut          INTEGER,
+  grade_psychometric    INTEGER,
   grade_tawjihi         INTEGER
 );
 
@@ -54,7 +53,7 @@ CREATE TABLE universities_careers(
   grade_tawjihi INTEGER
 );
 
-INSERT INTO users(first_name, last_name, email, grade_bagrut, grade_psychometric) values('matt', 'king', 'matt@king', 100, 200);
+INSERT INTO users(fb_id, name, grade_bagrut, grade_psychometric) values(10156265477282446, 'matt king', 100, 200);
 
 INSERT INTO careers (
   title_ar, title_he, tagline_ar, tagline_he,

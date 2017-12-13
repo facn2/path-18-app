@@ -24,6 +24,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "handlebars": "^4.0.11",
+    "jsonwebtoken": "^8.1.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "pg": "^7.4.0",
