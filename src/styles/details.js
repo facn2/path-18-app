@@ -30,10 +30,6 @@ const DetailSection = styled.div`
   padding: 1.5rem 0;
 `;
 
-const Salary = styled.h3`
-  font-size: 1.3rem;
-`;
-
 const SalaryStart = styled.div`
   text-align: right;
 `;
@@ -66,47 +62,7 @@ const TableColumn = styled.div`
   line-height: 1.2rem;
 `;
 
-const Grades = styled.p`
-  color: #00695c;
-  text-align: right;
-  font-size: 1rem;
-`;
-
-const GradeBagrut = styled.p`
-  text-align: right;
-`;
-
-const ReqBagrut = styled.p`
-  text-align: right;
-`;
-
-const UserBagrut = styled.p`
-  color: #269826;
-  text-align: right;
-`;
-
-const GradePsyc = styled.p`
-  text-align: right;
-`;
-
-const ReqPsyc = styled.p`
-  text-align: right;
-`;
-
-const UserPsyc = styled.p`
-  color: #d32f2f;
-  text-align: right;
-`;
-
-const GradeTawjihi = styled.p`
-  text-align: right;
-`;
-
-const ReqTawjihi = styled.p`
-  text-align: right;
-`;
-
-const UserTawjihi = styled.p`
+const Grade = styled.p`
   text-align: right;
 `;
 
@@ -168,13 +124,5 @@ export {
   TenYear,
   TableContainer,
   TableColumn,
-  GradeBagrut,
-  ReqBagrut,
-  UserBagrut,
-  GradePsyc,
-  ReqPsyc,
-  UserPsyc,
-  GradeTawjihi,
-  ReqTawjihi,
-  UserTawjihi,
+  Grade,
 };

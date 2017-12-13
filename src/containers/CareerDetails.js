@@ -18,15 +18,7 @@ import {
   TenYear,
   TableContainer,
   TableColumn,
-  GradeBagrut,
-  ReqBagrut,
-  UserBagrut,
-  GradePsyc,
-  ReqPsyc,
-  UserPsyc,
-  GradeTawjihi,
-  ReqTawjihi,
-  UserTawjihi,
+  Grade,
 } from './../styles/details.js';
 
 import { fetchDetails } from '../actions/career_details';
@@ -35,6 +27,42 @@ class CareerDetails extends Component {
   componentDidMount() {
     this.props.fetchDetails({ career_id: this.props.match.params.id });
   }
+
+  uniGrades = uni => (
+    <div key={uni.uni_id}>
+      <TitleWrapper>
+        <Icon className="material-icons">keyboard_arrow_left</Icon>
+        <SectionTitle>{`${uni.name_ar} University`}</SectionTitle>
+        <Icon className="material-icons">keyboard_arrow_right</Icon>
+      </TitleWrapper>
+      <TableContainer>
+        <TableColumn>
+          <Grade>Required</Grade>
+          <Grade> {uni.grade_bagrut} </Grade>
+          <Grade> {uni.grade_tawjihi} </Grade>
+          <Grade> {uni.grade_psychometric} </Grade>
+        </TableColumn>
+        <TableColumn>
+          <Grade>Yours</Grade>
+          <Grade>
+            {this.props.careerDetail.career.userGrades[0].grade_bagrut}
+          </Grade>
+          <Grade>
+            {this.props.careerDetail.career.userGrades[0].grade_tawjihi}
+          </Grade>
+          <Grade>
+            {this.props.careerDetail.career.userGrades[0].grade_psychometric}
+          </Grade>
+        </TableColumn>
+        <TableColumn>
+          <Grade>Type of Grade</Grade>
+          <Grade>Bagrut</Grade>
+          <Grade>Tawjihi</Grade>
+          <Grade>Psychometric</Grade>
+        </TableColumn>
+      </TableContainer>
+    </div>
+  );
 
   showDetails = () => {
     if (this.props.careerDetail.dataFetched) {
@@ -57,7 +85,7 @@ class CareerDetails extends Component {
           <DetailSection>
             <Description>
               {this.props.careerDetail.career.career[0].description_ar}
-            </Description>
+            </Description>{' '}
             <TitleWrapper>
               <SectionTitle>Salary</SectionTitle>
             </TitleWrapper>
@@ -78,32 +106,12 @@ class CareerDetails extends Component {
           </DetailSection>
 
           <DetailSection>
-            <TitleWrapper>
-              <Icon className="material-icons">keyboard_arrow_left</Icon>
-              <SectionTitle>Haifa University</SectionTitle>
-              <Icon className="material-icons">keyboard_arrow_right</Icon>
-            </TitleWrapper>
-            <TableContainer>
-              <TableColumn>
-                <ReqBagrut> 100.00 </ReqBagrut>
-                <ReqTawjihi> 99.00 </ReqTawjihi>
-                <ReqPsyc> 740 </ReqPsyc>
-              </TableColumn>
-              <TableColumn>
-                <UserBagrut> 101.5 </UserBagrut>
-                <UserTawjihi> - </UserTawjihi>
-                <UserPsyc> 720 </UserPsyc>
-              </TableColumn>
-              <TableColumn>
-                <GradeBagrut>Bagrut</GradeBagrut>
-                <GradeTawjihi>Tawjihi</GradeTawjihi>
-                <GradePsyc>Psychometric</GradePsyc>
-              </TableColumn>
-            </TableContainer>
+            {this.props.careerDetail.career.uniGrades.map(this.uniGrades)}
           </DetailSection>
         </div>
       );
     }
+    return <div>Loading career details</div>;
   };
 
   render() {

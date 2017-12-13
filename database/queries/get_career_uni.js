@@ -3,6 +3,7 @@ const dbConnection = require('../db_connection');
 const getUniByCareerId = (careerId, callback) => {
   const getUniByCareerIdQuery = `
     SELECT * FROM universities_careers UC
+    JOIN universities U ON UC.uni_id = U.id
     WHERE UC.career_id = $1;
   `;
 

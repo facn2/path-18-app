@@ -2,7 +2,7 @@ const dbConnection = require('../db_connection');
 
 const getUserGrades = (userId, callback) => {
   const getUserGradesQuery = `
-    SELECT (grade_bagrut, grade_psychometric, grade_tawjihi)
+    SELECT *
     FROM users
     WHERE id = $1;
   `;
@@ -12,6 +12,7 @@ const getUserGrades = (userId, callback) => {
       console.log('Fetch user grades error: ', error);
       return callback(error);
     }
+    console.log(response.rows);
     callback(null, response.rows);
   });
 };
