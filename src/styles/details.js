@@ -30,19 +30,7 @@ const DetailSection = styled.div`
   padding: 1.5rem 0;
 `;
 
-const SalaryStart = styled.div`
-  text-align: right;
-`;
-
-const Start = styled.div`
-  text-align: right;
-`;
-
-const SalaryTenYear = styled.div`
-  text-align: right;
-`;
-
-const TenYear = styled.div`
+const Salary = styled.div`
   text-align: right;
 `;
 
@@ -64,6 +52,18 @@ const TableColumn = styled.div`
 
 const Grade = styled.p`
   text-align: right;
+  padding-bottom: 0.1rem;
+  color: ${props =>
+    (props.passed === 'passed' && '#26a69a') ||
+    (props.passed === 'not passed' && '#d32f2f') ||
+    '#455a64'};
+`;
+
+const GradeTitle = styled.h4`
+  text-align: right;
+  font-size: 0.8rem;
+  color: #9e9e9e;
+  padding-bottom: 0.4rem;
 `;
 
 const Icon = styled.i`
@@ -88,7 +88,7 @@ const TitleWrapper = styled.div`
 `;
 
 const Description = styled.div`
-  padding: 0 1rem;
+  padding: 0 1rem 1rem;
 `;
 
 const TopSection = styled.div`
@@ -106,6 +106,8 @@ const TitleTagWrapper = styled.div`
   padding-right: 0.8rem;
 `;
 
+const UniWrapper = styled.div``;
+
 export {
   Icon,
   CareerLogo,
@@ -118,11 +120,10 @@ export {
   CareerTitle,
   SectionTitle,
   DetailSection,
-  SalaryStart,
-  Start,
-  SalaryTenYear,
-  TenYear,
+  Salary,
   TableContainer,
   TableColumn,
   Grade,
+  GradeTitle,
+  UniWrapper,
 };
