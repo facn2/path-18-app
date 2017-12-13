@@ -13,10 +13,7 @@ import {
   CareerTitle,
   SectionTitle,
   DetailSection,
-  SalaryStart,
-  Start,
-  SalaryTenYear,
-  TenYear,
+  Salary,
   TableContainer,
   TableColumn,
   Grade,
@@ -130,22 +127,22 @@ class CareerDetails extends Component {
           <DetailSection>
             <Description>
               {this.props.careerDetail.career.career[0].description_ar}
-            </Description>{' '}
+            </Description>
             <TitleWrapper>
               <SectionTitle>Salary</SectionTitle>
             </TitleWrapper>
             <TableContainer>
               <TableColumn>
-                <Start>
+                <Salary>
                   {this.props.careerDetail.career.career[0].salary_start} ₪
-                </Start>
-                <TenYear>
+                </Salary>
+                <Salary>
                   {this.props.careerDetail.career.career[0].salary_ten_year} ₪
-                </TenYear>
+                </Salary>
               </TableColumn>
               <TableColumn>
-                <SalaryStart>Junior </SalaryStart>
-                <SalaryTenYear>Senior</SalaryTenYear>
+                <Salary>Junior </Salary>
+                <Salary>Senior</Salary>
               </TableColumn>
             </TableContainer>
           </DetailSection>

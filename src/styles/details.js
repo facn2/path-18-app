@@ -30,19 +30,7 @@ const DetailSection = styled.div`
   padding: 1.5rem 0;
 `;
 
-const SalaryStart = styled.div`
-  text-align: right;
-`;
-
-const Start = styled.div`
-  text-align: right;
-`;
-
-const SalaryTenYear = styled.div`
-  text-align: right;
-`;
-
-const TenYear = styled.div`
+const Salary = styled.div`
   text-align: right;
 `;
 
@@ -100,7 +88,7 @@ const TitleWrapper = styled.div`
 `;
 
 const Description = styled.div`
-  padding: 0 1rem;
+  padding: 0 1rem 1rem;
 `;
 
 const TopSection = styled.div`
@@ -132,10 +120,7 @@ export {
   CareerTitle,
   SectionTitle,
   DetailSection,
-  SalaryStart,
-  Start,
-  SalaryTenYear,
-  TenYear,
+  Salary,
   TableContainer,
   TableColumn,
   Grade,

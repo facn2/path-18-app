@@ -13,7 +13,6 @@ const getUserGrades = (userId, callback) => {
         console.log('Fetch user grades error: ', error);
         reject(error);
       }
-      console.log(response.rows);
       resolve(response.rows);
     });
   });
