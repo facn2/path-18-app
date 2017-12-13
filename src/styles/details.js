@@ -64,6 +64,18 @@ const TableColumn = styled.div`
 
 const Grade = styled.p`
   text-align: right;
+  padding-bottom: 0.1rem;
+  color: ${props =>
+    props.passed === 'passed'
+      ? '#26a69a'
+      : props.passed === 'not passed' ? '#d32f2f' : '#455a64'};
+`;
+
+const GradeTitle = styled.h4`
+  text-align: right;
+  font-size: 0.8rem;
+  color: #9e9e9e;
+  padding-bottom: 0.4rem;
 `;
 
 const Icon = styled.i`
@@ -125,4 +137,5 @@ export {
   TableContainer,
   TableColumn,
   Grade,
+  GradeTitle,
 };

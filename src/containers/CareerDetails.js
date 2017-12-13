@@ -21,6 +21,7 @@ import {
   TableContainer,
   TableColumn,
   Grade,
+  GradeTitle,
 } from './../styles/details.js';
 
 import { fetchDetails } from '../actions/career_details';
@@ -44,6 +45,13 @@ class CareerDetails extends Component {
     this.slider.slickPrev();
   }
 
+  compareGrades(userGradeKey, uniGrade) {
+    if (this.props.careerDetail.career.userGrades[0][userGradeKey] > uniGrade) {
+      return 'passed';
+    }
+    return 'not passed';
+  }
+
   uniGrades = uni => (
     <UniWrapper key={uni.uni_id}>
       <TitleWrapper>
@@ -57,25 +65,32 @@ class CareerDetails extends Component {
       </TitleWrapper>
       <TableContainer>
         <TableColumn>
-          <Grade>Required</Grade>
+          <GradeTitle>Yours</GradeTitle>
+          <Grade passed={this.compareGrades('grade_bagrut', uni.grade_bagrut)}>
+            {this.props.careerDetail.career.userGrades[0].grade_bagrut}
+          </Grade>
+          <Grade
+            passed={this.compareGrades('grade_tawjihi', uni.grade_tawjihi)}
+          >
+            {this.props.careerDetail.career.userGrades[0].grade_tawjihi}
+          </Grade>
+          <Grade
+            passed={this.compareGrades(
+              'grade_psychometric',
+              uni.grade_psychometric
+            )}
+          >
+            {this.props.careerDetail.career.userGrades[0].grade_psychometric}
+          </Grade>
+        </TableColumn>
+        <TableColumn>
+          <GradeTitle>Required</GradeTitle>
           <Grade> {uni.grade_bagrut} </Grade>
           <Grade> {uni.grade_tawjihi} </Grade>
           <Grade> {uni.grade_psychometric} </Grade>
         </TableColumn>
         <TableColumn>
-          <Grade>Yours</Grade>
-          <Grade>
-            {this.props.careerDetail.career.userGrades[0].grade_bagrut}
-          </Grade>
-          <Grade>
-            {this.props.careerDetail.career.userGrades[0].grade_tawjihi}
-          </Grade>
-          <Grade>
-            {this.props.careerDetail.career.userGrades[0].grade_psychometric}
-          </Grade>
-        </TableColumn>
-        <TableColumn>
-          <Grade>Type of Grade</Grade>
+          <GradeTitle>Type of Grade</GradeTitle>
           <Grade>Bagrut</Grade>
           <Grade>Tawjihi</Grade>
           <Grade>Psychometric</Grade>
@@ -89,7 +104,7 @@ class CareerDetails extends Component {
       dots: true,
       centerMode: true,
       accessibility: true,
-      speed: 700,
+      speed: 300,
       swipeToSlide: true,
       draggable: true,
       infinite: true,
@@ -124,10 +139,10 @@ class CareerDetails extends Component {
             <TableContainer>
               <TableColumn>
                 <Start>
-                  ₪ {this.props.careerDetail.career.career[0].salary_start}
+                  {this.props.careerDetail.career.career[0].salary_start} ₪
                 </Start>
                 <TenYear>
-                  ₪ {this.props.careerDetail.career.career[0].salary_ten_year}
+                  {this.props.careerDetail.career.career[0].salary_ten_year} ₪
                 </TenYear>
               </TableColumn>
               <TableColumn>
