@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
-import styled from 'styled-components';
 import {
   Icon,
   CareerLogo,
@@ -22,11 +21,10 @@ import {
   TableColumn,
   Grade,
   GradeTitle,
+  UniWrapper,
 } from './../styles/details.js';
 
 import { fetchDetails } from '../actions/career_details';
-
-const UniWrapper = styled.div``;
 
 class CareerDetails extends Component {
   constructor(props) {

@@ -66,9 +66,9 @@ const Grade = styled.p`
   text-align: right;
   padding-bottom: 0.1rem;
   color: ${props =>
-    props.passed === 'passed'
-      ? '#26a69a'
-      : props.passed === 'not passed' ? '#d32f2f' : '#455a64'};
+    (props.passed === 'passed' && '#26a69a') ||
+    (props.passed === 'not passed' && '#d32f2f') ||
+    '#455a64'};
 `;
 
 const GradeTitle = styled.h4`
@@ -118,6 +118,8 @@ const TitleTagWrapper = styled.div`
   padding-right: 0.8rem;
 `;
 
+const UniWrapper = styled.div``;
+
 export {
   Icon,
   CareerLogo,
@@ -138,4 +140,5 @@ export {
   TableColumn,
   Grade,
   GradeTitle,
+  UniWrapper,
 };
