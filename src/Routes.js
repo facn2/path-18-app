@@ -22,7 +22,7 @@ const Main = () => {
       <Switch>
         <Route path="/Careers" exact component={Careers} />
         <Route path="/LikedCareers" exact component={LikedCareers} />
-        <Route path="/Careers/Details/:title" exact component={CareerDetails} />
+        <Route path="/Career/Details/:id" exact component={CareerDetails} />
       </Switch>
     </AppWrapper>
   );

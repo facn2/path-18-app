@@ -37,8 +37,8 @@ CREATE TABLE universities(
   id              SERIAL    PRIMARY KEY,
   name_ar         TEXT      NOT NULL,
   name_he         TEXT      NOT NULL,
-  location_ar     TEXT      NOT NULL,
-  location_he     TEXT      NOT NULL
+  location_ar     TEXT,
+  location_he     TEXT
 );
 
 CREATE TABLE users_careers(
@@ -54,7 +54,9 @@ CREATE TABLE universities_careers(
   grade_tawjihi INTEGER
 );
 
-INSERT INTO users(first_name, last_name, email, grade_bagrut, grade_psychometric) values('matt', 'king', 'matt@king', 100, 200);
+INSERT INTO users(first_name, last_name, email, grade_bagrut, grade_psychometric, grade_tawjihi)
+  VALUES
+  ('matt', 'king', 'matt@king', 100, 200, 400);
 
 INSERT INTO careers (
   title_ar, title_he, tagline_ar, tagline_he,
@@ -66,5 +68,16 @@ INSERT INTO careers (
   ('Web developer', 'Web developer', 'Helps websites', 'Helps websites', 'website doctor', 'website doctor', '100000', '2000', 'important_devices', '#FFD54F'),
   ('Teacher', 'Teacher', 'Helps children', 'Helps children', 'children helper', 'children helper', '100000', '2000', 'school', '#2672a6');
 
+INSERT INTO universities(name_ar, name_he)
+  VALUES
+  ('Haifa', 'Haifa'),
+  ('Tel Aviv', 'Tel Aviv'),
+  ('Technion', 'Technion');
+
+  INSERT INTO universities_careers(uni_id, career_id, grade_bagrut, grade_psychometric, grade_tawjihi)
+  VALUES
+  (1, 1, 500, 666, 123),
+  (2, 1, 400, 783, 1124),
+  (3, 1, 734, 229, 182);
 
 COMMIT;
