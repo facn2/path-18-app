@@ -97,19 +97,22 @@ class LikedCareers extends Component {
     this.props.fetchLikedCareers();
   }
 
-  likedCareersList = () => {};
-
   likedCareersList = career => (
     <Fade key={`career${career.id}`}>
       <LikedListItem>
         <DeleteIcon
           className="material-icons"
           onClick={() =>
-            career.isDeleting ? null : this.removeFromList(career.id)}
+            career.isDeleting ? null : this.removeFromList(career.id)
+          }
         >
           clear
         </DeleteIcon>
-        <CareerLink to={{ pathname: `career/${career.title_ar}` }}>
+        <CareerLink
+          to={{
+            pathname: `career/details/${career.id}`,
+          }}
+        >
           <LikedListText>{career.title_ar}</LikedListText>
         </CareerLink>
         <CategoryIcon className="material-icons">
