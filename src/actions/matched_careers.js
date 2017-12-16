@@ -19,8 +19,8 @@ export const unlikeCareer = data => {
   return dispatch => {
     dispatch({
       type: UNLIKE_CAREER,
-      payload: axios.delete(`api/career/like/${data.career_id}`),
-      meta: { id: data.career_id }.then(res => {
+      meta: { id: data.career_id },
+      payload: axios.delete(`api/career/like/${data.career_id}`).then(res => {
         if (res.status !== 200) throw new Error('Bad status code');
         return res;
       }),
