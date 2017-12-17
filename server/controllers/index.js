@@ -7,7 +7,13 @@ const axios = require('axios');
 const Strategy = require('passport-facebook').Strategy;
 const jwt = require('jsonwebtoken');
 
-const { allCareers, likedCareers, likeCareer, unlikeCareer } = require('./api');
+const {
+  allCareers,
+  likedCareers,
+  likeCareer,
+  unlikeCareer,
+  careerDetails,
+} = require('./api');
 
 const { addCareerController, addCareer } = require('./addCareer');
 const getUsersByFb = require('../../database/queries/get_users_fb');
@@ -89,6 +95,8 @@ router.get('/api/careers/liked', likedCareers);
 router.post('/api/career/like', likeCareer);
 
 router.delete('/api/career/like/:id', unlikeCareer);
+
+router.get('/api/details/:id', careerDetails);
 
 router.post('/add-career', addCareer);
 

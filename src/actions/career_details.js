@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { FETCH_CAREERS } from '../constants';
+import { FETCH_DETAILS } from '../constants';
 
-export const fetchCareers = () => {
+export const fetchDetails = id => {
   return dispatch => {
     dispatch({
-      type: FETCH_CAREERS,
-      payload: axios.get('/api/careers').then(res => {
+      type: FETCH_DETAILS,
+      payload: axios.get(`/api/details/${id.career_id}`).then(res => {
         if (res.status !== 200) throw new Error('Bad status code');
         return res;
       }),
