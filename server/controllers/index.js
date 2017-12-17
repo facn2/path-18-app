@@ -86,7 +86,7 @@ router.get('/hello/facebook', (req, res) => {
   );
 });
 
-router.get('/', addCareerController);
+router.get('/add/career', addCareerController);
 
 router.get('/api/careers', allCareers);
 
@@ -99,5 +99,9 @@ router.delete('/api/career/like/:id', unlikeCareer);
 router.get('/api/details/:id', careerDetails);
 
 router.post('/add-career', addCareer);
+
+router.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'assets', 'index.html'));
+});
 
 module.exports = router;
