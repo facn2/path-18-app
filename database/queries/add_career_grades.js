@@ -1,6 +1,6 @@
 const dbConnection = require('../db_connection');
 
-const addCareerGrade = (data, callback) => {
+const addCareerGrades = (data, careerId) => {
   const uniGradeQuery = `
   INSERT INTO universities_careers
   (uni_id, career_id, grade_bagrut, grade_psychometric, grade_tawjihi)
@@ -16,11 +16,23 @@ const addCareerGrade = (data, callback) => {
   const psychGrades = data.grade_psychometric;
   const tawjihiGrades = data.grade_tawjihi;
 
-  const gradeInputs = bagrutGrades.reduce((acc, cur, index) =>
-    acc.concat([cur, psychGrades[index], tawjihiGrades[index]])
+  const gradeInputs = bagrutGrades.reduce(
+    (acc, cur, index) =>
+      acc.concat([cur, psychGrades[index], tawjihiGrades[index]]),
+    []
   );
 
-  console.log(gradeInputs.length);
+  const inputs = [careerId[0].id, ...gradeInputs];
 
-  // dbConnection.query(uniGradeQuery, gradeInputs);
+  return new Promise((resolve, reject) => {
+    dbConnection.query(uniGradeQuery, inputs, (error, response) => {
+      if (error) {
+        console.log('Add uni grade error: ', error);
+        reject(error);
+      }
+      resolve(error);
+    });
+  });
 };
+
+module.exports = addCareerGrades;

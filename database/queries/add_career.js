@@ -35,12 +35,14 @@ const addCareer = (data, callback) => {
     icon_color,
   ];
 
-  dbConnection.query(newCareerQuery, dataItems, (err, res) => {
-    if (err) {
-      console.log('Add career error: ', error);
-      return callback(err);
-    }
-    return callback(null, res.rows);
+  return new Promise((resolve, reject) => {
+    dbConnection.query(newCareerQuery, dataItems, (err, res) => {
+      if (err) {
+        console.log('Add career error: ', err);
+        reject(err);
+      }
+      resolve(res.rows);
+    });
   });
 };
 

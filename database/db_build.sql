@@ -48,9 +48,9 @@ CREATE TABLE users_careers(
 CREATE TABLE universities_careers(
   uni_id      INTEGER   REFERENCES  universities (id),
   career_id   INTEGER   REFERENCES  careers (id),
-  grade_bagrut INTEGER,
-  grade_psychometric INTEGER,
-  grade_tawjihi INTEGER
+  grade_bagrut TEXT,
+  grade_psychometric TEXT,
+  grade_tawjihi TEXT
 );
 
 INSERT INTO users(fb_id, name, grade_bagrut, grade_psychometric, grade_tawjihi)
