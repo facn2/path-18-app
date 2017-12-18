@@ -1,10 +1,24 @@
-<section class="uni-field">
-  <input class="box" type="checkbox" id="{{name}}">
-  <label class="university" for="{{name}}">{{title}} University</label>
-  <label class="grade-title" for="bagrut-{{name}}">Required Bagrut Grade:</label>
-  <input lass="grade-input" type="text" id="bagrut-{{name}}" name="grade_bagrut">
-  <label class="grade-title" for="psyc-{{name}}">Required Psychometric Grade:</label>
-  <input lass="grade-input" type="text" id="psyc-{{name}}" name="grade_psychometric">
-  <label class="grade-title" for="tawjihi-{{name}}">Required Tawjihi Grade:</label>
-  <input lass="grade-input" type="text" id="psyc-{{name}}" name="grade_tawjihi">
+<section class="university">
+  <input class="hidden" type="checkbox" name="uni-ids" value={{id}} id="{{name}}">
+  <section class="university__form">
+
+    <label class="university__form__title" for="{{name}}">{{title}} University
+      <i class="material-icons university__form__on">check</i>
+      <i class="material-icons university__form__off">clear</i></label>
+    <p class="university__form__field-hint">
+      Required grades:
+    </p>
+    <div class="university__form__field">
+      <label class="university__form__field__label" for="bagrut-{{name}}">Bagrut</label>
+      <input class="university__form__field__input" type="number" id="bagrut-{{name}}" name="grade_bagrut_{{id}}">
+    </div>
+    <div class="university__form__field">
+      <label class="university__form__field__label" for="psyc-{{name}}">Psychometric</label>
+      <input class="university__form__field__input" type="number" id="psyc-{{name}}" name="grade_psychometric_{{id}}">
+    </div>
+    <div class="university__form__field">
+      <label class="university__form__field__label" for="tawjihi-{{name}}">Tawjihi</label>
+      <input class="university__form__field__input" type="number" id="tawjihi-{{name}}" name="grade_tawjihi_{{id}}">
+    </div>
+  </section>
 </section>

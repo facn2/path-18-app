@@ -13,7 +13,7 @@ const unlikeCareer = (userId, careerId) => {
       (error, response) => {
         if (error) {
           console.log('Unlike career error: ', error);
-          reject(error);
+          return reject(error);
         }
         resolve(response.rows);
       }

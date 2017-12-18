@@ -1,3 +1,11 @@
+body {
+  font-family: 'Heebo', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .radio {
   display: none;
 }
@@ -36,7 +44,9 @@
 }
 .form {
   font-size: 1.2rem;
-  max-width: 70%;
+  width: 100%;
+  padding: 0 3rem;
+  max-width: 60rem;
   display: block;
   margin: 0 auto;
 }
@@ -73,29 +83,113 @@
 }
 
 /* UNIVERSITIES */
+.universities {
+  font-size: 0;
+}
+
 .uni-title {
   font-size: 2rem;
   color: #424242;
   text-align: center;
 }
-.universities {
-  margin: 0 3rem;
+
+.university input[type='checkbox']:checked ~ .university__form {
+  opacity: 1;
+  background-color: white;
 }
-.universities input {
-  display: block;
-  line-height: 2rem;
-}
+
 .university {
-  font-size: 1.4rem;
+  display: inline-block;
+  line-height: 2rem;
+  width: 50%;
+  font-size: 0;
+  padding: 0.3rem;
+}
+
+.university__form {
+  opacity: 0.5;
+  border: 2px solid #eee;
+  border-radius: 0.4rem;
+  width: 100%;
+  padding: 1rem 1.5rem 0.7rem 1.5rem;
+  font-size: 0rem;
+  background-color: #eee;
+  position: relative;
+}
+
+.university__form__on,
+.university__form__off {
+  display: none;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.2rem;
+  width: 1rem;
+  height: 1rem;
+  font-size: 1.3rem;
+  color: green;
+  font-weight: 600;
+}
+
+.university__form__off {
+  display: block;
+  color: red;
+}
+
+.university
+  input[type='checkbox']:checked
+  ~ .university__form
+  .university__form__on {
+  display: block;
+}
+
+.university
+  input[type='checkbox']:checked
+  ~ .university__form
+  .university__form__off {
+  display: none;
+}
+
+.university__form__title {
+  font-size: 1rem;
   color: #424242;
   font-weight: bold;
   display: block;
+  cursor: pointer;
 }
-.uni-field {
-  margin: 3rem 0;
+
+.university__form__field-hint {
+  margin: 0.7rem 0 0.1rem 0;
+  font-size: 0.8rem;
+  line-height: 1;
 }
-.grade-input {
-  margin-top: 0.3rem;
+
+.university__form__field {
+  width: 33%;
+  display: inline-block;
+  padding: 0.3rem;
+}
+
+.university__form__field__label {
+  width: 4rem;
+  display: block;
+  margin: 0.4rem 0 0.3rem 0;
+  line-height: 1;
+  font-size: 0.8rem;
+}
+
+.university__form__field__input {
+  padding: 0.4rem;
+  width: 100%;
+  background-color: white;
+}
+
+.hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
 }
 
 .submit {
