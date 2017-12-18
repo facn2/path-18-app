@@ -6,14 +6,15 @@ const getCareerById = require('../../database/queries/career_by_id');
 const getUniByCareerId = require('../../database/queries/get_career_uni');
 const getUserGrades = require('../../database/queries/get_user_grades');
 
-const allCareers = (request, response) => {
+const allCareers = async (request, response) => {
   const userId = 1;
-  getAllCareersDb(userId, (error, result) => {
-    if (error) {
-      return response.send(error);
-    }
-    response.send(result);
-  });
+  try {
+    const careers = await getAllCareersDb(userId);
+    response.send(careers);
+  } catch (error) {
+    console.log(error);
+    response.send(error);
+  }
 };
 
 const careerDetails = async (request, response) => {
@@ -31,36 +32,39 @@ const careerDetails = async (request, response) => {
   }
 };
 
-const likedCareers = (request, response) => {
+const likedCareers = async (request, response) => {
   const userId = 1;
-  getLikedCareersDb(userId, (error, result) => {
-    if (error) {
-      return response.send(error);
-    }
-    response.send(result);
-  });
+  try {
+    const careers = await getLikedCareersDb(userId);
+    response.send(careers);
+  } catch (error) {
+    console.log(error);
+    response.send(error);
+  }
 };
 
-const likeCareer = (request, response) => {
+const likeCareer = async (request, response) => {
   const userId = 1;
   const careerId = request.body.career_id;
-  likeCareerDb(userId, careerId, (error, result) => {
-    if (error) {
-      return response.send(error);
-    }
-    response.send(result);
-  });
+  try {
+    const like = await likeCareerDb(userId, careerId);
+    response.send(like);
+  } catch (error) {
+    console.log(error);
+    response.send(error);
+  }
 };
 
-const unlikeCareer = (request, response) => {
+const unlikeCareer = async (request, response) => {
   const userId = 1;
   const careerId = request.params.id;
-  unlikeCareerDb(userId, careerId, (error, result) => {
-    if (error) {
-      return response.send(error);
-    }
-    response.send(result);
-  });
+  try {
+    const unlike = await unlikeCareerDb(userId, careerId);
+    response.send(unlike);
+  } catch (error) {
+    console.log(error);
+    response.send(error);
+  }
 };
 
 module.exports = {
