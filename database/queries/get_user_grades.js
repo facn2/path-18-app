@@ -11,7 +11,7 @@ const getUserGrades = (userId, callback) => {
     dbConnection.query(getUserGradesQuery, [userId], (error, response) => {
       if (error) {
         console.log('Fetch user grades error: ', error);
-        reject(error);
+        return reject(error);
       }
       resolve(response.rows);
     });

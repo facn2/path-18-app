@@ -10,7 +10,7 @@ const getLikedCareers = userId => {
     dbConnection.query(getLikedCareersQuery, [userId], (error, response) => {
       if (error) {
         console.log('Get liked careers error: ', error);
-        reject(error);
+        return reject(error);
       }
       resolve(response.rows);
     });

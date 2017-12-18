@@ -10,7 +10,7 @@ const getCareerById = careerId => {
     dbConnection.query(getCareerByIdQuery, [careerId], (error, response) => {
       if (error) {
         console.log('Fetch career by id error: ', error);
-        reject(error);
+        return reject(error);
       }
       resolve(response.rows);
     });

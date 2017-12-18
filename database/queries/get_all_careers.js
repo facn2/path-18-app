@@ -11,7 +11,7 @@ const getAllCareers = userId => {
     dbConnection.query(allCareersQuery, [userId], (error, response) => {
       if (error) {
         console.log('Get all careers error: ', error);
-        reject(error);
+        return reject(error);
       } else {
         resolve(response.rows);
       }

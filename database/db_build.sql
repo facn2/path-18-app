@@ -52,4 +52,16 @@ CREATE TABLE universities_careers(
   grade_tawjihi INTEGER
 );
 
+INSERT INTO universities(name_ar, name_he)
+  VALUES
+  ('Haifa', 'Haifa'),
+  ('Technion', 'Technion'),
+  ('Hebrew', 'Hebrew'),
+  ('Tel Aviv', 'Tel Aviv'),
+  ('Arab American', 'Arab American'),
+  ('Ben Gurion', 'Ben Gurion');
+
+INSERT INTO users(fb_id, name, grade_bagrut, grade_psychometric, grade_tawjihi)
+  VALUES (234567, 'king', 95, 625, 95);
+
 COMMIT;

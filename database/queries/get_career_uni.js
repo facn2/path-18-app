@@ -11,7 +11,7 @@ const getUniByCareerId = (careerId, callback) => {
     dbConnection.query(getUniByCareerIdQuery, [careerId], (error, response) => {
       if (error) {
         console.log('Fetch uni by id error: ', error);
-        reject(error);
+        return reject(error);
       }
       resolve(response.rows);
     });

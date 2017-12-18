@@ -39,7 +39,7 @@ const addCareer = (data, callback) => {
     dbConnection.query(newCareerQuery, dataItems, (err, res) => {
       if (err) {
         console.log('Add career error: ', err);
-        reject(err);
+        return reject(err);
       }
       resolve(res.rows);
     });
