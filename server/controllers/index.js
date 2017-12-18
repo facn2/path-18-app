@@ -27,10 +27,11 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: 'http://localhost:4000/auth/facebook',
+      callbackURL: 'http://localhost:4000/__/auth/facebook',
     },
     (accessToken, refreshToken, profile, cb) => {
       getUsersByFb(profile.id, (error, response) => {
+        console.log('hi');
         if (error) {
           // TODO redirect to login with error message?
           console.log(error);
@@ -73,20 +74,16 @@ passport.deserializeUser(function(obj, cb) {
 });
 
 router.get(
-  '/auth/facebook',
+  '/__/auth/facebook',
   passport.authenticate('facebook', {
-    successRedirect: 'http://localhost:3000/careers',
+    successRedirect: '/careers',
     failureRedirect: '/login',
   })
 );
 
-router.get('/hello/facebook', (req, res) => {
-  res.redirect(
-    'https://www.facebook.com/v2.11/dialog/oauth?client_id=764320583760204&redirect_uri=http://localhost:4000/auth/facebook'
-  );
-});
+router.get('/__/hello/facebook', passport.authenticate('facebook'));
 
-router.get('/add/career', addCareerController);
+router.get('/__/add/career', addCareerController);
 
 router.get('/api/careers', allCareers);
 
@@ -101,6 +98,7 @@ router.get('/api/details/:id', careerDetails);
 router.post('/add-career', addCareer);
 
 router.get('*', (req, res) => {
+  console.log('hitherebuggybuddy');
   res.sendFile(path.resolve(__dirname, '..', 'assets', 'index.html'));
 });
 

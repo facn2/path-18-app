@@ -12,7 +12,7 @@ class Login extends Component {
           quisquam modi exercitationem tenetur a molestiae et at quod rem
           repellendus incidunt!
         </p>
-        <a href="http://localhost:4000/hello/facebook">Login</a>
+        <a href="/__/hello/facebook">Login</a>
       </div>
     );
   }
