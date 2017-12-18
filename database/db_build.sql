@@ -53,4 +53,13 @@ CREATE TABLE universities_careers(
   grade_tawjihi INTEGER
 );
 
+INSERT INTO universities(name_ar, name_he)
+  VALUES
+  ('Haifa', 'Haifa'),
+  ('Technion', 'Technion'),
+  ('Hebrew', 'Hebrew'),
+  ('Tel Aviv', 'Tel Aviv'),
+  ('Arab American', 'Arab American'),
+  ('Ben Gurion', 'Ben Gurion');
+
 COMMIT;
