@@ -62,4 +62,7 @@ INSERT INTO universities(name_ar, name_he)
   ('Arab American', 'Arab American'),
   ('Ben Gurion', 'Ben Gurion');
 
+INSERT INTO users(fb_id, name, grade_bagrut, grade_psychometric, grade_tawjihi)
+  VALUES (234567, 'king', 95, 625, 95);
+
 COMMIT;
