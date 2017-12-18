@@ -1,20 +1,23 @@
 <h2 class="form-title">Please add a career here</h2>
 
 <form class="form" action="/add-career" method="post">
-  <section class="form-arabic">
-    {{>input attr="title_ar" label="Career title (Arabic):" }} {{>input attr="tagline_ar" label="Career tagline (Arabic):" }} {{>input attr="description_ar" label="Description title (Arabic):" }}
-  </section>
 
-  <section class="form-hebrew">
-    {{>input attr="title_he" label="Career title (Hebrew):" }} {{>input attr="tagline_he" label="Career tagline (Hebrew):" }} {{>input attr="description_he" label="Description title (Hebrew):" }}
+  <section class="form-main">
+    <section class="form-arabic">
+      {{>input attr="title_ar" label="Career title (Arabic):" }} {{>input attr="tagline_ar" label="Career tagline (Arabic):" }} {{>input attr="description_ar" label="Description title (Arabic):" }}
+    </section>
+
+    <section class="form-hebrew">
+      {{>input attr="title_he" label="Career title (Hebrew):" }} {{>input attr="tagline_he" label="Career tagline (Hebrew):" }} {{>input attr="description_he" label="Description title (Hebrew):" }}
+    </section>
   </section>
 
   <section class="general-inputs">
     {{>input attr="salary_start" label="Junior salary:" }} {{>input attr="salary_ten_year" label="Senior salary:" }}
   </section>
 
+  <p class="icon-text">Select a relevant icon:</p>
   <section class="icon-wrapper">
-    <p>Select a relevant icon:</p>
     {{#each careerNames }}
       {{>icon name=this }}
     {{/each}}
@@ -27,12 +30,12 @@
   </section>
 
   <div class="universities">
-    <h3 class="form-title">Universities</h3>
+    <h3 class="uni-title">Universities</h3>
     {{#each universities}}
       {{>universities name=this.name title=this.title}}
     {{/each}}
   </div>
 
-  <input type="submit" value="Submit">
+  <input class="submit" type="submit" value="Submit">
 
 </form>

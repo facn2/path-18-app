@@ -27,3 +27,81 @@
 .color-wrapper input[type='radio']:checked + label {
   border: #424242 0.2rem solid;
 }
+
+/* FORM */
+.form-title {
+  font-size: 2.5rem;
+  color: #424242;
+  text-align: center;
+}
+.form {
+  font-size: 1.2rem;
+}
+.form-main {
+  display: flex;
+  justify-content: center;
+}
+.form-arabic,
+.form-hebrew,
+.general-inputs {
+  margin: 0 3rem;
+}
+.form-arabic input,
+.form-hebrew input,
+.general-inputs input {
+  width: 100%;
+  line-height: 2rem;
+  margin: 1rem;
+}
+.general-inputs {
+  width: 50%;
+  margin: 0 auto;
+}
+/* ICONS */
+.icon-text {
+  font-size: 1.5rem;
+  margin: 2rem;
+}
+.icon-wrapper,
+.color-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* UNIVERSITIES */
+.uni-title {
+  font-size: 2rem;
+  color: #424242;
+  text-align: center;
+}
+.universities {
+  margin: 0 3rem;
+}
+.universities input {
+  display: block;
+  line-height: 2rem;
+}
+.university {
+  font-size: 1.4rem;
+  color: #424242;
+  font-weight: bold;
+  display: block;
+}
+.uni-field {
+  margin: 3rem 0;
+}
+.grade-input {
+  margin-top: 0.3rem;
+}
+
+.submit {
+  font-size: 1.7rem;
+  padding: 0.5rem 1rem;
+  background-color: #26a69a;
+  color: #424242;
+  display: block;
+  margin: 2rem auto;
+  border: none;
+  border-radius: 1rem;
+}
