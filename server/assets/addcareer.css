@@ -1,3 +1,11 @@
+body {
+  font-family: 'Heebo', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .radio {
   display: none;
 }
@@ -26,4 +34,171 @@
 
 .color-wrapper input[type='radio']:checked + label {
   border: #424242 0.2rem solid;
+}
+
+/* FORM */
+.form-title {
+  font-size: 2.5rem;
+  color: #424242;
+  text-align: center;
+}
+.form {
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 0 3rem;
+  max-width: 60rem;
+  display: block;
+  margin: 0 auto;
+}
+.form-main {
+  display: flex;
+  justify-content: center;
+}
+.form-arabic,
+.form-hebrew,
+.general-inputs {
+  margin: 0 3rem;
+}
+.form-arabic input,
+.form-hebrew input,
+.general-inputs input {
+  width: 100%;
+  line-height: 2rem;
+  margin: 1rem;
+}
+.general-inputs {
+  width: 50%;
+  margin: 0 auto;
+}
+/* ICONS */
+.icon-text {
+  font-size: 1.5rem;
+  margin: 2rem;
+}
+.icon-wrapper,
+.color-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* UNIVERSITIES */
+.universities {
+  font-size: 0;
+}
+
+.uni-title {
+  font-size: 2rem;
+  color: #424242;
+  text-align: center;
+}
+
+.university input[type='checkbox']:checked ~ .university__form {
+  opacity: 1;
+  background-color: white;
+}
+
+.university {
+  display: inline-block;
+  line-height: 2rem;
+  width: 50%;
+  font-size: 0;
+  padding: 0.3rem;
+}
+
+.university__form {
+  opacity: 0.5;
+  border: 2px solid #eee;
+  border-radius: 0.4rem;
+  width: 100%;
+  padding: 1rem 1.5rem 0.7rem 1.5rem;
+  font-size: 0rem;
+  background-color: #eee;
+  position: relative;
+}
+
+.university__form__on,
+.university__form__off {
+  display: none;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.2rem;
+  width: 1rem;
+  height: 1rem;
+  font-size: 1.3rem;
+  color: green;
+  font-weight: 600;
+}
+
+.university__form__off {
+  display: block;
+  color: red;
+}
+
+.university
+  input[type='checkbox']:checked
+  ~ .university__form
+  .university__form__on {
+  display: block;
+}
+
+.university
+  input[type='checkbox']:checked
+  ~ .university__form
+  .university__form__off {
+  display: none;
+}
+
+.university__form__title {
+  font-size: 1rem;
+  color: #424242;
+  font-weight: bold;
+  display: block;
+  cursor: pointer;
+}
+
+.university__form__field-hint {
+  margin: 0.7rem 0 0.1rem 0;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.university__form__field {
+  width: 33%;
+  display: inline-block;
+  padding: 0.3rem;
+}
+
+.university__form__field__label {
+  width: 4rem;
+  display: block;
+  margin: 0.4rem 0 0.3rem 0;
+  line-height: 1;
+  font-size: 0.8rem;
+}
+
+.university__form__field__input {
+  padding: 0.4rem;
+  width: 100%;
+  background-color: white;
+}
+
+.hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.submit {
+  font-size: 1.7rem;
+  padding: 0.5rem 1rem;
+  background-color: #26a69a;
+  color: #424242;
+  display: block;
+  margin: 2rem auto;
+  border: none;
+  border-radius: 1rem;
 }

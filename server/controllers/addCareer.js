@@ -53,25 +53,41 @@ const addCareerController = (request, response) => {
   ];
 
   const universities = [
-    { name: 'haifa', title: 'Haifa' },
-    { name: 'technion', title: 'Technion' },
-    { name: 'hebrew', title: 'Hebrew' },
-    { name: 'tel-aviv', title: 'Tel Aviv' },
-    { name: 'arab', title: 'Arab American' },
-    { name: 'gurion', title: 'Ben Gurion' },
+    { name: 'haifa', title: 'Haifa', id: 1 },
+    { name: 'technion', title: 'Technion', id: 2 },
+    { name: 'hebrew', title: 'Hebrew', id: 3 },
+    { name: 'tel-aviv', title: 'Tel Aviv', id: 4 },
+    { name: 'arab', title: 'Arab American', id: 5 },
+    { name: 'gurion', title: 'Ben Gurion', id: 6 },
   ];
   response.render('addCareer', { careerNames, colorNames, universities });
 };
 
 const addCareer = async (request, response) => {
   try {
-    const careerId = await addCareerDb(request.body);
-    await addCareerGradesDb(request.body, careerId);
+    const [{ id: careerId }] = await addCareerDb(request.body);
+    const careerIds =
+      typeof request.body['uni-ids'] === 'string'
+        ? [request.body['uni-ids']]
+        : request.body['uni-ids'];
+
+    const uniQueries = careerIds.map(id => {
+      const grade_bagrut = request.body[`grade_bagrut_${id}`] || null;
+      const grade_psychometric =
+        request.body[`grade_psychometric_${id}`] || null;
+      const grade_tawjihi = request.body[`grade_tawjihi_${id}`] || null;
+      addCareerGradesDb(Number(id), careerId, {
+        grade_bagrut,
+        grade_psychometric,
+        grade_tawjihi,
+      });
+    });
+    await Promise.all(uniQueries);
+    response.redirect('/');
   } catch (error) {
     console.log(error);
-    response.send(error);
+    response.send('Add career failed...');
   }
-  response.redirect('/');
 };
 
 module.exports = {

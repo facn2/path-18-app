@@ -13,7 +13,7 @@ const allCareers = async (request, response) => {
     response.send(careers);
   } catch (error) {
     console.log(error);
-    response.send(error);
+    response.send({ error: 'Error getting all careers' });
   }
 };
 
@@ -28,7 +28,7 @@ const careerDetails = async (request, response) => {
     response.send(details);
   } catch (error) {
     console.log(error);
-    response.send(error);
+    response.send({ error: 'Error getting career details' });
   }
 };
 
@@ -39,7 +39,7 @@ const likedCareers = async (request, response) => {
     response.send(careers);
   } catch (error) {
     console.log(error);
-    response.send(error);
+    response.send({ error: 'Error getting liked careers' });
   }
 };
 
@@ -51,7 +51,7 @@ const likeCareer = async (request, response) => {
     response.send(like);
   } catch (error) {
     console.log(error);
-    response.send(error);
+    response.send({ error: 'Error liking career' });
   }
 };
 
@@ -63,7 +63,7 @@ const unlikeCareer = async (request, response) => {
     response.send(unlike);
   } catch (error) {
     console.log(error);
-    response.send(error);
+    response.send({ error: 'Error unliking career' });
   }
 };
 
