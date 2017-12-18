@@ -98,6 +98,8 @@ router.get('/api/details/:id', careerDetails);
 router.post('/add-career', addCareer);
 
 router.get('*', (req, res) => {
+  console.log(req.url);
+  console.log('THIS SHOULD NOT BE HAPPENING RIGHT NOW');
   res.sendFile(path.resolve(__dirname, '..', 'assets', 'index.html'));
 });
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/start_server.js",
     "devStart": "nodemon server/start_server.js",
     "build": "react-scripts build && npm run move:build",
     "test": "react-scripts test --env=jsdom",
