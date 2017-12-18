@@ -83,7 +83,7 @@ const addCareer = async (request, response) => {
       });
     });
     await Promise.all(uniQueries);
-    response.redirect('/');
+    response.redirect('/__/add/career');
   } catch (error) {
     console.log(error);
     response.send('Add career failed...');

@@ -98,7 +98,6 @@ router.get('/api/details/:id', careerDetails);
 router.post('/add-career', addCareer);
 
 router.get('*', (req, res) => {
-  console.log('hitherebuggybuddy');
   res.sendFile(path.resolve(__dirname, '..', 'assets', 'index.html'));
 });
 
