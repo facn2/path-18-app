@@ -10,12 +10,23 @@ const LoginContainer = styled.section`
   justify-content: center;
 `;
 
+const FacebookLoginButton = styled.button`
+  background-color: #4267b2;
+  width: 10rem;
+  height: 3rem;
+  color: #fff:
+`;
+
+const FacebookIcon = styled.img``;
+
 class Login extends Component {
   fbLogin() {}
   render() {
     return (
       <LoginContainer>
-        <a href="/__/hello/facebook">Login</a>
+        <FacebookLoginButton>
+          <a href="/__/hello/facebook">Continue with Facebook</a>
+        </FacebookLoginButton>
       </LoginContainer>
     );
   }

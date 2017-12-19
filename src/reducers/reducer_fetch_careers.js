@@ -31,7 +31,7 @@ const fetchCareersReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        error: true,
+        error: action.payload,
       };
     default:
       return state;

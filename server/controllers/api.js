@@ -7,6 +7,7 @@ const getUniByCareerId = require('../../database/queries/get_career_uni');
 const getUserGrades = require('../../database/queries/get_user_grades');
 
 const allCareers = async (request, response) => {
+  console.log(request);
   const userId = 1;
   try {
     const careers = await getAllCareersDb(userId);

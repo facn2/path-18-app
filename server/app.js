@@ -18,9 +18,10 @@ app.use(
 
 app.use(
   require('express-session')({
-    secret: 'HI',
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
+    cookie: { maxAge: 60000 },
   })
 );
 

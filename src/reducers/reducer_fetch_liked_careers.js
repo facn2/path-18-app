@@ -33,7 +33,7 @@ const fetchLikedCareersReducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         dataFetched: false,
-        error: true,
+        error: action.payload,
       };
     case UNLIKE_CAREER_PENDING:
       return {
@@ -59,7 +59,7 @@ const fetchLikedCareersReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        error: true,
+        error: action.payload,
       };
     default:
       return state;
