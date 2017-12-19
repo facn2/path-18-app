@@ -31,7 +31,6 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       getUsersByFb(profile.id, (error, response) => {
-        console.log('hi');
         if (error) {
           // TODO redirect to login with error message?
           console.log(error);
@@ -98,8 +97,6 @@ router.get('/api/details/:id', careerDetails);
 router.post('/add-career', addCareer);
 
 router.get('*', (req, res) => {
-  console.log(req.url);
-  console.log('THIS SHOULD NOT BE HAPPENING RIGHT NOW');
   res.sendFile(path.resolve(__dirname, '..', 'assets', 'index.html'));
 });
 
