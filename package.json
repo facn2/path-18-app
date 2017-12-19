@@ -3,19 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/start_server.js",
     "devStart": "nodemon server/start_server.js",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run move:build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "precommit-test": "CI=true npm test",
     "db-build": "node database/db_build.js",
-    "pretest": "ENV=testing npm run db-build"
+    "pretest": "ENV=testing npm run db-build",
+    "move:build": "rm -r server/assets/static && mv -f build/* server/assets/"
   },
-  "proxy": "http://localhost:4000",
-  "pre-commit": [
-    "precommit-test"
-  ],
+  "pre-commit": ["precommit-test"],
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",

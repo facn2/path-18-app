@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const LoginContainer = styled.section`
+  background-color: whitesmoke;
+  margin-top: 4rem;
+  height: calc(100vh - 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 class Login extends Component {
   fbLogin() {}
   render() {
     return (
-      <div>
-        <h1>This is the login page</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur
-          obcaecati cumque quidem consequatur sunt, ut, dolores sint provident
-          quisquam modi exercitationem tenetur a molestiae et at quod rem
-          repellendus incidunt!
-        </p>
-        <a href="http://localhost:4000/hello/facebook">Login</a>
-      </div>
+      <LoginContainer>
+        <a href="/__/hello/facebook">Login</a>
+      </LoginContainer>
     );
   }
 }
