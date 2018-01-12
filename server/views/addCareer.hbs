@@ -23,6 +23,7 @@
     {{/each}}
   </section>
 
+  <p class="icon-text">Select a color for the card:</p>
   <section class="color-wrapper">
     {{#each colorNames}}
       {{>color id=this.id color=this.color}}
@@ -31,6 +32,7 @@
 
   <div class="universities">
     <h3 class="uni-title">Universities</h3>
+    <p class="icon-text">Click a career to add grades</p>
     {{#each universities}}
       {{>universities name=this.name title=this.title}}
     {{/each}}

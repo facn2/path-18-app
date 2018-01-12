@@ -54,12 +54,15 @@ CREATE TABLE universities_careers(
 
 INSERT INTO universities(name_ar, name_he)
   VALUES
-  ('Haifa', 'Haifa'),
-  ('Technion', 'Technion'),
-  ('Hebrew', 'Hebrew'),
-  ('Tel Aviv', 'Tel Aviv'),
-  ('Arab American', 'Arab American'),
-  ('Ben Gurion', 'Ben Gurion');
+  ('Ariel University', 'Ariel University'),
+  ('Ben Gurion University of the Negev', 'Ben Gurion University of the Negev'),
+  ('Bar-Ilan University', 'Bar-Ilan University'),
+  ('University of Haifa', 'University of Haifa'),
+  ('Hebrew University of Jerusalem', 'Hebrew University of Jerusalem'),
+  ('Open University of Israel', 'Open University of Israel'),
+  ('Technion - Israel Institute of Technology', 'Technion - Israel Institute of Technology'),
+  ('Tel Aviv University', 'Tel Aviv University'),
+  ('Weizmann Institute of Science', 'Weizmann Institute of Science');
 
 INSERT INTO users(fb_id, name, grade_bagrut, grade_psychometric, grade_tawjihi)
   VALUES (234567, 'king', 95, 625, 95);
