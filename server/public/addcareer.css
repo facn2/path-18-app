@@ -202,3 +202,18 @@ body {
   border: none;
   border-radius: 1rem;
 }
+
+.checkbox-validator {
+  margin: 0 auto;
+  display: inline-block;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.checkbox-validator-wrapper {
+  width: 100%;
+  text-align: center;
+}
