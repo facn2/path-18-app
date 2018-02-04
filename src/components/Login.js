@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const LoginContainer = styled.section`
   background-color: whitesmoke;
@@ -12,20 +12,25 @@ const LoginContainer = styled.section`
 
 const FacebookLoginButton = styled.button`
   background-color: #4267b2;
-  width: 10rem;
+  width: 16rem;
   height: 3rem;
-  color: #fff:
 `;
 
 const FacebookIcon = styled.img``;
 
+const FacebookLink = styled.a`
+  color: #fff;
+  text-decoration: none;
+`;
+
 class Login extends Component {
-  fbLogin() {}
   render() {
     return (
       <LoginContainer>
         <FacebookLoginButton>
-          <a href="/__/hello/facebook">Continue with Facebook</a>
+          <FacebookLink href="/__/hello/facebook">
+            Continue with Facebook
+          </FacebookLink>
         </FacebookLoginButton>
       </LoginContainer>
     );
