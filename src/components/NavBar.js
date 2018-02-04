@@ -52,7 +52,7 @@ const Wrapper = styled.div`
 
 const SettingsList = styled.ul``;
 
-const SettlingsListItem = styled.li`
+const SettlingsListItem = styled.a`
   height: 3.8rem;
   border-bottom: 0.1rem solid gainsboro;
   border-width: thin;
@@ -61,6 +61,7 @@ const SettlingsListItem = styled.li`
   align-items: center;
   font-size: 1.2rem;
   color: #455a64;
+  text-decoration: none;
   &:active {
     background-color: gainsboro;
   }
@@ -126,7 +127,8 @@ class NavBar extends Component {
                 help_outline
               </ListItemIcon>
             </SettlingsListItem>
-            <SettlingsListItem>
+            <SettlingsListItem href="
+                /__/logout">
               <ListItemText>Logout</ListItemText>
               <ListItemIcon className="material-icons">
                 exit_to_app
