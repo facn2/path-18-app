@@ -97,12 +97,12 @@ class NavBar extends Component {
     return (
       <Wrapper>
         <NavBarContainer settings={this.state.settings}>
-          <StyledLink to="/LikedCareers">
+          <StyledLink to="/careers/liked">
             <NavBarItem>
               <Icon className="material-icons">playlist_add_check</Icon>
             </NavBarItem>
           </StyledLink>
-          <StyledLink to="/Careers">
+          <StyledLink to="/careers">
             <NavBarItem>
               <Icon className="material-icons">view_carousel</Icon>
             </NavBarItem>

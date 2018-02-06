@@ -22,9 +22,9 @@ const Main = () => {
       <NavBar />
       <Switch>
         <Route path="/" exact component={Login} />
-        <Route path="/Careers" exact component={Careers} />
-        <Route path="/LikedCareers" exact component={LikedCareers} />
-        <Route path="/Career/Details/:id" exact component={CareerDetails} />
+        <Route path="/careers" exact component={Careers} />
+        <Route path="/careers/liked" exact component={LikedCareers} />
+        <Route path="/career/details/:id" exact component={CareerDetails} />
       </Switch>
     </AppWrapper>
   );

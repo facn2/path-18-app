@@ -87,7 +87,7 @@ router.get('/__/logout', (req, res) => {
     }
     req.logOut();
     res.clearCookie();
-    res.redirect('/login');
+    res.redirect('/');
   });
 });
 
