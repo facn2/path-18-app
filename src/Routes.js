@@ -21,6 +21,7 @@ const Main = () => {
     <AppWrapper>
       <NavBar />
       <Switch>
+        <Route path="/" exact component={Login} />
         <Route path="/Careers" exact component={Careers} />
         <Route path="/LikedCareers" exact component={LikedCareers} />
         <Route path="/Career/Details/:id" exact component={CareerDetails} />
@@ -29,12 +30,18 @@ const Main = () => {
   );
 };
 
+const LoginOnly = () => {
+  return (
+    <AppWrapper>
+      <Route path="/" exact component={Login} />
+    </AppWrapper>
+  );
+};
+
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <AppWrapper>
-        <Route path="/" exact component={Login} />
-      </AppWrapper>
+      <Route path="/" exact component={LoginOnly} />
       <Route path="*" component={Main} />
     </Switch>
   </BrowserRouter>
