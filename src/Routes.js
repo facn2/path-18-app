@@ -1,11 +1,11 @@
-import React from "react";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
-import styled from "styled-components";
-import Careers from "./containers/Careers.js";
-import LikedCareers from "./containers/LikedCareers.js";
-import CareerDetails from "./containers/CareerDetails.js";
-import NavBar from "./components/NavBar";
-import Login from "./components/Login";
+import React from 'react';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import styled from 'styled-components';
+import Careers from './containers/Careers.js';
+import LikedCareers from './containers/LikedCareers.js';
+import CareerDetails from './containers/CareerDetails.js';
+import NavBar from './components/NavBar';
+import Login from './components/Login';
 
 const AppWrapper = styled.div`
   overflow: hidden;
@@ -21,7 +21,6 @@ const Main = () => {
     <AppWrapper>
       <NavBar />
       <Switch>
-        <Route path="/" exact component={Login} />
         <Route path="/Careers" exact component={Careers} />
         <Route path="/LikedCareers" exact component={LikedCareers} />
         <Route path="/Career/Details/:id" exact component={CareerDetails} />
@@ -33,6 +32,9 @@ const Main = () => {
 const Routes = () => (
   <BrowserRouter>
     <Switch>
+      <AppWrapper>
+        <Route path="/" exact component={Login} />
+      </AppWrapper>
       <Route path="*" component={Main} />
     </Switch>
   </BrowserRouter>
