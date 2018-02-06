@@ -110,7 +110,7 @@ router.delete('/api/career/like/:id', authenticateUser, unlikeCareer);
 
 router.get('/api/details/:id', authenticateUser, careerDetails);
 
-router.post('/add-career', authenticateUser, addCareer);
+router.post('/add-career', addCareer);
 
 router.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'assets', 'index.html'));
