@@ -34,15 +34,11 @@ passport.use(
         if (error) {
           // TODO redirect to login with error message?
         } else if (!response.length) {
-          // user doesn't exist
-          // TODO add new users
-          console.log('User does not exist');
           return addNewUser(
             profile.id,
             profile.displayName,
             (error, response) => {
               if (error) console.log(error);
-              // TODO something should happen here
               // TODO redirect to fill in grades form
               return cb(null, response[0]);
             },
@@ -61,10 +57,8 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
   getUsersByFb(user.fb_id, (error, response) => {
     if (error) {
-      // TODO error handling
       console.log(error);
     } else if (!response.length) {
-      // TODO redirect to sign up
       return console.log('User does not exist');
     }
     done(null, user);
