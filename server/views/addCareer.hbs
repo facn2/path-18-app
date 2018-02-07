@@ -1,6 +1,6 @@
 <h2 class="form-title">Please add a career here</h2>
 
-<form class="form" action="/add-career" method="post">
+<form class="form" action="/add-career" method="post" id="addCareer">
 
   <section class="form-main">
     <section class="form-arabic">
@@ -32,12 +32,18 @@
 
   <div class="universities">
     <h3 class="uni-title">Universities</h3>
-    <p class="icon-text">Click a career to add grades</p>
+    <p class="icon-text">Click a university to add grades</p>
+    <div class="checkbox-validator-wrapper">
+      <input type="checkbox" class="checkbox-validator" id="checkboxValidator" required>
+    </div>
     {{#each universities}}
       {{>universities name=this.name title=this.title}}
     {{/each}}
   </div>
 
-  <input class="submit" type="submit" value="Submit">
+  <input class="submit" type="submit" value="Submit" id="submitButton">
 
 </form>
+<script type="text/javascript" src="/addcareer.js">
+
+</script>
