@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Slider from 'react-slick';
 import {
   Icon,
@@ -72,7 +73,7 @@ class CareerDetails extends Component {
           <Grade
             passed={this.compareGrades(
               'grade_psychometric',
-              uni.grade_psychometric
+              uni.grade_psychometric,
             )}
           >
             {this.props.careerDetail.career.userGrades[0].grade_psychometric}
@@ -153,6 +154,15 @@ class CareerDetails extends Component {
             </Slider>
           </DetailSection>
         </div>
+      );
+    } else if (this.props.careerDetail.error) {
+      return (
+        <Redirect
+          to={{
+            pathname: '/error',
+            state: { error: { code: 401, message: 'Not Authorised' } },
+          }}
+        />
       );
     }
     return <div>Loading career details</div>;
