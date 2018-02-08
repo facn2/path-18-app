@@ -7,7 +7,7 @@ const getUniByCareerId = require('../../database/queries/get_career_uni');
 const getUserGrades = require('../../database/queries/get_user_grades');
 
 const allCareers = async (request, response) => {
-  const userId = 1;
+  const userId = request.user.id;
   try {
     const careers = await getAllCareersDb(userId);
     response.send(careers);
@@ -19,7 +19,7 @@ const allCareers = async (request, response) => {
 
 const careerDetails = async (request, response) => {
   const careerId = request.params.id;
-  const userId = 1;
+  const userId = request.user.id;
   const details = {};
   try {
     details.career = await getCareerById(careerId);
@@ -33,7 +33,7 @@ const careerDetails = async (request, response) => {
 };
 
 const likedCareers = async (request, response) => {
-  const userId = 1;
+  const userId = request.user.id;
   try {
     const careers = await getLikedCareersDb(userId);
     response.send(careers);
@@ -44,7 +44,7 @@ const likedCareers = async (request, response) => {
 };
 
 const likeCareer = async (request, response) => {
-  const userId = 1;
+  const userId = request.user.id;
   const careerId = request.body.career_id;
   try {
     const like = await likeCareerDb(userId, careerId);
@@ -56,7 +56,7 @@ const likeCareer = async (request, response) => {
 };
 
 const unlikeCareer = async (request, response) => {
-  const userId = 1;
+  const userId = request.user.id;
   const careerId = request.params.id;
   try {
     const unlike = await unlikeCareerDb(userId, careerId);

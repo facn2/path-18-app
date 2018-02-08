@@ -98,7 +98,7 @@ const LikeAndDislikeButtons = ({
           clear
         </DislikedIcon>
       </IconWrapper>
-      <StyledLink to="/LikedCareers">
+      <StyledLink to="/careers/liked">
         <LikedButton hide={hide} dataFetched={dataFetched}>
           Liked Careers
         </LikedButton>

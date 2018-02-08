@@ -13,15 +13,16 @@ app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: true,
-  })
+  }),
 );
 
 app.use(
   require('express-session')({
-    secret: 'HI',
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
-  })
+    cookie: { maxAge: 86400000 },
+  }),
 );
 
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +34,7 @@ app.engine(
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     partialsDir: path.join(__dirname, 'views', 'partials'),
     defaultLayout: 'main',
-  })
+  }),
 );
 
 app.set('port', process.env.PORT || 4000);

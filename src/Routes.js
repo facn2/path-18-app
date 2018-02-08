@@ -6,6 +6,7 @@ import LikedCareers from './containers/LikedCareers.js';
 import CareerDetails from './containers/CareerDetails.js';
 import NavBar from './components/NavBar';
 import Login from './components/Login';
+import ErrorComponent from './components/Error';
 
 const AppWrapper = styled.div`
   overflow: hidden;
@@ -21,11 +22,34 @@ const Main = () => {
     <AppWrapper>
       <NavBar />
       <Switch>
-        <Route path="/login" exact component={Login} />
-        <Route path="/Careers" exact component={Careers} />
-        <Route path="/LikedCareers" exact component={LikedCareers} />
-        <Route path="/Career/Details/:id" exact component={CareerDetails} />
+        <Route path="/" exact component={Login} />
+        <Route path="/careers" exact component={Careers} />
+        <Route path="/careers/liked" exact component={LikedCareers} />
+        <Route path="/career/details/:id" exact component={CareerDetails} />
+        <Route
+          path="/error"
+          exact
+          component={props => (
+            <ErrorComponent
+              {...props}
+              error={{ code: 404, message: 'Not Found' }}
+            />
+          )}
+        />
+        <Route
+          component={() => (
+            <ErrorComponent error={{ code: 404, message: 'Not Found' }} />
+          )}
+        />
       </Switch>
+    </AppWrapper>
+  );
+};
+
+const LoginOnly = () => {
+  return (
+    <AppWrapper>
+      <Route path="/" exact component={Login} />
     </AppWrapper>
   );
 };
@@ -33,6 +57,7 @@ const Main = () => {
 const Routes = () => (
   <BrowserRouter>
     <Switch>
+      <Route path="/" exact component={LoginOnly} />
       <Route path="*" component={Main} />
     </Switch>
   </BrowserRouter>

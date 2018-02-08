@@ -110,7 +110,7 @@ class LikedCareers extends Component {
         </DeleteIcon>
         <CareerLink
           to={{
-            pathname: `career/details/${career.id}`,
+            pathname: `/career/details/${career.id}`,
           }}
         >
           <LikedListText>{career.title_ar}</LikedListText>

@@ -33,43 +33,36 @@ passport.use(
       getUsersByFb(profile.id, (error, response) => {
         if (error) {
           // TODO redirect to login with error message?
-          console.log(error);
         } else if (!response.length) {
-          // TODO add new users
-          console.log('User does not exist');
           return addNewUser(
             profile.id,
             profile.displayName,
             (error, response) => {
               if (error) console.log(error);
-              // TODO something should happen here
               // TODO redirect to fill in grades form
-              return console.log('User added');
-            }
+              return cb(null, response[0]);
+            },
           );
         }
-        // TODO set cookie using jwt with userId
-        createCookieWithJwt(response[0].id);
-        return console.log('User exists give this guy a cookie');
+        cb(null, { id: response[0].id, fb_id: response[0].fb_id });
       });
-      return cb(null, profile);
-    }
-  )
+    },
+  ),
 );
 
-const createCookieWithJwt = userId => {
-  jwt.sign({ userId }, process.env.SECRET, (err, token) => {
-    if (err) console.log(err);
-    console.log('Tokeeeennn', token);
-  });
-};
-
-passport.serializeUser(function(user, cb) {
-  cb(null, user);
+passport.serializeUser((user, done) => {
+  done(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
-  cb(null, obj);
+passport.deserializeUser((user, done) => {
+  getUsersByFb(user.fb_id, (error, response) => {
+    if (error) {
+      console.log(error);
+    } else if (!response.length) {
+      return console.log('User does not exist');
+    }
+    done(null, user);
+  });
 });
 
 router.get(
@@ -77,22 +70,39 @@ router.get(
   passport.authenticate('facebook', {
     successRedirect: '/careers',
     failureRedirect: '/login',
-  })
+  }),
 );
+
+router.get('/__/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    req.logOut();
+    res.clearCookie();
+    res.redirect('/');
+  });
+});
+
+const authenticateUser = (req, res, next) => {
+  if (req.user) return next();
+  res.status(401).send({ error: 'Unauthorised' });
+};
 
 router.get('/__/hello/facebook', passport.authenticate('facebook'));
 
 router.get('/__/add/career', addCareerController);
 
-router.get('/api/careers', allCareers);
+router.get('/api/careers', authenticateUser, allCareers);
 
-router.get('/api/careers/liked', likedCareers);
+router.get('/api/careers/liked', authenticateUser, likedCareers);
 
-router.post('/api/career/like', likeCareer);
+router.post('/api/career/like', authenticateUser, likeCareer);
 
-router.delete('/api/career/like/:id', unlikeCareer);
+router.delete('/api/career/like/:id', authenticateUser, unlikeCareer);
 
-router.get('/api/details/:id', careerDetails);
+router.get('/api/details/:id', authenticateUser, careerDetails);
 
 router.post('/add-career', addCareer);
 

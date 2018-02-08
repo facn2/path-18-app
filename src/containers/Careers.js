@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Swing from 'react-swing';
 import { Direction } from 'swing';
@@ -78,11 +79,11 @@ class Careers extends Component {
               throwOutConfidence: (xOffset, yOffset, element) => {
                 const xConfidence = Math.min(
                   Math.abs(xOffset) / element.offsetWidth,
-                  1
+                  1,
                 );
                 const yConfidence = Math.min(
                   Math.abs(yOffset) / element.offsetHeight,
-                  1
+                  1,
                 );
                 if (Math.max(xConfidence, yConfidence) > 0.65) {
                   return 1;
@@ -104,9 +105,17 @@ class Careers extends Component {
           <FinalCard />
         </div>
       );
+    } else if (this.props.careers.error) {
+      return (
+        <Redirect
+          to={{
+            pathname: '/error',
+            state: { error: { code: 401, message: 'Not Authorised' } },
+          }}
+        />
+      );
     }
-    // TODO render loading
-    return <div />;
+    return <div>Loading career cards</div>;
   };
 
   checkThrowRight = e => {
