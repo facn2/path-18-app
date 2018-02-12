@@ -8,7 +8,7 @@ const Strategy = require('passport-facebook').Strategy;
 const jwt = require('jsonwebtoken');
 
 const callbackURL =
-  process.env.ENV === 'production'
+  process.env.NODE_ENV === 'production'
     ? 'https://path18.herokuapp.com/__/auth/facebook'
     : 'http://localhost:4000/__/auth/facebook';
 
