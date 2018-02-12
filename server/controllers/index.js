@@ -7,6 +7,11 @@ const axios = require('axios');
 const Strategy = require('passport-facebook').Strategy;
 const jwt = require('jsonwebtoken');
 
+const callbackURL =
+  process.env.ENV === 'production'
+    ? 'https://path18.herokuapp.com/__/auth/facebook'
+    : 'http://localhost:4000/__/auth/facebook';
+
 const {
   allCareers,
   likedCareers,
@@ -27,7 +32,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: 'http://localhost:4000/__/auth/facebook',
+      callbackURL: callbackURL,
     },
     (accessToken, refreshToken, profile, cb) => {
       getUsersByFb(profile.id, (error, response) => {
