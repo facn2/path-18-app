@@ -18,9 +18,8 @@ const updateUserGrades = (id, grades) => {
         if (error) {
           reject(error);
         }
-        console.log(response);
         resolve(response);
-      }
+      },
     );
   });
 };

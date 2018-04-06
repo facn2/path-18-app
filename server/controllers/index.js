@@ -18,7 +18,7 @@ const {
   likedCareers,
   likeCareer,
   unlikeCareer,
-  careerDetails
+  careerDetails,
 } = require('./api');
 
 const { addCareerController, addCareer } = require('./addCareer');
@@ -30,7 +30,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: callbackURL
+      callbackURL: callbackURL,
     },
     (accessToken, refreshToken, profile, cb) => {
       getUsersByFb(profile.id, (error, response) => {
@@ -44,13 +44,13 @@ passport.use(
               if (error) console.log(error);
               // TODO redirect to fill in grades form
               return cb(null, response[0]);
-            }
+            },
           );
         }
         cb(null, response[0]);
       });
-    }
-  )
+    },
+  ),
 );
 
 passport.serializeUser((user, done) => {
@@ -83,7 +83,7 @@ router.get(
     } else {
       res.redirect(`/user/grades/${req.user.id}`);
     }
-  }
+  },
 );
 
 router.get('/__/logout', (req, res) => {

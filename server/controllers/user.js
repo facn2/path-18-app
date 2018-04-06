@@ -8,7 +8,7 @@ module.exports.update = async (req, res) => {
     await updateUserGrades(id, [
       bagrut_grade || 0,
       psychometric_grade || 0,
-      tawjihi_grade || 0
+      tawjihi_grade || 0,
     ]);
 
     res.send('Success');

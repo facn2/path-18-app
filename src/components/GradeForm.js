@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import axios from "axios";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
 
 const GradeFormWrapper = styled.section`
   margin-top: 4rem;
@@ -56,13 +56,13 @@ class GradeForm extends Component {
       id: this.props.match.params.id,
       bagrut_grade: e.target.bagrut_grade.value,
       psychometric_grade: e.target.psychometric_grade.value,
-      tawjihi_grade: e.target.tawjihi_grade.value
+      tawjihi_grade: e.target.tawjihi_grade.value,
     };
 
     axios
-      .put("/__/user/grades", data)
-      .then(() => (window.location = "/careers"))
-      .catch(() => (window.location = "/login"));
+      .put('/__/user/grades', data)
+      .then(() => (window.location = '/careers'))
+      .catch(() => (window.location = '/login'));
   }
 
   render() {
