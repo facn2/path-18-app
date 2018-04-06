@@ -1,4 +1,4 @@
-const updateUserGrades = require("../../database/queries/update_user");
+const updateUserGrades = require('../../database/queries/update_user');
 
 module.exports.update = async (req, res) => {
   console.log(req.body);
@@ -11,7 +11,7 @@ module.exports.update = async (req, res) => {
       tawjihi_grade || 0
     ]);
 
-    res.send("Success");
+    res.send('Success');
   } catch (error) {
     res.send({ error: error.message });
   }

@@ -1,4 +1,4 @@
-const dbConnection = require("../db_connection");
+const dbConnection = require('../db_connection');
 
 const updateUserGrades = (id, grades) => {
   const updateUserGradesQuery = `

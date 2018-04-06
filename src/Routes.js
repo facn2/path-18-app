@@ -1,13 +1,13 @@
-import React from "react";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
-import styled from "styled-components";
-import Careers from "./containers/Careers.js";
-import LikedCareers from "./containers/LikedCareers.js";
-import CareerDetails from "./containers/CareerDetails.js";
-import NavBar from "./components/NavBar";
-import Login from "./components/Login";
-import ErrorComponent from "./components/Error";
-import GradeForm from "./components/GradeForm";
+import React from 'react';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import styled from 'styled-components';
+import Careers from './containers/Careers.js';
+import LikedCareers from './containers/LikedCareers.js';
+import CareerDetails from './containers/CareerDetails.js';
+import NavBar from './components/NavBar';
+import Login from './components/Login';
+import ErrorComponent from './components/Error';
+import GradeForm from './components/GradeForm';
 
 const AppWrapper = styled.div`
   overflow: hidden;
@@ -33,13 +33,13 @@ const Main = () => {
           component={props => (
             <ErrorComponent
               {...props}
-              error={{ code: 404, message: "Not Found" }}
+              error={{ code: 404, message: 'Not Found' }}
             />
           )}
         />
         <Route
           component={() => (
-            <ErrorComponent error={{ code: 404, message: "Not Found" }} />
+            <ErrorComponent error={{ code: 404, message: 'Not Found' }} />
           )}
         />
       </Switch>

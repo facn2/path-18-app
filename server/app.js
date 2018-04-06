@@ -12,8 +12,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true,
-  }),
+    extended: true
+  })
 );
 
 app.use(
@@ -21,13 +21,12 @@ app.use(
     secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 86400000 },
-  }),
+    cookie: { maxAge: 86400000 }
+  })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -37,8 +36,8 @@ app.engine(
     extname: 'hbs',
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     partialsDir: path.join(__dirname, 'views', 'partials'),
-    defaultLayout: 'main',
-  }),
+    defaultLayout: 'main'
+  })
 );
 
 app.set('port', process.env.PORT || 4000);
