@@ -1,38 +1,36 @@
-const express = require('express');
-const path = require('path');
-const passport = require('passport');
-require('env2')('./config.env');
+const express = require("express");
+const path = require("path");
+const passport = require("passport");
+require("env2")("./config.env");
 const router = express.Router();
-const axios = require('axios');
-const Strategy = require('passport-facebook').Strategy;
-const jwt = require('jsonwebtoken');
+const axios = require("axios");
+const Strategy = require("passport-facebook").Strategy;
+const jwt = require("jsonwebtoken");
+const user = require("./user.js");
 
 const callbackURL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://path18.herokuapp.com/__/auth/facebook'
-    : 'http://localhost:4000/__/auth/facebook';
+  process.env.NODE_ENV === "production"
+    ? "https://path18.herokuapp.com/__/auth/facebook"
+    : "http://localhost:4000/__/auth/facebook";
 
 const {
   allCareers,
   likedCareers,
   likeCareer,
   unlikeCareer,
-  careerDetails,
-} = require('./api');
+  careerDetails
+} = require("./api");
 
-const { addCareerController, addCareer } = require('./addCareer');
-const getUsersByFb = require('../../database/queries/get_users_fb');
-const addNewUser = require('../../database/queries/add_new_user');
-
-router.use(passport.initialize());
-router.use(passport.session());
+const { addCareerController, addCareer } = require("./addCareer");
+const getUsersByFb = require("../../database/queries/get_users_fb");
+const addNewUser = require("../../database/queries/add_new_user");
 
 passport.use(
   new Strategy(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: callbackURL,
+      callbackURL: callbackURL
     },
     (accessToken, refreshToken, profile, cb) => {
       getUsersByFb(profile.id, (error, response) => {
@@ -46,39 +44,49 @@ passport.use(
               if (error) console.log(error);
               // TODO redirect to fill in grades form
               return cb(null, response[0]);
-            },
+            }
           );
         }
-        cb(null, { id: response[0].id, fb_id: response[0].fb_id });
+        cb(null, response[0]);
       });
-    },
-  ),
+    }
+  )
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user.fb_id);
 });
 
-passport.deserializeUser((user, done) => {
-  getUsersByFb(user.fb_id, (error, response) => {
+passport.deserializeUser((fb_id, done) => {
+  getUsersByFb(fb_id, (error, response) => {
     if (error) {
       console.log(error);
     } else if (!response.length) {
-      return console.log('User does not exist');
+      return console.log("User does not exist");
     }
-    done(null, user);
+    done(null, response[0]);
   });
 });
 
 router.get(
-  '/__/auth/facebook',
-  passport.authenticate('facebook', {
-    successRedirect: '/careers',
-    failureRedirect: '/login',
-  }),
+  "/__/auth/facebook",
+  passport.authenticate("facebook"),
+  (req, res) => {
+    if (!req.user.id) {
+      res.redirect("/login");
+    } else if (
+      req.user.grade_bagrut ||
+      req.user.grade_tawjihi ||
+      req.user.grade_psychometri
+    ) {
+      res.redirect("/careers");
+    } else {
+      res.redirect(`/user/grades/${req.user.id}`);
+    }
+  }
 );
 
-router.get('/__/logout', (req, res) => {
+router.get("/__/logout", (req, res) => {
   req.session.destroy(err => {
     if (err) {
       console.log(err);
@@ -86,33 +94,35 @@ router.get('/__/logout', (req, res) => {
     }
     req.logOut();
     res.clearCookie();
-    res.redirect('/');
+    res.redirect("/");
   });
 });
 
 const authenticateUser = (req, res, next) => {
   if (req.user) return next();
-  res.status(401).send({ error: 'Unauthorised' });
+  res.status(401).send({ error: "Unauthorised" });
 };
 
-router.get('/__/hello/facebook', passport.authenticate('facebook'));
+router.get("/__/hello/facebook", passport.authenticate("facebook"));
 
-router.get('/__/add/career', addCareerController);
+router.get("/__/add/career", addCareerController);
 
-router.get('/api/careers', authenticateUser, allCareers);
+router.put("/__/user/grades", authenticateUser, user.update);
 
-router.get('/api/careers/liked', authenticateUser, likedCareers);
+router.get("/api/careers", authenticateUser, allCareers);
 
-router.post('/api/career/like', authenticateUser, likeCareer);
+router.get("/api/careers/liked", authenticateUser, likedCareers);
 
-router.delete('/api/career/like/:id', authenticateUser, unlikeCareer);
+router.post("/api/career/like", authenticateUser, likeCareer);
 
-router.get('/api/details/:id', authenticateUser, careerDetails);
+router.delete("/api/career/like/:id", authenticateUser, unlikeCareer);
 
-router.post('/add-career', addCareer);
+router.get("/api/details/:id", authenticateUser, careerDetails);
 
-router.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'assets', 'index.html'));
+router.post("/add-career", addCareer);
+
+router.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "..", "assets", "index.html"));
 });
 
 module.exports = router;
