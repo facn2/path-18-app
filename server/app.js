@@ -39,7 +39,7 @@ app.engine(
 
 app.set('port', process.env.PORT || 4000);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'assets')));
+app.use(express.static(path.join(__dirname, '../build')));
 app.use(controllers);
 
 module.exports = app;
