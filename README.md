@@ -25,10 +25,19 @@ Install packages
 ```
 npm install
 ```
-Start app
+Start production setup
 ```
 npm start
 ```
+Start development setup
+- _on 2 different terminals_
+```
+npm run dev:build
+```
+```
+npm run dev:server
+```
+
 Run tests
 ```
 npm test
