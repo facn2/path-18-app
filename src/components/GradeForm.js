@@ -16,11 +16,12 @@ const Form = styled.form`
 `;
 
 const FormInput = styled.input`
+  color: #455a64;
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
   width: 40%;
   background-color: white;
-  border-color: #26a69a;
+  border-color: #909ca0;
   border-style: double;
   border-radius: 4%;
 `;
