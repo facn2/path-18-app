@@ -7,6 +7,7 @@ import CareerDetails from './containers/CareerDetails.js';
 import NavBar from './components/NavBar';
 import Login from './components/Login';
 import ErrorComponent from './components/Error';
+import GradeForm from './components/GradeForm';
 
 const AppWrapper = styled.div`
   overflow: hidden;
@@ -54,10 +55,19 @@ const LoginOnly = () => {
   );
 };
 
+const GradeFormOnly = () => {
+  return (
+    <AppWrapper>
+      <Route path="/user/grades/:id" exact component={GradeForm} />
+    </AppWrapper>
+  );
+};
+
 const Routes = () => (
   <BrowserRouter>
     <Switch>
       <Route path="/" exact component={LoginOnly} />
+      <Route path="/user/grades/:id" exact component={GradeFormOnly} />
       <Route path="*" component={Main} />
     </Switch>
   </BrowserRouter>

@@ -6,6 +6,7 @@ const router = express.Router();
 const axios = require('axios');
 const Strategy = require('passport-facebook').Strategy;
 const jwt = require('jsonwebtoken');
+const user = require('./user.js');
 
 const callbackURL =
   process.env.NODE_ENV === 'production'
@@ -23,9 +24,6 @@ const {
 const { addCareerController, addCareer } = require('./addCareer');
 const getUsersByFb = require('../../database/queries/get_users_fb');
 const addNewUser = require('../../database/queries/add_new_user');
-
-router.use(passport.initialize());
-router.use(passport.session());
 
 passport.use(
   new Strategy(
@@ -49,33 +47,43 @@ passport.use(
             },
           );
         }
-        cb(null, { id: response[0].id, fb_id: response[0].fb_id });
+        cb(null, response[0]);
       });
     },
   ),
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user.fb_id);
 });
 
-passport.deserializeUser((user, done) => {
-  getUsersByFb(user.fb_id, (error, response) => {
+passport.deserializeUser((fb_id, done) => {
+  getUsersByFb(fb_id, (error, response) => {
     if (error) {
       console.log(error);
     } else if (!response.length) {
       return console.log('User does not exist');
     }
-    done(null, user);
+    done(null, response[0]);
   });
 });
 
 router.get(
   '/__/auth/facebook',
-  passport.authenticate('facebook', {
-    successRedirect: '/careers',
-    failureRedirect: '/login',
-  }),
+  passport.authenticate('facebook'),
+  (req, res) => {
+    if (!req.user.id) {
+      res.redirect('/login');
+    } else if (
+      req.user.grade_bagrut ||
+      req.user.grade_tawjihi ||
+      req.user.grade_psychometri
+    ) {
+      res.redirect('/careers');
+    } else {
+      res.redirect(`/user/grades/${req.user.id}`);
+    }
+  },
 );
 
 router.get('/__/logout', (req, res) => {
@@ -98,6 +106,8 @@ const authenticateUser = (req, res, next) => {
 router.get('/__/hello/facebook', passport.authenticate('facebook'));
 
 router.get('/__/add/career', addCareerController);
+
+router.put('/__/user/grades', authenticateUser, user.update);
 
 router.get('/api/careers', authenticateUser, allCareers);
 
