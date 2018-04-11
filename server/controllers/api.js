@@ -1,4 +1,4 @@
-const getAllCareersDb = require('../../database/queries/get_all_careers');
+const { getAllUserCareers } = require('../../database/queries/get_all_careers');
 const getLikedCareersDb = require('../../database/queries/get_liked_careers');
 const likeCareerDb = require('../../database/queries/like_career');
 const unlikeCareerDb = require('../../database/queries/unlike_career');
@@ -9,7 +9,7 @@ const getUserGrades = require('../../database/queries/get_user_grades');
 const allCareers = async (request, response) => {
   const userId = request.user.id;
   try {
-    const careers = await getAllCareersDb(userId);
+    const careers = await getAllUserCareers(userId);
     response.send(careers);
   } catch (error) {
     console.log(error);
