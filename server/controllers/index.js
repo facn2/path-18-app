@@ -111,6 +111,8 @@ router.put('/__/user/grades', authenticateUser, user.update);
 
 router.get('/__/allCareesPage', admin_pages.allCareersPage);
 
+router.get('/__/career/:id', admin_pages.singleCareerPage);
+
 router.get('/api/careers', authenticateUser, allCareers);
 
 router.get('/api/careers/liked', authenticateUser, likedCareers);
