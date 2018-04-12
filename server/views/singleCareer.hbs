@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/singleCareerPage.css">
+
+<div class="single-career-main">
+  <div class="career-element">
+    <div class="icon-container">
+      <i class="material-icons job-icon" style="color: {{career.icon_color}}">{{career.icon_name}}</i>
+    </div>
+    <div class="title-container">
+      <span>Arabic title: {{career.title_ar}}</span>
+      <span>Hebrew title: {{career.title_he}}</span>
+    </div>
+    <div class="tagline-container">
+      <span>Arabic tagline: {{career.tagline_ar}}</span>
+      <span>Hebrew tagline: {{career.tagline_he}}</span>
+    </div>
+
+    <div class="salary-container">
+      <span>Junior salary: {{career.salary_start}}</span>
+      <span>Senior salary: {{career.salary_ten_year}}</span>
+    </div>
+  </div>
+  <div class="description-container">
+    <p style="margin: 0;">Arabic description: {{career.description_ar}}</p>
+    <p style="margin: 0; margin-top: 1rem;">Hebrew description: {{career.description_he}}</p>
+  </div>
+  <div class="unis-container">
+    {{#each unis}}
+      <div class="uni-element">
+        <div class="uni-titles-container">
+          <span>Arabic name: {{this.name_ar}}</span>
+          <span>Hebrew name: {{this.name_he}}</span>
+        </div>
+        <div class="uni-grades-element">
+          <span>Bagrut: {{this.grade_bagrut}}</span>
+          <span>Psychometric: {{this.grade_psychometric}}</span>
+          <span>Tawjihi: {{this.grade_tawjihi}}</span>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

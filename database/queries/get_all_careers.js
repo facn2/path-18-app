@@ -1,6 +1,6 @@
 const dbConnection = require('../db_connection');
 
-const getAllCareers = userId => {
+const getAllUserCareers = userId => {
   const allCareersQuery = `
     SELECT * FROM careers
     WHERE careers.id NOT IN (
@@ -10,7 +10,7 @@ const getAllCareers = userId => {
   return new Promise((resolve, reject) => {
     dbConnection.query(allCareersQuery, [userId], (error, response) => {
       if (error) {
-        console.log('Get all careers error: ', error);
+        console.log('Get all user careers error: ', error);
         return reject(error);
       } else {
         resolve(response.rows);
@@ -19,4 +19,19 @@ const getAllCareers = userId => {
   });
 };
 
-module.exports = getAllCareers;
+const getAllCareers = () => {
+  const query = `SELECT * FROM careers`;
+
+  return new Promise((resolve, reject) =>
+    dbConnection.query(query, (error, response) => {
+      if (error) {
+        console.log('get all careers error', error);
+        return reject(error);
+      } else {
+        resolve(response.rows);
+      }
+    }),
+  );
+};
+
+module.exports = { getAllUserCareers, getAllCareers };

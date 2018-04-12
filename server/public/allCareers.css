@@ -1,0 +1,33 @@
+.all-careers-main {
+  padding: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.careers-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.career-element {
+  display: flex;
+  border: 2px solid #eee;
+  flex-basis: 40%;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+
+.title-containers {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.career-title {
+  font-size: 1.2rem;
+}

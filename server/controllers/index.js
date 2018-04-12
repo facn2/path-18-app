@@ -7,6 +7,7 @@ const axios = require('axios');
 const Strategy = require('passport-facebook').Strategy;
 const jwt = require('jsonwebtoken');
 const user = require('./user.js');
+const admin_pages = require('./admin_pages.js');
 
 const callbackURL =
   process.env.NODE_ENV === 'production'
@@ -42,7 +43,6 @@ passport.use(
             profile.displayName,
             (error, response) => {
               if (error) console.log(error);
-              // TODO redirect to fill in grades form
               return cb(null, response[0]);
             },
           );
@@ -108,6 +108,10 @@ router.get('/__/hello/facebook', passport.authenticate('facebook'));
 router.get('/__/add/career', addCareerController);
 
 router.put('/__/user/grades', authenticateUser, user.update);
+
+router.get('/__/allCareesPage', admin_pages.allCareersPage);
+
+router.get('/__/career/:id', admin_pages.singleCareerPage);
 
 router.get('/api/careers', authenticateUser, allCareers);
 

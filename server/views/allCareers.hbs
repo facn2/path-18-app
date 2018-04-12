@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/allCareers.css">
+
+<div class="all-careers-main">
+  <div class="careers-container">
+    {{#each careers}}
+      <a class="career-element" href="/__/career/{{this.id}}">
+        <div class="icon-container" style="color: {{this.icon_color}}">
+          <i class="material-icons job-icon">{{this.icon_name}}</i>
+        </div>
+        <div class="title-containers">
+          <span class="career-title">{{this.title_ar}}</span>
+          <span class="career-title">{{this.title_he}}</span>
+        </div>
+      </a>
+    {{/each}}
+  </div>
+</div>
