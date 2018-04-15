@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const passport = require('passport');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 require('env2')('./config.env');
 
@@ -10,6 +11,7 @@ const controllers = require('./controllers/index');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(
   bodyParser.urlencoded({
     extended: true,
