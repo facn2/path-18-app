@@ -64,7 +64,6 @@ const adminLogin = async (req, res) => {
 
 const verifyAdminMiddleware = async (req, res, next) => {
   try {
-    console.log(Object.keys(req));
     const { username } = await jwt.verify(
       req.cookies.access,
       process.env.JWT_SECRET,
@@ -75,7 +74,6 @@ const verifyAdminMiddleware = async (req, res, next) => {
       next();
     } else res.redirect('/admin');
   } catch (err) {
-    console.log(err);
     res.redirect('/admin');
   }
 };
