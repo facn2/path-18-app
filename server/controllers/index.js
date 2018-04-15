@@ -105,13 +105,29 @@ const authenticateUser = (req, res, next) => {
 
 router.get('/__/hello/facebook', passport.authenticate('facebook'));
 
-router.get('/__/add/career', addCareerController);
+router.get(
+  '/__/add/career',
+  admin_pages.verifyAdminMiddleware,
+  addCareerController,
+);
 
 router.put('/__/user/grades', authenticateUser, user.update);
 
-router.get('/__/allCareesPage', admin_pages.allCareersPage);
+router.get(
+  '/__/allCareesPage',
+  admin_pages.verifyAdminMiddleware,
+  admin_pages.allCareersPage,
+);
 
-router.get('/__/career/:id', admin_pages.singleCareerPage);
+router.get(
+  '/__/career/:id',
+  admin_pages.verifyAdminMiddleware,
+  admin_pages.singleCareerPage,
+);
+
+router.get('/admin', admin_pages.adminLoginPage);
+
+router.post('/__/admin/login', admin_pages.adminLogin);
 
 router.get('/api/careers', authenticateUser, allCareers);
 
