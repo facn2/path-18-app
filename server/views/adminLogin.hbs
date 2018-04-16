@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/adminLogin.css">
+
+<div class="main">
+  <form class="login-form" action="/__/admin/login" method="post">
+    <div class="error-box">
+      {{#if error}}
+      <span>{{error}}</span>
+      {{/if}}
+    </div>
+    <div class="username-container">
+      <label for="admin_username">Username:</label>
+      <input type="text" name="username" id="admin_username">
+    </div>
+    <div class="password-container">
+      <label for="admin_password">Password:</label>
+      <input type="password" name="password" id="admin_password">
+    </div>
+    <div class="submit-container">
+      <input type="submit" class="submit-button">
+    </div>
+  </form>
+</div>
