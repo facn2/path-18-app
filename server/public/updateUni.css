@@ -1,0 +1,61 @@
+.main {
+}
+
+.titles-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.career-title-container {
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+  justify-content: space-between;
+}
+
+.uni-name-container {
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+  justify-content: space-between;
+}
+
+.edit-form-container {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.edit-form {
+  border: 2px solid #eee;
+  padding: 2rem;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.input-container {
+  width: 15rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  font-size: 1rem;
+  padding: 0.4rem;
+  background-color: #26a69a;
+  color: #424242;
+  display: block;
+  border: none;
+  border-radius: 0.5rem;
+}
