@@ -7,7 +7,10 @@ const {
   getSpecificCareerUnibyId,
 } = require('../../database/queries/get_career_uni');
 const findAdminByUsername = require('../../database/queries/get_admin');
-const updateCareerSpecificUni = require('../../database/queries/update_career_uni');
+const {
+  updateCareerSpecificUni,
+  updateCareerDetails,
+} = require('../../database/queries/update_career');
 
 const allCareersPage = async (req, res) => {
   try {
