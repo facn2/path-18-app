@@ -6,7 +6,8 @@ const {
   getUniByCareerId,
   getSpecificCareerUnibyId,
 } = require('../../database/queries/get_career_uni');
-const findAdminByUsername = require('../../database/queries/get_admin.js');
+const findAdminByUsername = require('../../database/queries/get_admin');
+const updateCareerSpecificUni = require('../../database/queries/update_career_uni');
 
 const allCareersPage = async (req, res) => {
   try {
@@ -87,6 +88,7 @@ const renderSingleUni = async (req, res) => {
       req.params.careerId,
       req.params.uniId,
     );
+    console.log(uni);
     const career = await getCareer(req.params.careerId);
     res.render('updateUni', { career: career[0], uni: uni[0] });
   } catch (e) {
@@ -94,7 +96,23 @@ const renderSingleUni = async (req, res) => {
   }
 };
 
-const updateUni = (req, res) => req;
+const updateUni = async (req, res) => {
+  const { uniId, careerId } = req.params;
+  const { bagrut, psychometric, tawjihi } = req.body;
+  try {
+    await updateCareerSpecificUni(
+      uniId,
+      careerId,
+      bagrut || null,
+      psychometric || null,
+      tawjihi || null,
+    );
+
+    res.redirect(`/__/career/${req.params.careerId}`);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 module.exports = {
   allCareersPage,
