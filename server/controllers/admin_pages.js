@@ -2,7 +2,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { getAllCareers } = require('../../database/queries/get_all_careers');
 const getCareer = require('../../database/queries/career_by_id');
-const getUniByCareerId = require('../../database/queries/get_career_uni');
+const {
+  getUniByCareerId,
+  getSpecificCareerUnibyId,
+} = require('../../database/queries/get_career_uni');
 const findAdminByUsername = require('../../database/queries/get_admin.js');
 
 const allCareersPage = async (req, res) => {
@@ -78,10 +81,27 @@ const verifyAdminMiddleware = async (req, res, next) => {
   }
 };
 
+const renderSingleUni = async (req, res) => {
+  try {
+    const uni = await getSpecificCareerUnibyId(
+      req.params.careerId,
+      req.params.uniId,
+    );
+    const career = await getCareer(req.params.careerId);
+    res.render('updateUni', { career: career[0], uni: uni[0] });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const updateUni = (req, res) => req;
+
 module.exports = {
   allCareersPage,
   singleCareerPage,
   adminLoginPage,
   adminLogin,
   verifyAdminMiddleware,
+  renderSingleUni,
+  updateUni,
 };

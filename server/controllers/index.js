@@ -125,6 +125,11 @@ router.get(
   admin_pages.singleCareerPage,
 );
 
+router
+  .route('/uni/edit/:careerId/:uniId')
+  .get(admin_pages.verifyAdminMiddleware, admin_pages.renderSingleUni)
+  .post(admin_pages.verifyAdminMiddleware, admin_pages.updateUni);
+
 router.get('/admin', admin_pages.adminLoginPage);
 
 router.post('/__/admin/login', admin_pages.adminLogin);
