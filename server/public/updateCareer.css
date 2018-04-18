@@ -1,0 +1,84 @@
+.main {
+  padding: 3rem;
+  margin: 5rem;
+  border: 2px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.title-input-container {
+  padding: 1rem;
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 6rem;
+}
+
+.ar-title-input input {
+  width: 100%;
+}
+
+.he-title-input input {
+  width: 100%;
+}
+
+.tagline-input-container {
+  padding: 1rem;
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 6rem;
+}
+
+.ar-tagline-input input {
+  width: 100%;
+}
+
+.he-tagline-input input {
+  width: 100%;
+}
+
+.description-input-container {
+  padding: 1rem;
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.ar-description-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.he-description-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.salary-input-container {
+  padding: 1rem;
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 6rem;
+}
+
+.submit-button-container {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.submit-button {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  background-color: #26a69a;
+  color: #424242;
+  display: block;
+  border: none;
+  border-radius: 0.5rem;
+}
