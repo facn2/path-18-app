@@ -130,6 +130,11 @@ router
   .get(admin_pages.verifyAdminMiddleware, admin_pages.renderSingleUni)
   .post(admin_pages.verifyAdminMiddleware, admin_pages.updateUni);
 
+router
+  .route('/career/edit/:id')
+  .get(admin_pages.verifyAdminMiddleware, admin_pages.updateCareerPage)
+  .post(admin_pages.verifyAdminMiddleware, admin_pages.updateCareer);
+
 router.get('/admin', admin_pages.adminLoginPage);
 
 router.post('/__/admin/login', admin_pages.adminLogin);

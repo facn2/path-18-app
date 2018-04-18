@@ -117,6 +117,25 @@ const updateUni = async (req, res) => {
   }
 };
 
+const updateCareerPage = async (req, res) => {
+  try {
+    const career = await getCareer(req.params.id);
+    res.render('updateCareer', { career: career[0] });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const updateCareer = async (req, res) => {
+  console.log(req.params.id);
+  try {
+    await updateCareerDetails(req.params.id, req.body);
+    res.redirect(`/__/career/${req.params.id}`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   allCareersPage,
   singleCareerPage,
@@ -125,4 +144,6 @@ module.exports = {
   verifyAdminMiddleware,
   renderSingleUni,
   updateUni,
+  updateCareerPage,
+  updateCareer,
 };

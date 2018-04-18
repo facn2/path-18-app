@@ -32,17 +32,7 @@ const updateCareerSpecificUni = (
   );
 };
 
-const updateCareerDetails = (
-  careerId,
-  titleAr,
-  titleHe,
-  taglineAr,
-  taglineHe,
-  descriptionAr,
-  descriptionHe,
-  juniorSalary,
-  seniorSalary,
-) => {
+const updateCareerDetails = (careerId, careerDetails) => {
   const query = `
     UPDATE careers
       SET
@@ -53,7 +43,7 @@ const updateCareerDetails = (
         description_ar = $6,
         description_he = $7,
         salary_start = $8,
-        salary_ten_year = $9,
+        salary_ten_year = $9
       WHERE
         id = $1
   `;
@@ -63,14 +53,14 @@ const updateCareerDetails = (
       query,
       [
         careerId,
-        titleAr,
-        titleHe,
-        taglineAr,
-        taglineHe,
-        descriptionAr,
-        descriptionHe,
-        juniorSalary,
-        seniorSalary,
+        careerDetails.title_ar,
+        careerDetails.title_he,
+        careerDetails.tagline_ar,
+        careerDetails.tagline_he,
+        careerDetails.description_ar,
+        careerDetails.description_he,
+        careerDetails.salary_start,
+        careerDetails.salary_ten_year,
       ],
       (error, response) => {
         if (error) {
