@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  width: 100%;
+  border-bottom: 2px solid #eee;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+}
