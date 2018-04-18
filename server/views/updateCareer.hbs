@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/updateCareer.css">
+
+<div class="main">
+  <form class="career-edit-form" action="/career/edit/{{career.id}}" method="post">
+    <div class="title-input-container">
+      <div class="ar-title-input">
+        <label for="titleAr">Arabic Title:</label>
+        <input type="text" id="titleAr" name="title_ar" style="padding: .4rem;" value="{{career.title_ar}}">
+      </div>
+      <div class="he-title-input">
+        <label for="titleHe">Hebrew Title:</label>
+        <input type="text" id="titleHe" name="title_he" style="padding: .4rem;" value="{{career.title_he}}">
+      </div>
+    </div>
+    <div class="tagline-input-container">
+      <div class="ar-tagline-input">
+        <label for="taglineAr">Arabic Tagline: </label>
+        <input type="text" id="taglineAr" name="tagline_ar" style="padding: .4rem;" value="{{career.tagline_ar}}">
+      </div>
+      <div class="he-tagline-input">
+        <label for="taglineHe">Hebrew Tagline: </label>
+        <input type="text" id="taglineHe" name="tagline_he" style="padding: .4rem;" value="{{career.tagline_he}}">
+      </div>
+    </div>
+    <div class="description-input-container">
+      <div class="ar-description-input">
+        <label for="descriptionAr">Arabic Description: </label>
+        <textarea id="descriptionAr" name="description_ar" rows="12" cols="80">{{career.description_ar}}</textarea>
+      </div>
+      <div class="he-description-input">
+        <label for="descriptionHe">Hebrew Description: </label>
+        <textarea id="descriptionHe" name="description_he" rows="12" cols="80">{{career.description_he}}</textarea>
+      </div>
+    </div>
+    <div class="salary-input-container">
+      <div class="junior-salary-input">
+        <label for="juniorSalary">Junior Salary: </label>
+        <input type="number" id="juniorSalary" name="salary_start" value="{{career.salary_start}}">
+      </div>
+      <div class="senior-salary-input-container">
+        <label for="seniorSalary">Senior Salary: </label>
+        <input type="nunber" id="seniorSalary" name="salary_ten_year" value="{{career.salary_ten_year}}">
+      </div>
+    </div>
+    <div class="submit-button-container">
+      <input type="submit" class="submit-button">
+    </div>
+  </form>
+</div>
