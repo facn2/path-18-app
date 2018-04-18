@@ -79,9 +79,9 @@ const verifyAdminMiddleware = async (req, res, next) => {
 
     if (userQuery[0]) {
       next();
-    } else res.redirect('/admin');
+    } else res.redirect('/__/admin');
   } catch (err) {
-    res.redirect('/admin');
+    res.redirect('/__/admin');
   }
 };
 
