@@ -91,7 +91,6 @@ const renderSingleUni = async (req, res) => {
       req.params.careerId,
       req.params.uniId,
     );
-    console.log(uni);
     const career = await getCareer(req.params.careerId);
     res.render('updateUni', { career: career[0], uni: uni[0] });
   } catch (e) {
@@ -127,7 +126,6 @@ const updateCareerPage = async (req, res) => {
 };
 
 const updateCareer = async (req, res) => {
-  console.log(req.params.id);
   try {
     await updateCareerDetails(req.params.id, req.body);
     res.redirect(`/__/career/${req.params.id}`);
