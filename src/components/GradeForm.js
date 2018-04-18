@@ -81,7 +81,7 @@ class GradeForm extends Component {
           <FormLabel>Psychometri grade</FormLabel>
           <FormInput
             type="number"
-            min="0"
+            min="200"
             max="800"
             name="psychometric_grade"
           />

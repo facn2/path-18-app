@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="/updateUni.css">
+
+<div class="main">
+  <div class="titles-container">
+    <div class="career-title-container">
+      <span>{{career.title_ar}}</span>
+      <span>{{career.title_he}}</span>
+    </div>
+    <div class="uni-name-container">
+      <span>{{uni.name_ar}}</span>
+      <span>{{uni.name_he}}</span>
+    </div>
+  </div>
+  <div class="edit-form-container">
+    <form class="edit-form" action="/uni/edit/{{uni.career_id}}/{{uni.uni_id}}" method="post">
+      <div class="input-container">
+        <label for="bagrut-input">Bagrut grade:</label>
+        <input type="number" id="bagrut-input" name="bagrut" min="0" max="120" value="{{uni.grade_bagrut}}">
+      </div>
+      <div class="input-container">
+        <label for="psychometric-input">Psychometric grade:</label>
+        <input type="number" id="psychometric-input" name="psychometric" min="200" max="800" value="{{uni.grade_psychometric}}">
+      </div>
+      <div class="input-container">
+        <label for="tawjihi-input">Tawjihi grade</label>
+        <input type="number" id="tawjihi-input" name="tawjihi" min="0" max="100" value="{{uni.grade_tawjihi}}">
+      </div>
+      <div class="submit-container">
+        <input type="submit" class="submit-button">
+      </div>
+    </form>
+  </div>
+</div>
