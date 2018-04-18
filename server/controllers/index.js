@@ -126,12 +126,12 @@ router.get(
 );
 
 router
-  .route('/uni/edit/:careerId/:uniId')
+  .route('/__/uni/edit/:careerId/:uniId')
   .get(admin_pages.verifyAdminMiddleware, admin_pages.renderSingleUni)
   .post(admin_pages.verifyAdminMiddleware, admin_pages.updateUni);
 
 router
-  .route('/career/edit/:id')
+  .route('/__/career/edit/:id')
   .get(admin_pages.verifyAdminMiddleware, admin_pages.updateCareerPage)
   .post(admin_pages.verifyAdminMiddleware, admin_pages.updateCareer);
 
