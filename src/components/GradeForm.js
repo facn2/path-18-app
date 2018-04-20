@@ -95,7 +95,7 @@ class GradeForm extends Component {
             min="0"
             max="120"
             name="bagrut_grade"
-            value={this.state.bagrut}
+            value={this.state.bagrut || ''}
             onChange={e => this.setState({ bagrut: e.target.value })}
           />
           <FormLabel>Psychometric grade</FormLabel>
@@ -104,7 +104,7 @@ class GradeForm extends Component {
             min="200"
             max="800"
             name="psychometric_grade"
-            value={this.state.psychometric}
+            value={this.state.psychometric || ''}
             onChange={e => this.setState({ psychometric: e.target.value })}
           />
           <FormLabel>Tawjihi grade</FormLabel>
@@ -113,7 +113,7 @@ class GradeForm extends Component {
             min="0"
             max="100"
             name="tawjihi_grade"
-            value={this.state.tawjihi}
+            value={this.state.tawjihi || ''}
             onChange={e => this.setState({ tawjihi: e.target.value })}
           />
           <FormInput type="submit" />
