@@ -112,6 +112,7 @@ router.get(
 );
 
 router.put('/__/user/grades', authenticateUser, user.update);
+router.get('/__/user/details', authenticateUser, user.userDetails);
 
 router.get(
   '/__/allCareesPage',
