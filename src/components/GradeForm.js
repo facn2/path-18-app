@@ -50,20 +50,33 @@ const Tagline = styled.h3`
 `;
 
 class GradeForm extends Component {
+  constructor(props) {
+    super();
+
+    this.state = {
+      bagrut: '',
+      psychometric: '',
+      tawjihi: '',
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
+    const { bagrut, psychometric, tawjihi } = this.state;
+
     const data = {
-      id: this.props.match.params.id,
-      bagrut_grade: e.target.bagrut_grade.value,
-      psychometric_grade: e.target.psychometric_grade.value,
-      tawjihi_grade: e.target.tawjihi_grade.value,
+      bagrut_grade: bagrut,
+      psychometric_grade: psychometric,
+      tawjihi_grade: tawjihi,
     };
 
     axios
       .put('/__/user/grades', data)
       .then(() => (window.location = '/careers'))
-      .catch(() => (window.location = '/login'));
+      .catch(() => (window.location = '/'));
   }
 
   render() {
@@ -77,20 +90,43 @@ class GradeForm extends Component {
         </TitleSection>
         <Form onSubmit={this.handleSubmit}>
           <FormLabel>Bagrut grade</FormLabel>
-          <FormInput type="number" min="0" max="120" name="bagrut_grade" />
-          <FormLabel>Psychometri grade</FormLabel>
+          <FormInput
+            type="number"
+            min="0"
+            max="120"
+            name="bagrut_grade"
+            value={this.state.bagrut}
+            onChange={e => this.setState({ bagrut: e.target.value })}
+          />
+          <FormLabel>Psychometric grade</FormLabel>
           <FormInput
             type="number"
             min="200"
             max="800"
             name="psychometric_grade"
+            value={this.state.psychometric}
+            onChange={e => this.setState({ psychometric: e.target.value })}
           />
           <FormLabel>Tawjihi grade</FormLabel>
-          <FormInput type="number" min="0" max="100" name="tawjihi_grade" />
+          <FormInput
+            type="number"
+            min="0"
+            max="100"
+            name="tawjihi_grade"
+            value={this.state.tawjihi}
+            onChange={e => this.setState({ tawjihi: e.target.value })}
+          />
           <FormInput type="submit" />
         </Form>
       </GradeFormWrapper>
     );
+  }
+
+  componentDidMount() {
+    axios
+      .get('/__/user/details')
+      .then(res => this.setState(res.data))
+      .catch(() => (window.location = '/'));
   }
 }
 
