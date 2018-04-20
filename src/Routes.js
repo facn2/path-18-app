@@ -59,6 +59,7 @@ const GradeFormOnly = () => {
   return (
     <AppWrapper>
       <Route path="/user/grades/:id" exact component={GradeForm} />
+      <Route path="/edit/grades" exact component={GradeForm} />
     </AppWrapper>
   );
 };
@@ -68,6 +69,7 @@ const Routes = () => (
     <Switch>
       <Route path="/" exact component={LoginOnly} />
       <Route path="/user/grades/:id" exact component={GradeFormOnly} />
+      <Route path="/edit/grades" exact component={GradeFormOnly} />
       <Route path="*" component={Main} />
     </Switch>
   </BrowserRouter>

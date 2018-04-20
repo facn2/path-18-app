@@ -52,7 +52,8 @@ const Wrapper = styled.div`
 
 const SettingsList = styled.ul``;
 
-const SettlingsListItem = styled.a`
+const SettlingsListItem = styled(Link)`
+  cursor: pointer;
   height: 3.8rem;
   border-bottom: 0.1rem solid gainsboro;
   border-width: thin;
@@ -113,22 +114,20 @@ class NavBar extends Component {
         </NavBarContainer>
         <SettingsContainer settings={this.state.settings}>
           <SettingsList>
-            <SettlingsListItem>
+            <SettlingsListItem to="/edit/grades">
               <ListItemText>Edit grades</ListItemText>
               <ListItemIcon className="material-icons">edit</ListItemIcon>
             </SettlingsListItem>
-            <SettlingsListItem>
-              <ListItemText>Edit personal data</ListItemText>
-              <ListItemIcon className="material-icons">person</ListItemIcon>
-            </SettlingsListItem>
-            <SettlingsListItem>
+            <SettlingsListItem to="#">
               <ListItemText>Help</ListItemText>
               <ListItemIcon className="material-icons">
                 help_outline
               </ListItemIcon>
             </SettlingsListItem>
-            <SettlingsListItem href="
-                /__/logout">
+            <SettlingsListItem
+              to="
+                /__/logout"
+            >
               <ListItemText>Logout</ListItemText>
               <ListItemIcon className="material-icons">
                 exit_to_app

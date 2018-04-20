@@ -3,7 +3,7 @@ const getLikedCareersDb = require('../../database/queries/get_liked_careers');
 const likeCareerDb = require('../../database/queries/like_career');
 const unlikeCareerDb = require('../../database/queries/unlike_career');
 const getCareerById = require('../../database/queries/career_by_id');
-const getUniByCareerId = require('../../database/queries/get_career_uni');
+const { getUniByCareerId } = require('../../database/queries/get_career_uni');
 const getUserGrades = require('../../database/queries/get_user_grades');
 
 const allCareers = async (request, response) => {
