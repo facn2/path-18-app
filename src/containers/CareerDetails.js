@@ -81,9 +81,9 @@ class CareerDetails extends Component {
         </TableColumn>
         <TableColumn>
           <GradeTitle>Required</GradeTitle>
-          <Grade> {uni.grade_bagrut} </Grade>
-          <Grade> {uni.grade_tawjihi} </Grade>
-          <Grade> {uni.grade_psychometric} </Grade>
+          <Grade> {uni.grade_bagrut || 0} </Grade>
+          <Grade> {uni.grade_tawjihi || 0} </Grade>
+          <Grade> {uni.grade_psychometric || 0} </Grade>
         </TableColumn>
         <TableColumn>
           <GradeTitle>Type of Grade</GradeTitle>
