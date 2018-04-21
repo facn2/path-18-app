@@ -114,7 +114,7 @@ class NavBar extends Component {
         </NavBarContainer>
         <SettingsContainer settings={this.state.settings}>
           <SettingsList>
-            <SettlingsListItem to="/edit/grades">
+            <SettlingsListItem to="/user/grades">
               <ListItemText>Edit grades</ListItemText>
               <ListItemIcon className="material-icons">edit</ListItemIcon>
             </SettlingsListItem>

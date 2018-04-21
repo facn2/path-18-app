@@ -81,8 +81,7 @@ router.get(
     ) {
       res.redirect('/careers');
     } else {
-      console.log(`/user/grades/${req.user.id}`);
-      res.redirect(`/user/grades/${req.user.id}`);
+      res.redirect('/user/grades');
     }
   },
 );
