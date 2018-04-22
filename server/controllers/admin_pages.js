@@ -11,6 +11,7 @@ const {
   updateCareerSpecificUni,
   updateCareerDetails,
 } = require('../../database/queries/update_career');
+const { addAdminQuery } = require('../../database/queries/add_admin.js');
 
 const allCareersPage = async (req, res) => {
   try {
@@ -56,13 +57,13 @@ const adminLogin = async (req, res) => {
       const rows = await findAdminByUsername(username);
 
       if (!rows.length) {
-        res.render('adminLogin', { error: 'username does not exist' });
+        return res.render('adminLogin', { error: 'username does not exist' });
       }
 
       const comparision = bcrypt.compare(password, rows[0].password);
 
       if (!comparision) {
-        res.render('adminLogin', { error: 'wrong password!' });
+        return res.render('adminLogin', { error: 'wrong password!' });
       }
 
       const token = await jwt.sign(
@@ -152,6 +153,31 @@ const updateCareer = async (req, res) => {
   }
 };
 
+const addAdminPage = async (req, res) => {
+  try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
+    if (role === 'SUPER') {
+      res.render('addAdminPage');
+    } else {
+      // TODO render an error page
+      res.send('add error page here');
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const addAdmin = async (req, res) => {
+  console.log(req.body);
+  try {
+    const password = bcrypt.hash(req.body.password, 10);
+    await addAdminQuery(req.body.username, password, req.body.role);
+    res.redirect('/__/allCareesPage');
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 module.exports = {
   allCareersPage,
   singleCareerPage,
@@ -162,4 +188,6 @@ module.exports = {
   updateUni,
   updateCareerPage,
   updateCareer,
+  addAdminPage,
+  addAdmin,
 };
