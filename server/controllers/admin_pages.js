@@ -168,7 +168,6 @@ const addAdminPage = async (req, res) => {
 };
 
 const addAdmin = async (req, res) => {
-  console.log(req.body);
   try {
     const password = bcrypt.hash(req.body.password, 10);
     await addAdminQuery(req.body.username, password, req.body.role);
