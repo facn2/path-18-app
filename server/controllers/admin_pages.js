@@ -11,21 +11,31 @@ const {
   updateCareerSpecificUni,
   updateCareerDetails,
 } = require('../../database/queries/update_career');
+const { addAdminQuery } = require('../../database/queries/add_admin.js');
 
 const allCareersPage = async (req, res) => {
   try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
     const careers = await getAllCareers();
-    res.render('allCareers', { careers });
+    res.render('allCareers', {
+      careers,
+      SUPER: role === 'SUPER' || false,
+    });
   } catch (e) {
-    res.send(e);
+    res.send('An Error Occurd');
   }
 };
 
 const singleCareerPage = async (req, res) => {
   try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
     const career = await getCareer(req.params.id);
     const unis = await getUniByCareerId(req.params.id);
-    res.render('singleCareer', { career: career[0], unis });
+    res.render('singleCareer', {
+      career: career[0],
+      unis,
+      SUPER: role === 'SUPER' || false,
+    });
   } catch (e) {
     res.send(e);
   }
@@ -47,13 +57,13 @@ const adminLogin = async (req, res) => {
       const rows = await findAdminByUsername(username);
 
       if (!rows.length) {
-        res.render('adminLogin', { error: 'username does not exist' });
+        return res.render('adminLogin', { error: 'username does not exist' });
       }
 
       const comparision = bcrypt.compare(password, rows[0].password);
 
       if (!comparision) {
-        res.render('adminLogin', { error: 'wrong password!' });
+        return res.render('adminLogin', { error: 'wrong password!' });
       }
 
       const token = await jwt.sign(
@@ -87,12 +97,17 @@ const verifyAdminMiddleware = async (req, res, next) => {
 
 const renderSingleUni = async (req, res) => {
   try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
     const uni = await getSpecificCareerUnibyId(
       req.params.careerId,
       req.params.uniId,
     );
     const career = await getCareer(req.params.careerId);
-    res.render('updateUni', { career: career[0], uni: uni[0] });
+    res.render('updateUni', {
+      career: career[0],
+      uni: uni[0],
+      SUPER: role === 'SUPER' || false,
+    });
   } catch (e) {
     console.log(e);
   }
@@ -118,8 +133,12 @@ const updateUni = async (req, res) => {
 
 const updateCareerPage = async (req, res) => {
   try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
     const career = await getCareer(req.params.id);
-    res.render('updateCareer', { career: career[0] });
+    res.render('updateCareer', {
+      career: career[0],
+      SUPER: role === 'SUPER' || false,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -134,6 +153,34 @@ const updateCareer = async (req, res) => {
   }
 };
 
+const addAdminPage = async (req, res) => {
+  try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
+    if (role === 'SUPER') {
+      res.render('addAdminPage');
+    } else {
+      // TODO render an error page
+      res.send('add error page here');
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const addAdmin = async (req, res) => {
+  try {
+    const adminUsernameCheck = await findAdminByUsername(req.body.username);
+    if (adminUsernameCheck.length) {
+      return res.render('addAdminPage', { error: 'Username already exists' });
+    }
+    const password = bcrypt.hash(req.body.password, 10);
+    await addAdminQuery(req.body.username, password, req.body.role);
+    res.redirect('/__/allCareesPage');
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 module.exports = {
   allCareersPage,
   singleCareerPage,
@@ -144,4 +191,6 @@ module.exports = {
   updateUni,
   updateCareerPage,
   updateCareer,
+  addAdminPage,
+  addAdmin,
 };

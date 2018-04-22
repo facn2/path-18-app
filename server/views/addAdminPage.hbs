@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/addAdminPage.css">
+
+<div class="main">
+  <form class="admin-form" action="/__/add/admin" method="post">
+    <div class="error-box">
+      {{#if error}}
+      <span>{{error}}</span>
+      {{/if}}
+    </div>
+    <div class="username-container">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username">
+    </div>
+    <div class="password-container">
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password">
+    </div>
+    <div class="confirm-password-container">
+      <label for="confirm_password">Confirm password:</label>
+      <input type="password" id="confirm_password">
+    </div>
+    <div class="role-container">
+       <select class="roler-select" name="role">
+         <option value="SUPER">SUPER</option>
+         <option value="ADMIN">ADMIN</option>
+       </select>
+    </div>
+    <div class="submit-container">
+      <input type="submit" class="submit-button">
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript">
+  var password = document.getElementById("password")
+  var confirm_password = document.getElementById("confirm_password");
+
+  function validatePassword(){
+    if(password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+  }
+
+  password.onchange = validatePassword;
+  confirm_password.onkeyup = validatePassword;
+</script>

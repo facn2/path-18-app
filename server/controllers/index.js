@@ -140,6 +140,11 @@ router.get('/__/admin', admin_pages.adminLoginPage);
 
 router.post('/__/admin/login', admin_pages.adminLogin);
 
+router
+  .route('/__/add/admin')
+  .get(admin_pages.verifyAdminMiddleware, admin_pages.addAdminPage)
+  .post(admin_pages.verifyAdminMiddleware, admin_pages.addAdmin);
+
 router.get('/api/careers', authenticateUser, allCareers);
 
 router.get('/api/careers/liked', authenticateUser, likedCareers);
