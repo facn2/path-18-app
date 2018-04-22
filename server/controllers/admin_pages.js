@@ -169,6 +169,10 @@ const addAdminPage = async (req, res) => {
 
 const addAdmin = async (req, res) => {
   try {
+    const adminUsernameCheck = await findAdminByUsername(req.body.username);
+    if (adminUsernameCheck.length) {
+      return res.render('addAdminPage', { error: 'Username already exists' });
+    }
     const password = bcrypt.hash(req.body.password, 10);
     await addAdminQuery(req.body.username, password, req.body.role);
     res.redirect('/__/allCareesPage');

@@ -2,6 +2,11 @@
 
 <div class="main">
   <form class="admin-form" action="/__/add/admin" method="post">
+    <div class="error-box">
+      {{#if error}}
+      <span>{{error}}</span>
+      {{/if}}
+    </div>
     <div class="username-container">
       <label for="username">Username:</label>
       <input type="text" name="username" id="username">
