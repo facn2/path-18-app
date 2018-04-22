@@ -14,18 +14,27 @@ const {
 
 const allCareersPage = async (req, res) => {
   try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
     const careers = await getAllCareers();
-    res.render('allCareers', { careers });
+    res.render('allCareers', {
+      careers,
+      SUPER: role === 'SUPER' || false,
+    });
   } catch (e) {
-    res.send(e);
+    res.send('An Error Occurd');
   }
 };
 
 const singleCareerPage = async (req, res) => {
   try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
     const career = await getCareer(req.params.id);
     const unis = await getUniByCareerId(req.params.id);
-    res.render('singleCareer', { career: career[0], unis });
+    res.render('singleCareer', {
+      career: career[0],
+      unis,
+      SUPER: role === 'SUPER' || false,
+    });
   } catch (e) {
     res.send(e);
   }
@@ -87,12 +96,17 @@ const verifyAdminMiddleware = async (req, res, next) => {
 
 const renderSingleUni = async (req, res) => {
   try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
     const uni = await getSpecificCareerUnibyId(
       req.params.careerId,
       req.params.uniId,
     );
     const career = await getCareer(req.params.careerId);
-    res.render('updateUni', { career: career[0], uni: uni[0] });
+    res.render('updateUni', {
+      career: career[0],
+      uni: uni[0],
+      SUPER: role === 'SUPER' || false,
+    });
   } catch (e) {
     console.log(e);
   }
@@ -118,8 +132,12 @@ const updateUni = async (req, res) => {
 
 const updateCareerPage = async (req, res) => {
   try {
+    const { role } = jwt.verify(req.cookies.access, process.env.JWT_SECRET);
     const career = await getCareer(req.params.id);
-    res.render('updateCareer', { career: career[0] });
+    res.render('updateCareer', {
+      career: career[0],
+      SUPER: role === 'SUPER' || false,
+    });
   } catch (err) {
     console.log(err);
   }
