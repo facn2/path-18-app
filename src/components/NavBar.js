@@ -35,19 +35,22 @@ const SettingsContainer = styled.div`
   color: black;
   background-color: white;
   width: 100%;
+  max-width: 25rem;
   transform: ${props =>
     props.settings ? 'translateY(0)' : 'translateY(-100%)'};
   transition: all cubic-bezier(0.47, 0, 0.75, 0.72) 0.12s;
-  position: absolute;
+  position: ${props => (props.position ? 'fixed' : 'absolute')};
   top: 4rem;
-  right: 0;
+  right: ${props => (props.position ? 'inherit' : '0')};
   z-index: 1;
   box-shadow: 0 0.22rem 0.44rem rgba(0, 0, 0, 0.09),
     0 0.22rem 0.44rem rgba(0, 0, 0, 0.13);
 `;
 
 const Wrapper = styled.div`
-  position: relative;
+  position: absolute;
+  height: 100vh;
+  z-index: 10;
 `;
 
 const SettingsList = styled.ul``;
@@ -71,9 +74,27 @@ const SettlingsListItem = styled(Link)`
   }
 `;
 
+const SettlingsBackItem = styled.div`
+  cursor: pointer;
+  height: 2rem;
+  border-bottom: 0.1rem solid gainsboro;
+  border-width: thin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #455a64;
+  &:active {
+    background-color: gainsboro;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
 const ListItemText = styled.p`
   text-align: right;
   padding-right: 5%;
+  width: 100%;
 `;
 
 const ListItemIcon = styled.i`
@@ -90,35 +111,54 @@ class NavBar extends Component {
     this.state = { selected: false };
   }
 
-  toggleSettings = () => {
-    this.setState({ settings: !this.state.settings });
+  toggleSettings = settings => {
+    if (!settings) {
+      this.setState({ settings });
+      setTimeout(() => {
+        this.setState({ position: false });
+      }, 120);
+    } else {
+      this.setState({ settings, position: true });
+    }
   };
 
   render() {
     return (
       <Wrapper>
         <NavBarContainer settings={this.state.settings}>
-          <StyledLink to="/careers/liked">
+          <StyledLink
+            to="/careers/liked"
+            onClick={() => this.toggleSettings(false)}
+          >
             <NavBarItem>
               <Icon className="material-icons">playlist_add_check</Icon>
             </NavBarItem>
           </StyledLink>
-          <StyledLink to="/careers">
+          <StyledLink to="/careers" onClick={() => this.toggleSettings(false)}>
             <NavBarItem>
               <Icon className="material-icons">view_carousel</Icon>
             </NavBarItem>
           </StyledLink>
-          <NavBarItem onClick={this.toggleSettings}>
+          <NavBarItem onClick={() => this.toggleSettings(!this.state.settings)}>
             <Icon className="material-icons">settings</Icon>
           </NavBarItem>
         </NavBarContainer>
-        <SettingsContainer settings={this.state.settings}>
+        <SettingsContainer
+          settings={this.state.settings}
+          position={this.state.position}
+        >
           <SettingsList>
-            <SettlingsListItem to="/user/grades">
+            <SettlingsListItem
+              to="/user/grades"
+              onClick={() => this.toggleSettings(false)}
+            >
               <ListItemText>Edit grades</ListItemText>
               <ListItemIcon className="material-icons">edit</ListItemIcon>
             </SettlingsListItem>
-            <SettlingsListItem to="#">
+            <SettlingsListItem
+              to="#"
+              onClick={() => this.toggleSettings(false)}
+            >
               <ListItemText>Help</ListItemText>
               <ListItemIcon className="material-icons">
                 help_outline
@@ -127,12 +167,18 @@ class NavBar extends Component {
             <SettlingsListItem
               to="
                 /__/logout"
+              onClick={() => this.toggleSettings(false)}
             >
               <ListItemText>Logout</ListItemText>
               <ListItemIcon className="material-icons">
                 exit_to_app
               </ListItemIcon>
             </SettlingsListItem>
+            <SettlingsBackItem onClick={() => this.toggleSettings(false)}>
+              <ListItemIcon className="material-icons">
+                keyboard_arrow_up
+              </ListItemIcon>
+            </SettlingsBackItem>
           </SettingsList>
         </SettingsContainer>
       </Wrapper>
