@@ -74,6 +74,23 @@ const SettlingsListItem = styled(Link)`
   }
 `;
 
+const SettlingsBackItem = styled.div`
+  cursor: pointer;
+  height: 2rem;
+  border-bottom: 0.1rem solid gainsboro;
+  border-width: thin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #455a64;
+  &:active {
+    background-color: gainsboro;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
 const ListItemText = styled.p`
   text-align: right;
   padding-right: 5%;
@@ -157,6 +174,11 @@ class NavBar extends Component {
                 exit_to_app
               </ListItemIcon>
             </SettlingsListItem>
+            <SettlingsBackItem onClick={() => this.toggleSettings(false)}>
+              <ListItemIcon className="material-icons">
+                keyboard_arrow_up
+              </ListItemIcon>
+            </SettlingsBackItem>
           </SettingsList>
         </SettingsContainer>
       </Wrapper>
