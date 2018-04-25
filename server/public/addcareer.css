@@ -45,8 +45,8 @@ body {
 .form {
   font-size: 1.2rem;
   width: 100%;
-  padding: 0 3rem;
-  max-width: 60rem;
+  padding: 0 1rem;
+  max-width: 70rem;
   display: block;
   margin: 0 auto;
 }
@@ -57,11 +57,14 @@ body {
 .form-arabic,
 .form-hebrew,
 .general-inputs {
-  margin: 0 3rem;
+  margin: 0 1rem;
 }
-.form-arabic input,
-.form-hebrew input,
-.general-inputs input {
+.form-arabic textarea,
+input,
+.form-hebrew textarea,
+input,
+.general-inputs textarea,
+input {
   width: 100%;
   line-height: 2rem;
   margin: 1rem;
