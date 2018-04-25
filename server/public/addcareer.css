@@ -59,12 +59,11 @@ body {
 .general-inputs {
   margin: 0 1rem;
 }
+.form-arabic input,
 .form-arabic textarea,
-input,
+.form-hebrew input,
 .form-hebrew textarea,
-input,
-.general-inputs textarea,
-input {
+.general-inputs input {
   width: 100%;
   line-height: 2rem;
   margin: 1rem;
