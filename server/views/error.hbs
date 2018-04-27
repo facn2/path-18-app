@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="/error.css">
+
+<div class="main">
+  {{#if error.message}}
+    <h1 class="error-message">{{error.message}}</h1>
+  {{else}}
+    <h1 class="error-message">An error has occurd</h1>
+  {{/if}}
+</div>
