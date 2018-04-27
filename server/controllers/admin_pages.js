@@ -21,8 +21,9 @@ const allCareersPage = async (req, res) => {
       careers,
       SUPER: role === 'SUPER' || false,
     });
-  } catch (e) {
-    res.send('An Error Occurd');
+    res.render('error', { error });
+  } catch (error) {
+    res.render('error', { error });
   }
 };
 
@@ -36,8 +37,8 @@ const singleCareerPage = async (req, res) => {
       unis,
       SUPER: role === 'SUPER' || false,
     });
-  } catch (e) {
-    res.send(e);
+  } catch (error) {
+    res.render('error', { error });
   }
 };
 
@@ -108,8 +109,8 @@ const renderSingleUni = async (req, res) => {
       uni: uni[0],
       SUPER: role === 'SUPER' || false,
     });
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    res.render('error', { error });
   }
 };
 
@@ -126,8 +127,8 @@ const updateUni = async (req, res) => {
     );
 
     res.redirect(`/__/career/${req.params.careerId}`);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    res.render('error', { error });
   }
 };
 
@@ -139,8 +140,8 @@ const updateCareerPage = async (req, res) => {
       career: career[0],
       SUPER: role === 'SUPER' || false,
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    res.render('error', { error });
   }
 };
 
@@ -148,8 +149,8 @@ const updateCareer = async (req, res) => {
   try {
     await updateCareerDetails(req.params.id, req.body);
     res.redirect(`/__/career/${req.params.id}`);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    res.render('error', { error });
   }
 };
 
@@ -159,11 +160,14 @@ const addAdminPage = async (req, res) => {
     if (role === 'SUPER') {
       res.render('addAdminPage');
     } else {
-      // TODO render an error page
-      res.send('add error page here');
+      res.render('error', {
+        error: {
+          message: 'Unauthorised',
+        },
+      });
     }
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    res.render('error', { error });
   }
 };
 
@@ -176,8 +180,8 @@ const addAdmin = async (req, res) => {
     const password = bcrypt.hash(req.body.password, 10);
     await addAdminQuery(req.body.username, password, req.body.role);
     res.redirect('/__/allCareesPage');
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    res.render('error', { error });
   }
 };
 
