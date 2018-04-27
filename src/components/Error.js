@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = styled.section`
   background-color: whitesmoke;
@@ -19,11 +20,22 @@ const Title = styled.h2`
   margin-bottom: 4rem;
 `;
 
+const LoginLink = styled(Link)`
+  text-decoration: none;
+  color: #455a64;
+  border: 1px solid #455a64;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+`;
+
 const SubTitle = styled.h3`
   font-weight: bold;
   font-size: 3rem;
   text-align: center;
   color: #455a64;
+  margin-bottom: 4rem;
 `;
 
 const ErrorComponent = props => {
@@ -32,6 +44,7 @@ const ErrorComponent = props => {
       <Container>
         <Title>{props.location.state.error.code}</Title>
         <SubTitle>{props.location.state.error.message}</SubTitle>
+        <LoginLink to="/">Go Back</LoginLink>
       </Container>
     );
   }
