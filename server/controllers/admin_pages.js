@@ -21,7 +21,6 @@ const allCareersPage = async (req, res) => {
       careers,
       SUPER: role === 'SUPER' || false,
     });
-    res.render('error', { error });
   } catch (error) {
     res.render('error', { error });
   }
