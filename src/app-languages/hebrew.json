@@ -1,0 +1,39 @@
+{
+  "continueWithFacebook": "",
+  "/careers": {
+    "endDescription": "",
+    "likedCareers": ""
+  },
+  "/careers/likes": {
+    "title": "",
+    "tip": ""
+  },
+  "/careers/details": {
+    "salary": {
+      "title": "",
+      "junior": "",
+      "senior": ""
+    },
+    "grades": {
+      "typeOfGrades": "",
+      "yours": "",
+      "required": "",
+      "bagrut": "",
+      "tawjihi": "",
+      "psychometric": ""
+    }
+  },
+  "loadingScreen": {
+    "description": ""
+  },
+  "navbar": {
+    "editGrades": "",
+    "help": "",
+    "logout": ""
+  },
+  "gradesForm": {
+    "bagrut": "",
+    "tawjihi": "",
+    "psychometric": ""
+  }
+}
