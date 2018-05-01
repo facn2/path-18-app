@@ -1,39 +1,37 @@
 {
-  "continueWithFacebook": "",
+  "continueWithFacebook": "המשיך עם פייסבוק",
   "/careers": {
-    "endDescription": "",
-    "likedCareers": ""
+    "endDescription":
+      "עברת על כל הקריירות. כדי ללמוד עליהם יותר תעבור לעמוד הקריירות שלך",
+    "likedCareers": "הקריירות שלך"
   },
   "/careers/likes": {
-    "title": "",
-    "tip": ""
+    "title": "הקריירות שלך",
+    "tip": "לחץ על קריירה כדי לדעת עוד"
   },
   "/careers/details": {
     "salary": {
-      "title": "",
-      "junior": "",
-      "senior": ""
+      "title": "שכר",
+      "junior": "בוגר טרי",
+      "senior": "בכיר"
     },
     "grades": {
-      "typeOfGrades": "",
-      "yours": "",
-      "required": "",
-      "bagrut": "",
-      "tawjihi": "",
-      "psychometric": ""
+      "typeOfGrades": "סוג הציון",
+      "yours": "הציונים שלך",
+      "required": "נדרש",
+      "bagrut": "בגרות",
+      "tawjihi": "תאוגיהי",
+      "psychometric": "פסיכומטרי"
     }
   },
-  "loadingScreen": {
-    "description": ""
-  },
   "navbar": {
-    "editGrades": "",
-    "help": "",
-    "logout": ""
+    "editGrades": "לערוך ציונים",
+    "help": "עזרה",
+    "logout": "יציאה"
   },
   "gradesForm": {
-    "bagrut": "",
-    "tawjihi": "",
-    "psychometric": ""
+    "bagrut": "בגרות",
+    "tawjihi": "תאוגיהי",
+    "psychometric": "פסיכומטרי"
   }
 }
