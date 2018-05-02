@@ -1,0 +1,37 @@
+{
+  "continueWithFacebook": "تسجيل الدخول عبر فيسبوك",
+  "/careers": {
+    "endDescription":
+      "لقد انهيت كل المهن, لمزيد من المعلومات افحص صفحة المهن التي اعجبتك",
+    "likedCareers": "المهن التي اعجبتك"
+  },
+  "/careers/likes": {
+    "title": "المهن التي اعجبتك",
+    "tip": "اضغط على المهنة لتعرف المزيد"
+  },
+  "/careers/details": {
+    "salary": {
+      "title": "راتب",
+      "junior": "مبتدئ",
+      "senior": "خبير"
+    },
+    "grades": {
+      "typeOfGrades": "علامات",
+      "yours": "علامتك",
+      "required": "مطلوب",
+      "bagrut": "بجروت",
+      "tawjihi": "توجيهي",
+      "psychometric": "بسيخومتري"
+    }
+  },
+  "navbar": {
+    "editGrades": "تعديل العلامات",
+    "help": "مساعدة",
+    "logout": "الخروج"
+  },
+  "gradesForm": {
+    "bagrut": "بجروت",
+    "tawjihi": "توجيهي",
+    "psychometric": "بسيخومتري"
+  }
+}
