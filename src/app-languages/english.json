@@ -1,0 +1,37 @@
+{
+  "continueWithFacebook": "login with Facebook",
+  "/careers": {
+    "endDescription":
+      "You have swiped through all the careers. Check out the careers you have liked for more details.",
+    "likedCareers": "Liked Careers"
+  },
+  "/careers/likes": {
+    "title": "Liked careers",
+    "tip": "Click on a career for more details."
+  },
+  "/careers/details": {
+    "salary": {
+      "title": "Salary",
+      "junior": "Junior",
+      "senior": "Senior"
+    },
+    "grades": {
+      "typeOfGrades": "Type of grades",
+      "yours": "Yours",
+      "required": "Required",
+      "bagrut": "Bagrut",
+      "tawjihi": "Tawjihi",
+      "psychometric": "Psychometric"
+    }
+  },
+  "navbar": {
+    "editGrades": "Edit Grades",
+    "help": "Help",
+    "logout": "Logout"
+  },
+  "gradesForm": {
+    "bagrut": "Bagrut",
+    "tawjihi": "Tawjihi",
+    "psychometric": "Psychometric"
+  }
+}

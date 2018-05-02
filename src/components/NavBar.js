@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const NavBarContainer = styled.div`
   width: 100%;
@@ -164,10 +165,23 @@ class NavBar extends Component {
                 help_outline
               </ListItemIcon>
             </SettlingsListItem>
+            <SettlingsListItem to="#">
+              <ListItemText onClick={() => this.props.changeLang('ar')}>
+                العربية
+              </ListItemText>
+              <ListItemText onClick={() => this.props.changeLang('he')}>
+                עברית
+              </ListItemText>
+              <ListItemText onClick={() => this.props.changeLang('en')}>
+                English
+              </ListItemText>
+            </SettlingsListItem>
             <SettlingsListItem
-              to="
-                /__/logout"
-              onClick={() => this.toggleSettings(false)}
+              to="#"
+              onClick={() => {
+                window.location.href = '/__/logout';
+                this.toggleSettings(false);
+              }}
             >
               <ListItemText>Logout</ListItemText>
               <ListItemIcon className="material-icons">
