@@ -1,5 +1,5 @@
 {
-  "continueWithFacebook": "המשיך עם פייסבוק",
+  "continueWithFacebook": "המשך עם פייסבוק",
   "/careers": {
     "endDescription":
       "עברת על כל הקריירות. כדי ללמוד עליהם יותר תעבור לעמוד הקריירות שלך",
@@ -25,7 +25,7 @@
     }
   },
   "navbar": {
-    "editGrades": "לערוך ציונים",
+    "editGrades": "עריכת ציונים",
     "help": "עזרה",
     "logout": "יציאה"
   },

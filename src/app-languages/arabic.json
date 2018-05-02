@@ -1,5 +1,5 @@
 {
-  "continueWithFacebook": "استمر مع فيسبوك",
+  "continueWithFacebook": "تسجيل الدخول عبر فيسبوك",
   "/careers": {
     "endDescription":
       "لقد انهيت كل المهن, لمزيد من المعلومات افحص صفحة المهن التي اعجبتك",
@@ -25,7 +25,7 @@
     }
   },
   "navbar": {
-    "editGrades": "تغيير العلامات",
+    "editGrades": "تعديل العلامات",
     "help": "مساعدة",
     "logout": "الخروج"
   },
