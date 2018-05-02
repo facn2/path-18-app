@@ -166,9 +166,15 @@ class NavBar extends Component {
               </ListItemIcon>
             </SettlingsListItem>
             <SettlingsListItem to="#">
-              <ListItemText>العربية</ListItemText>
-              <ListItemText>עברית</ListItemText>
-              <ListItemText>English</ListItemText>
+              <ListItemText onClick={() => this.props.changeLang('ar')}>
+                العربية
+              </ListItemText>
+              <ListItemText onClick={() => this.props.changeLang('he')}>
+                עברית
+              </ListItemText>
+              <ListItemText onClick={() => this.props.changeLang('en')}>
+                English
+              </ListItemText>
             </SettlingsListItem>
             <SettlingsListItem
               to="#"
