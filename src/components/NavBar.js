@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import T from 'i18n-react';
 
 const NavBarContainer = styled.div`
   width: 100%;
@@ -153,14 +154,18 @@ class NavBar extends Component {
               to="/user/grades"
               onClick={() => this.toggleSettings(false)}
             >
-              <ListItemText>Edit grades</ListItemText>
+              <ListItemText>
+                <T.text text={{ key: 'navbar.editGrades' }} />
+              </ListItemText>
               <ListItemIcon className="material-icons">edit</ListItemIcon>
             </SettlingsListItem>
             <SettlingsListItem
               to="#"
               onClick={() => this.toggleSettings(false)}
             >
-              <ListItemText>Help</ListItemText>
+              <ListItemText>
+                <T.text text={{ key: 'navbar.help' }} />
+              </ListItemText>
               <ListItemIcon className="material-icons">
                 help_outline
               </ListItemIcon>
@@ -183,7 +188,9 @@ class NavBar extends Component {
                 this.toggleSettings(false);
               }}
             >
-              <ListItemText>Logout</ListItemText>
+              <ListItemText>
+                <T.text text={{ key: 'navbar.logout' }} />
+              </ListItemText>
               <ListItemIcon className="material-icons">
                 exit_to_app
               </ListItemIcon>

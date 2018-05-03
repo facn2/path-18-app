@@ -98,7 +98,7 @@ class Careers extends Component {
                 id={`card${card.id}`}
                 key={card.id}
               >
-                <CareerCard card={card} />
+                <CareerCard card={card} currentLang={this.props.currentLang} />
               </CardWrapper>
             ))}
           </Swing>

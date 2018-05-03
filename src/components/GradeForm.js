@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import T from 'i18n-react';
 
 const GradeFormWrapper = styled.section`
   margin-top: 4rem;
@@ -89,7 +90,9 @@ class GradeForm extends Component {
           <Tagline>Before we continue we need your...</Tagline>
         </TitleSection>
         <Form onSubmit={this.handleSubmit}>
-          <FormLabel>Bagrut grade</FormLabel>
+          <FormLabel>
+            <T.text text={{ key: 'gradesForm.bagrut' }} />
+          </FormLabel>
           <FormInput
             type="number"
             min="0"
@@ -98,7 +101,9 @@ class GradeForm extends Component {
             value={this.state.bagrut || ''}
             onChange={e => this.setState({ bagrut: e.target.value })}
           />
-          <FormLabel>Psychometric grade</FormLabel>
+          <FormLabel>
+            <T.text text={{ key: 'gradesForm.psychometric' }} />
+          </FormLabel>
           <FormInput
             type="number"
             min="200"
@@ -107,7 +112,9 @@ class GradeForm extends Component {
             value={this.state.psychometric || ''}
             onChange={e => this.setState({ psychometric: e.target.value })}
           />
-          <FormLabel>Tawjihi grade</FormLabel>
+          <FormLabel>
+            <T.text text={{ key: 'gradesForm.tawjihi' }} />
+          </FormLabel>
           <FormInput
             type="number"
             min="0"
@@ -116,7 +123,7 @@ class GradeForm extends Component {
             value={this.state.tawjihi || ''}
             onChange={e => this.setState({ tawjihi: e.target.value })}
           />
-          <FormInput type="submit" />
+          <FormInput type="submit" value={T.translate('gradesForm.submit')} />
         </Form>
       </GradeFormWrapper>
     );

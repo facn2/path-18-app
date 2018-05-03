@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
+import T from 'i18n-react';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -100,7 +101,7 @@ const LikeAndDislikeButtons = ({
       </IconWrapper>
       <StyledLink to="/careers/liked">
         <LikedButton hide={hide} dataFetched={dataFetched}>
-          Liked Careers
+          <T.text text={{ key: '/careers.likedCareers' }} />
         </LikedButton>
       </StyledLink>
       <IconWrapper hide={hide} side={'right'} cardLength={cardLength}>
