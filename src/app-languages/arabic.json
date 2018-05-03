@@ -1,5 +1,5 @@
 {
-  "continueWithFacebook": "تسجيل الدخول عبر فيسبوك",
+  "Login": "دخول عبر فيسبوك",
   "/careers": {
     "endDescription":
       "لقد انهيت كل المهن, لمزيد من المعلومات افحص صفحة المهن التي اعجبتك",
@@ -32,6 +32,7 @@
   "gradesForm": {
     "bagrut": "بجروت",
     "tawjihi": "توجيهي",
-    "psychometric": "بسيخومتري"
+    "psychometric": "بسيخومتري",
+    "submit": "ارسال"
   }
 }

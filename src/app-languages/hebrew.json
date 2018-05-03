@@ -1,5 +1,5 @@
 {
-  "continueWithFacebook": "המשך עם פייסבוק",
+  "Login": "המשך עם פייסבוק",
   "/careers": {
     "endDescription":
       "עברת על כל הקריירות. כדי ללמוד עליהם יותר תעבור לעמוד הקריירות שלך",
@@ -32,6 +32,7 @@
   "gradesForm": {
     "bagrut": "בגרות",
     "tawjihi": "תאוגיהי",
-    "psychometric": "פסיכומטרי"
+    "psychometric": "פסיכומטרי",
+    "submit": "שלח"
   }
 }

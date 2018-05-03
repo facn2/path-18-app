@@ -1,10 +1,10 @@
 {
-  "continueWithFacebook": "login with Facebook",
   "/careers": {
     "endDescription":
       "You have swiped through all the careers. Check out the careers you have liked for more details.",
     "likedCareers": "Liked Careers"
   },
+  "Login": "login with Facebook",
   "/careers/likes": {
     "title": "Liked careers",
     "tip": "Click on a career for more details."
@@ -32,6 +32,7 @@
   "gradesForm": {
     "bagrut": "Bagrut",
     "tawjihi": "Tawjihi",
-    "psychometric": "Psychometric"
+    "psychometric": "Psychometric",
+    "submit": "Submit"
   }
 }
