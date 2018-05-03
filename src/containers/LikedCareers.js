@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { fetchLikedCareers, unlikeCareer } from '../actions/matched_careers';
+import T from 'i18n-react';
 
 const LikedContainer = styled.div`
   width: 100%;
@@ -113,7 +114,9 @@ class LikedCareers extends Component {
             pathname: `/career/details/${career.id}`,
           }}
         >
-          <LikedListText>{career.title_ar}</LikedListText>
+          <LikedListText>
+            {career[`title_${this.props.currentLang}`]}
+          </LikedListText>
         </CareerLink>
         <CategoryIcon className="material-icons">
           {career.icon_name}
@@ -130,9 +133,11 @@ class LikedCareers extends Component {
     return (
       <LikedContainer>
         <LikedTitleWrapper>
-          <LikedTitle>Liked careers</LikedTitle>
+          <LikedTitle>
+            <T.text text={{ key: '/careers/likes.title' }} />
+          </LikedTitle>
           <LikedDescription>
-            Click on a career for more details.
+            <T.text text={{ key: '/careers/likes.tip' }} />
           </LikedDescription>
         </LikedTitleWrapper>
         <LikedList>

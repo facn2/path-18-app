@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import facebookLogo from '../assets/FB-f-Logo__white_29.png';
+import T from 'i18n-react';
 
 const LoginContainer = styled.section`
   background-color: whitesmoke;
@@ -59,7 +60,7 @@ class Login extends Component {
         </TitleSection>
         <FacebookLoginButton>
           <FacebookLink href="/__/hello/facebook">
-            Facebook استمر مع
+            <T.text text={{ key: 'Login' }} />
           </FacebookLink>
           <FacebookIcon src={facebookLogo} />
         </FacebookLoginButton>

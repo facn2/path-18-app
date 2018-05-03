@@ -44,7 +44,7 @@ const CareerTagline = styled.p`
   font-size: 1rem;
 `;
 
-const CareerCard = ({ card }) => (
+const CareerCard = ({ card, currentLang }) => (
   <CardContainer color={card.icon_color}>
     <CardImageWrapper>
       <IconWrapper color={card.icon_color}>
@@ -52,8 +52,8 @@ const CareerCard = ({ card }) => (
       </IconWrapper>
     </CardImageWrapper>
     <CareerTextWrapper>
-      <CareerTitle>{card.title_ar}</CareerTitle>
-      <CareerTagline>{card.tagline_ar}</CareerTagline>
+      <CareerTitle>{card[`title_${currentLang}`]}</CareerTitle>
+      <CareerTagline>{card[`tagline_${currentLang}`]}</CareerTagline>
     </CareerTextWrapper>
   </CardContainer>
 );

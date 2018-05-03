@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Slider from 'react-slick';
+import T from 'i18n-react';
 import {
   Icon,
   CareerLogo,
@@ -61,7 +62,9 @@ class CareerDetails extends Component {
       </TitleWrapper>
       <TableContainer>
         <TableColumn>
-          <GradeTitle>Yours</GradeTitle>
+          <GradeTitle>
+            <T.text text={{ key: '/careers/details.grades.yours' }} />
+          </GradeTitle>
           <Grade passed={this.compareGrades('grade_bagrut', uni.grade_bagrut)}>
             {this.props.careerDetail.career.userGrades[0].grade_bagrut}
           </Grade>
@@ -80,16 +83,26 @@ class CareerDetails extends Component {
           </Grade>
         </TableColumn>
         <TableColumn>
-          <GradeTitle>Required</GradeTitle>
+          <GradeTitle>
+            <T.text text={{ key: '/careers/details.grades.required' }} />
+          </GradeTitle>
           <Grade> {uni.grade_bagrut || 0} </Grade>
           <Grade> {uni.grade_tawjihi || 0} </Grade>
           <Grade> {uni.grade_psychometric || 0} </Grade>
         </TableColumn>
         <TableColumn>
-          <GradeTitle>Type of Grade</GradeTitle>
-          <Grade>Bagrut</Grade>
-          <Grade>Tawjihi</Grade>
-          <Grade>Psychometric</Grade>
+          <GradeTitle>
+            <T.text text={{ key: '/careers/details.grades.typeOfGrades' }} />
+          </GradeTitle>
+          <Grade>
+            <T.text text={{ key: '/careers/details.grades.bagrut' }} />
+          </Grade>
+          <Grade>
+            <T.text text={{ key: '/careers/details.grades.tawjihi' }} />
+          </Grade>
+          <Grade>
+            <T.text text={{ key: '/careers/details.grades.psychometric' }} />
+          </Grade>
         </TableColumn>
       </TableContainer>
     </UniWrapper>
@@ -114,10 +127,18 @@ class CareerDetails extends Component {
           <TopSection>
             <TitleTagWrapper>
               <CareerTitle>
-                {this.props.careerDetail.career.career[0].title_ar}
+                {
+                  this.props.careerDetail.career.career[0][
+                    `title_${this.props.currentLang}`
+                  ]
+                }
               </CareerTitle>
               <CareerTagline>
-                {this.props.careerDetail.career.career[0].tagline_ar}
+                {
+                  this.props.careerDetail.career.career[0][
+                    `tagling{this.props.currentLang}`
+                  ]
+                }
               </CareerTagline>
             </TitleTagWrapper>
             <CareerLogo className="material-icons">
@@ -127,10 +148,16 @@ class CareerDetails extends Component {
 
           <DetailSection>
             <Description>
-              {this.props.careerDetail.career.career[0].description_ar}
+              {
+                this.props.careerDetail.career.career[0][
+                  `description_${this.props.currentLang}`
+                ]
+              }
             </Description>
             <TitleWrapper>
-              <SectionTitle>Salary</SectionTitle>
+              <SectionTitle>
+                <T.text text={{ key: '/careers/details.salary.title' }} />
+              </SectionTitle>
             </TitleWrapper>
             <TableContainer>
               <TableColumn>
@@ -142,8 +169,12 @@ class CareerDetails extends Component {
                 </Salary>
               </TableColumn>
               <TableColumn>
-                <Salary>Junior </Salary>
-                <Salary>Senior</Salary>
+                <Salary>
+                  <T.text text={{ key: '/careers/details.salary.junior' }} />
+                </Salary>
+                <Salary>
+                  <T.text text={{ key: '/careers/details.salary.senior' }} />
+                </Salary>
               </TableColumn>
             </TableContainer>
           </DetailSection>

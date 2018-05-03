@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import T from 'i18n-react';
 
 const FinalCardContainer = styled.div`
   background-color: #fafafa;
@@ -50,8 +51,7 @@ const FinalCard = () => (
     </Wrapper>
     <Wrapper>
       <WrapperText>
-        You have swiped through all the careers. Check out the careers you have
-        liked for more details.
+        <T.text text={{ key: '/careers.endDescription' }} />
       </WrapperText>
     </Wrapper>
   </FinalCardContainer>
