@@ -55,7 +55,9 @@ class CareerDetails extends Component {
         <Icon className="material-icons" onClick={this.previous}>
           keyboard_arrow_left
         </Icon>
-        <SectionTitle>{`${uni.name_ar} University`}</SectionTitle>
+        <SectionTitle>{`${
+          uni[`name_${this.props.currentLang}`]
+        }`}</SectionTitle>
         <Icon className="material-icons" onClick={this.next}>
           keyboard_arrow_right
         </Icon>
