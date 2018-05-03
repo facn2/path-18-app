@@ -177,9 +177,9 @@ class NavBar extends Component {
               <ListItemText onClick={() => this.props.changeLang('he')}>
                 עברית
               </ListItemText>
-              <ListItemText onClick={() => this.props.changeLang('en')}>
+              {/* <ListItemText onClick={() => this.props.changeLang('en')}>
                 English
-              </ListItemText>
+              </ListItemText> */}
             </SettlingsListItem>
             <SettlingsListItem
               to="#"
